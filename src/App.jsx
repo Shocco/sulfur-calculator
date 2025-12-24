@@ -20,10 +20,11 @@ function App() {
 
   // Load data on mount
   useEffect(() => {
+    const baseUrl = import.meta.env.BASE_URL
     Promise.all([
-      fetch('/data/weapons.json').then(r => r.json()),
-      fetch('/data/enchantments.json').then(r => r.json()),
-      fetch('/data/scrolls.json').then(r => r.json())
+      fetch(`${baseUrl}data/weapons.json`).then(r => r.json()),
+      fetch(`${baseUrl}data/enchantments.json`).then(r => r.json()),
+      fetch(`${baseUrl}data/scrolls.json`).then(r => r.json())
     ]).then(([weaponData, oilsData, scrollsData]) => {
       setWeapons(Array.isArray(weaponData) ? weaponData : weaponData.weapons || [])
       setOils(Array.isArray(oilsData) ? oilsData : oilsData.enchantments || [])
