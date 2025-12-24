@@ -1,0 +1,511 @@
+[
+  {
+    "id": "Scroll_of_Aftershock",
+    "name": "Scroll of Aftershock",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "10%",
+      "StunArea": "\ud83d\udf03"
+    }
+  },
+  {
+    "id": "Scroll_of_Chain_Lightning",
+    "name": "Scroll of Chain Lightning",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "35%",
+      "Electrocution": "Spreading"
+    },
+    "effects": [
+      "Electrocution Spreading Proc Chance 35%",
+      "Adds a chance of spawning a bolt that electrocutes and spreads to nearby enemies."
+    ]
+  },
+  {
+    "id": "Scroll_of_Chaos_Strike",
+    "name": "Scroll of Chaos Strike",
+    "modifiers": [
+      {
+        "attribute": "BulletSize",
+        "modType": 200,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {
+      "BltSize": "+100%",
+      "Stun": "\u2713"
+    },
+    "effects": [
+      "Dark Damage +50",
+      "Chance to increase dark damage up to 800%",
+      "Chance to stun target",
+      "Swap places with target",
+      "Bigger Bullets"
+    ]
+  },
+  {
+    "id": "Scroll_of_Charm",
+    "name": "Scroll of Charm",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "3%"
+    }
+  },
+  {
+    "id": "Scroll_of_Corpse_Explosion",
+    "name": "Scroll of Corpse Explosion",
+    "modifiers": [],
+    "specialEffects": {
+      "CrpsExpl": "+1",
+      "DrbConsume": "+200%"
+    },
+    "effects": [
+      "Increase corpse explosion power per hit",
+      "Durability loss: +200%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Crusader",
+    "name": "Scroll of Crusader",
+    "modifiers": [],
+    "specialEffects": {
+      "MoreDmgOnHit": "+5%"
+    }
+  },
+  {
+    "id": "Scroll_of_Dark",
+    "name": "Scroll of Dark",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.8
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Earth",
+    "name": "Scroll of Earth",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "20%",
+      "Stun": "\ud83d\udf03"
+    }
+  },
+  {
+    "id": "Scroll_of_Embers",
+    "name": "Scroll of Embers",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "20%",
+      "Fire": "\ud83d\udf02"
+    },
+    "effects": [
+      "Fire \ud83d\udf02 Proc Chance 20%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Explosions",
+    "name": "Scroll of Explosions",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 100,
+        "value": 25.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Fear",
+    "name": "Scroll of Fear",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "20%",
+      "Fear": "\u2713"
+    }
+  },
+  {
+    "id": "Scroll_of_Flame_Thrower",
+    "name": "Scroll of Flame Thrower",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.86
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 1.5
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
+        "attribute": "BulletBounces",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "BulletBounciness",
+        "modType": 100,
+        "value": 0.2
+      }
+    ],
+    "specialEffects": {
+      "ConvertWpn": "Flamethrower",
+      "LessForceSpd": "\ud83d\udf02",
+      "Drag": "8"
+    },
+    "effects": [
+      "Spread +150%",
+      "Bullet speed -70%",
+      "More drag",
+      "Less force speed",
+      "Damage -86%",
+      "Converts into Flamethrower",
+      "More life time",
+      "Bullets bounce +1"
+    ]
+  },
+  {
+    "id": "Scroll_of_Frostbite",
+    "name": "Scroll of Frostbite",
+    "modifiers": [],
+    "specialEffects": {
+      "Frost": "\u2746"
+    },
+    "effects": [
+      "Frost \u2746"
+    ]
+  },
+  {
+    "id": "Scroll_of_Holy_Fire",
+    "name": "Scroll of Holy Fire",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
+    "specialEffects": {
+      "ConvertWpn": "Railgun",
+      "PenDmgMult": "+50%",
+      "BltPen": "+999"
+    }
+  },
+  {
+    "id": "Scroll_of_Holy_Purge",
+    "name": "Scroll of Holy Purge",
+    "modifiers": [],
+    "specialEffects": {
+      "DrbConsume": "+250%",
+      "ConvertWpn": "Area Burst around Player",
+      "WpnAreaDmg": "10%"
+    },
+    "effects": [
+      "Weapon-based area damage: +10%",
+      "Blinds surrounding enemies as well as yourself",
+      "Durability Loss +250%",
+      "Do self damage on each bullet -10"
+    ]
+  },
+  {
+    "id": "Scroll_of_Lava",
+    "name": "Scroll of Lava",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 25.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Least_Resistance",
+    "name": "Scroll of Least Resistance",
+    "modifiers": [
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.9
+      }
+    ],
+    "specialEffects": {
+      "DrbConsume": "+200%"
+    },
+    "effects": [
+      "Homing bullets",
+      "Bullet speed: -90%",
+      "Durability loss: +200%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Light",
+    "name": "Scroll of Light",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
+    "specialEffects": {
+      "ConvertWpn": "Railgun",
+      "PenDmgMult": "-50%",
+      "BltPen": "+999"
+    }
+  },
+  {
+    "id": "Scroll_of_Nature",
+    "name": "Scroll of Nature",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "40%",
+      "Root": "\ud83d\ude52"
+    }
+  },
+  {
+    "id": "Scroll_of_Noxiosa",
+    "name": "Scroll of Noxiosa",
+    "modifiers": [],
+    "specialEffects": {
+      "PsnCloud": "\ud83d\udf64"
+    }
+  },
+  {
+    "id": "Scroll_of_Pesticide",
+    "name": "Scroll of Pesticide",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.86
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 1.5
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
+        "attribute": "BulletBounces",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "BulletBounciness",
+        "modType": 100,
+        "value": 0.2
+      }
+    ],
+    "specialEffects": {
+      "ConvertWpn": "Poison Sprayer",
+      "LessForceSpd": "\ud83d\udf64",
+      "Drag": "8"
+    },
+    "effects": [
+      "Spread +150%",
+      "Bullet speed -70%",
+      "More drag",
+      "Less force speed",
+      "Damage -86%",
+      "Converts into poison sprayer",
+      "More life time",
+      "Bullets bounce +1"
+    ]
+  },
+  {
+    "id": "Scroll_of_Petrification",
+    "name": "Scroll of Petrification",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "5%"
+    }
+  },
+  {
+    "id": "Scroll_of_Petroleum",
+    "name": "Scroll of Petroleum",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 25.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Plague",
+    "name": "Scroll of Plague",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "25%",
+      "Poison": "\ud83d\udf64"
+    },
+    "effects": [
+      "Poison \ud83d\udf64 Proc Chance 25%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Poison_Blood",
+    "name": "Scroll of Poison Blood",
+    "modifiers": [],
+    "specialEffects": {
+      "PsnPuddle": "\ud83d\udf64"
+    }
+  },
+  {
+    "id": "Scroll_of_Prism",
+    "name": "Scroll of Prism",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "20%",
+      "Electrocution": "\u21af",
+      "Poison": "\ud83d\udf64",
+      "Wet": "\ud83d\udf04",
+      "Fire": "\ud83d\udf02",
+      "Frost": "\u2746"
+    },
+    "effects": [
+      "Poison \ud83d\udf64 Wet \ud83d\udf04 Fire \ud83d\udf02 Electrocution \u21af Frost \u2746 Proc Chance 20%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Rocket_Launcher",
+    "name": "Scroll of Rocket Launcher",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 10.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Sacrifice",
+    "name": "Scroll of Sacrifice",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Slush",
+    "name": "Scroll of Slush",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 40.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Storm_Surge",
+    "name": "Scroll of Storm Surge",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 25.0
+      }
+    ]
+  },
+  {
+    "id": "Scroll_of_Surge",
+    "name": "Scroll of Surge",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "15%",
+      "Electrocution": "\u21af"
+    },
+    "effects": [
+      "Electrocution \u21af Proc Chance 15%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Thunderbolt",
+    "name": "Scroll of Thunderbolt",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.8
+      }
+    ],
+    "specialEffects": {
+      "Electrocution": "\u2608",
+      "ConvertWpn": "Railgun"
+    },
+    "effects": [
+      "Electrocution \u2608",
+      "Railgun",
+      "Electrocutes targets",
+      "RPM: -80%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Toxic_Lobotomy",
+    "name": "Scroll of Toxic Lobotomy",
+    "modifiers": [
+      {
+        "attribute": "HeadshotDamage",
+        "modType": 200,
+        "value": 3.0
+      }
+    ],
+    "specialEffects": {
+      "DrbConsume": "+350%",
+      "ConvertWpn": "Railgun",
+      "HSDmg": "+300%",
+      "AlwaysOrgans": "\ud83d\udf0a"
+    },
+    "effects": [
+      "Headshot damage +300%",
+      "Always drop organs on hit",
+      "Durability Loss +350%",
+      "Railgun"
+    ]
+  },
+  {
+    "id": "Scroll_of_Voodoo",
+    "name": "Scroll of Voodoo",
+    "modifiers": [],
+    "specialEffects": {
+      "LinkBlt": "\u260c",
+      "ShareDmg": "100%"
+    }
+  },
+  {
+    "id": "Scroll_of_Water",
+    "name": "Scroll of Water",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.99
+      },
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 5.0
+      }
+    ],
+    "specialEffects": {
+      "Wet": "\ud83d\udf04"
+    },
+    "effects": [
+      "Wet \ud83d\udf04"
+    ]
+  }
+]
