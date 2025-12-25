@@ -1,7 +1,8 @@
 import React from 'react'
 
-export default function StatsDisplay({ weapon, selectedOils, selectedScroll, modifiedStats }) {
+export default function StatsDisplay({ weapon, selectedOils, selectedScroll, selectedAttachments, modifiedStats }) {
   const hasEnchantments = selectedOils.length > 0 || selectedScroll
+  const hasAttachments = selectedAttachments && Object.values(selectedAttachments).some(a => a)
 
   if (!weapon) {
     return (
@@ -63,6 +64,33 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, mod
           )}
         </div>
       </div>
+
+      {/* Attachment Summary */}
+      {weapon && hasAttachments && (
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-gray-300 mb-3">Active Attachments</h3>
+          <div className="flex gap-2 flex-wrap">
+            {Object.entries(selectedAttachments || {}).map(([type, attachment]) => (
+              attachment ? (
+                <div
+                  key={type}
+                  className="relative group"
+                  title={`${attachment.name}${attachment.modifiers ? '\n' + Object.entries(attachment.modifiers).map(([k, v]) => `${k}: ${v > 0 ? '+' : ''}${v}`).join('\n') : ''}`}
+                >
+                  <img
+                    src={attachment.image}
+                    alt={attachment.name}
+                    className="w-16 h-16 object-contain bg-gray-700 rounded border-2 border-gray-600 hover:border-red-500 transition-colors"
+                  />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-900 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-10">
+                    {attachment.name}
+                  </div>
+                </div>
+              ) : null
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className={`grid grid-cols-1 ${hasEnchantments && modifiedStats ? 'md:grid-cols-2' : ''} gap-6`}>
         {/* Base Stats */}

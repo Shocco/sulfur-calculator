@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Assault Scope",
+    "type": "sight",
+    "rarity": "Uncommon",
+    "description": "Assault rifle optic for improved accuracy",
+    "image": "https://sulfur.wiki.gg/images/Assault_Scope.png",
+    "modifiers": {
+      "CritChance": 20
+    }
+  },
+  {
+    "name": "Compact Sight",
+    "type": "sight",
+    "rarity": "Common",
+    "description": "Compact reflex sight for close quarters",
+    "image": "https://sulfur.wiki.gg/images/Compact_Sight.png",
+    "modifiers": {
+      "CritChance": 20
+    }
+  },
+  {
+    "name": "Holographic Sight",
+    "type": "sight",
+    "rarity": "Uncommon",
+    "description": "A close-range optic with T-shaped reticle",
+    "image": "https://sulfur.wiki.gg/images/Holographic_Sight.png",
+    "modifiers": {
+      "CritChance": 10
+    }
+  },
+  {
+    "name": "Hunting Scope",
+    "type": "sight",
+    "rarity": "Rare",
+    "description": "Medium-range hunting optic",
+    "image": "https://sulfur.wiki.gg/images/Hunting_Scope.png",
+    "modifiers": {
+      "CritChance": 25
+    }
+  },
+  {
+    "name": "Recon Scope",
+    "type": "sight",
+    "rarity": "Uncommon",
+    "description": "Reconnaissance scope for scouting",
+    "image": "https://sulfur.wiki.gg/images/Recon_Scope.png",
+    "modifiers": {
+      "CritChance": 10
+    }
+  },
+  {
+    "name": "Reflex Sight",
+    "type": "sight",
+    "rarity": "Uncommon",
+    "description": "Quick acquisition reflex sight",
+    "image": "https://sulfur.wiki.gg/images/Reflex_Sight.png",
+    "modifiers": {
+      "CritChance": 15
+    }
+  },
+  {
+    "name": "Sniper Scope",
+    "type": "sight",
+    "rarity": "Rare",
+    "description": "Long-range sniper optic",
+    "image": "https://sulfur.wiki.gg/images/Sniper_Scope.png",
+    "modifiers": {
+      "CritChance": 30
+    }
+  }
+]

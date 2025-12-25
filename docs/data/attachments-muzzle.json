@@ -1,0 +1,153 @@
+[
+  {
+    "name": "A12C Muzzle Brake",
+    "type": "muzzle",
+    "rarity": "Uncommon",
+    "description": "A muzzle device designed to lower the spread of guns",
+    "image": "https://sulfur.wiki.gg/images/A12C_Muzzle_Brake.png?7f26d1",
+    "modifiers": {
+      "Spread": -0.75
+    }
+  },
+  {
+    "name": "Aftermarket Haukland Silencer",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "description": "Reduces noise and muzzle flash",
+    "image": "https://sulfur.wiki.gg/images/Aftermarket_Haukland_Silencer.png?9d5d29",
+    "modifiers": {
+      "Damage": -10,
+      "Recoil": -2
+    }
+  },
+  {
+    "name": "Barrel Extension 2\"",
+    "type": "muzzle",
+    "rarity": "Common",
+    "description": "Extends barrel length by 2 inches",
+    "image": "https://sulfur.wiki.gg/images/Barrel_Extension_2%22.png?8d6ff4",
+    "modifiers": {
+      "Damage": 5,
+      "Spread": -0.25
+    }
+  },
+  {
+    "name": "Barrel Extension 4\"",
+    "type": "muzzle",
+    "rarity": "Uncommon",
+    "description": "Extends barrel length by 4 inches",
+    "image": "https://sulfur.wiki.gg/images/Barrel_Extension_4%22.png?6944b7",
+    "modifiers": {
+      "Damage": 10,
+      "Spread": -0.5
+    }
+  },
+  {
+    "name": "Barrel Extension 6\"",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "description": "Extends barrel length by 6 inches",
+    "image": "https://sulfur.wiki.gg/images/Barrel_Extension_6%22.png?3fd4c6",
+    "modifiers": {
+      "Damage": 15,
+      "Spread": -0.75
+    }
+  },
+  {
+    "name": "Breznik BMD",
+    "type": "muzzle",
+    "rarity": "Uncommon",
+    "description": "Muzzle brake device for recoil reduction",
+    "image": "https://sulfur.wiki.gg/images/Breznik_BMD.png?e689eb",
+    "modifiers": {
+      "Recoil": -3
+    }
+  },
+  {
+    "name": "Breznik BMD (Tactical)",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "description": "Tactical version with improved recoil reduction",
+    "image": "https://sulfur.wiki.gg/images/Breznik_BMD_%28Tactical%29.png?5e9dd9",
+    "modifiers": {
+      "Recoil": -5
+    }
+  },
+  {
+    "name": "Haukland Flash Hider",
+    "type": "muzzle",
+    "rarity": "Common",
+    "description": "Reduces muzzle flash",
+    "image": "https://sulfur.wiki.gg/images/Haukland_Flash_Hider.png?78ad08",
+    "modifiers": {
+      "Recoil": -1
+    }
+  },
+  {
+    "name": "Haukland Silencer",
+    "type": "muzzle",
+    "rarity": "Uncommon",
+    "description": "Standard silencer for reduced noise",
+    "image": "https://sulfur.wiki.gg/images/Haukland_Silencer.png?17c207",
+    "modifiers": {
+      "Damage": -5,
+      "Recoil": -1.5
+    }
+  },
+  {
+    "name": "Improvised Barrel Extension",
+    "type": "muzzle",
+    "rarity": "Common",
+    "description": "Makeshift barrel extension",
+    "image": "https://sulfur.wiki.gg/images/Improvised_Barrel_Extension.png?38904b",
+    "modifiers": {
+      "Damage": 3,
+      "Spread": -0.15
+    }
+  },
+  {
+    "name": "M87 \"Albatross\" Silencer",
+    "type": "muzzle",
+    "rarity": "Legendary",
+    "description": "High-end silencer with minimal performance loss",
+    "image": "https://sulfur.wiki.gg/images/M87_%22Albatross%22_Silencer.png?ac6ffc",
+    "modifiers": {
+      "Damage": -2,
+      "Recoil": -3
+    }
+  },
+  {
+    "name": "SR-P3 Silencer",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "description": "Military-grade silencer",
+    "image": "https://sulfur.wiki.gg/images/SR-P3_Silencer.png?f3988c",
+    "modifiers": {
+      "Damage": -7,
+      "Recoil": -2
+    }
+  },
+  {
+    "name": "Shrouded Barrel Extension",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "description": "Barrel extension with heat shroud",
+    "image": "https://sulfur.wiki.gg/images/Shrouded_Barrel_Extension.png?7e4c6c",
+    "modifiers": {
+      "Damage": 12,
+      "Spread": -0.6,
+      "Recoil": -1
+    }
+  },
+  {
+    "name": "Warmage Compensator",
+    "type": "muzzle",
+    "rarity": "Legendary",
+    "description": "Advanced compensator for superior recoil control",
+    "image": "https://sulfur.wiki.gg/images/Warmage_Compensator.png?242cdb",
+    "modifiers": {
+      "Recoil": -7,
+      "Spread": -0.5
+    }
+  }
+]

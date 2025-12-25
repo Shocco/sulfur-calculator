@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Gun Crank",
+    "type": "chamber",
+    "rarity": "Uncommon",
+    "description": "Changes firing mode to automatic",
+    "image": "https://sulfur.wiki.gg/images/Gun_Crank.png",
+    "modifiers": {},
+    "specialEffects": {
+      "firingMode": "automatic"
+    }
+  },
+  {
+    "name": "Priming Bolt",
+    "type": "chamber",
+    "rarity": "Rare",
+    "description": "Makes weapon semiautomatic with improved damage and accuracy",
+    "image": "https://sulfur.wiki.gg/images/Priming_Bolt.png",
+    "modifiers": {
+      "Spread": -0.1,
+      "Damage": 10
+    },
+    "specialEffects": {
+      "firingMode": "semiautomatic"
+    }
+  }
+]

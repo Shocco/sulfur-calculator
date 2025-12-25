@@ -10,6 +10,21 @@
  * modifiers applied first, then oil modifiers are calculated based on those values
  */
 
+function applyCaliberConversion(weaponStats, caliber, caliberModifiers) {
+  if (!caliber || !caliberModifiers[caliber]) {
+    return weaponStats
+  }
+
+  const conversion = caliberModifiers[caliber]
+  return {
+    ...weaponStats,
+    Damage: conversion.damage,
+    ProjectileCount: conversion.projectiles,
+    Spread: conversion.spread,
+    Recoil: conversion.recoil
+  }
+}
+
 function applyModifier(currentValue, baseValue, mod) {
   const modType = mod.modType || mod.mod_type || mod.mod_type_id
   const value = mod.value
@@ -24,19 +39,42 @@ function applyModifier(currentValue, baseValue, mod) {
   return currentValue
 }
 
-export function calculateModifiedStats(weapon, enchantments) {
-  if (!weapon || !enchantments) {
+export function calculateModifiedStats(weapon, attachments = [], enchantments = [], caliberModifiers = {}) {
+  // For backward compatibility, handle old signature: calculateModifiedStats(weapon, enchantments)
+  let actualAttachments = attachments
+  let actualEnchantments = enchantments
+
+  if (!Array.isArray(attachments) && attachments !== null && typeof attachments === 'object') {
+    // Old signature detected: second param is enchantments
+    actualEnchantments = Array.isArray(attachments) ? attachments : [attachments]
+    actualAttachments = []
+  }
+
+  if (!weapon) {
     return null
   }
 
   // Handle both single enchantment and array of enchantments
-  const enchantmentList = Array.isArray(enchantments) ? enchantments : [enchantments]
+  const enchantmentList = Array.isArray(actualEnchantments) ? actualEnchantments :
+                          (actualEnchantments ? [actualEnchantments] : [])
+  const attachmentList = Array.isArray(actualAttachments) ? actualAttachments :
+                         (actualAttachments ? [actualAttachments] : [])
 
-  if (enchantmentList.length === 0) {
+  if (enchantmentList.length === 0 && attachmentList.length === 0) {
     return null
   }
 
-  const baseStats = weapon.baseStats || weapon.base_stats || {}
+  let baseStats = weapon.baseStats || weapon.base_stats || {}
+
+  // Step 0: Apply chamber chisel (caliber conversion) FIRST - this modifies base stats
+  const chisel = attachmentList.find(a => a?.specialEffects?.caliberConversion)
+  if (chisel) {
+    baseStats = applyCaliberConversion(
+      baseStats,
+      chisel.specialEffects.caliberConversion,
+      caliberModifiers
+    )
+  }
 
   // Separate scrolls with ConvertWpn from other enchantments
   const convertScrolls = enchantmentList.filter(ench =>
@@ -56,6 +94,20 @@ export function calculateModifiedStats(weapon, enchantments) {
           convertScrollMods[attr] = []
         }
         convertScrollMods[attr].push(mod)
+      })
+    }
+  })
+
+  // Collect modifiers from other attachments (excluding chisel which was already applied)
+  const otherAttachments = attachmentList.filter(a => !a?.specialEffects?.caliberConversion)
+  const attachmentMods = {}
+  otherAttachments.forEach(attachment => {
+    if (attachment && attachment.modifiers) {
+      Object.entries(attachment.modifiers).forEach(([stat, value]) => {
+        if (!attachmentMods[stat]) {
+          attachmentMods[stat] = []
+        }
+        attachmentMods[stat].push({ value, type: 'flat' })
       })
     }
   })
@@ -89,7 +141,15 @@ export function calculateModifiedStats(weapon, enchantments) {
       intermediateValue = currentValue
     }
 
-    // Step 2: Apply other modifiers (oils) using the scroll-modified value as base
+    // Step 2: Apply attachment modifiers (flat values)
+    if (attachmentMods[stat]) {
+      attachmentMods[stat].forEach(mod => {
+        currentValue += mod.value
+      })
+      intermediateValue = currentValue
+    }
+
+    // Step 3: Apply other modifiers (oils) using the scroll/attachment-modified value as base
     if (otherMods[stat]) {
       otherMods[stat].forEach(mod => {
         currentValue = applyModifier(currentValue, intermediateValue, mod)

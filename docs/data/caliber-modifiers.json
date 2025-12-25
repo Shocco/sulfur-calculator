@@ -1,0 +1,32 @@
+{
+  "9mm": {
+    "damage": 96,
+    "projectiles": 1,
+    "spread": 2,
+    "recoil": 5
+  },
+  "5.56mm": {
+    "damage": 128,
+    "projectiles": 1,
+    "spread": 2,
+    "recoil": 10
+  },
+  "7.62mm": {
+    "damage": 160,
+    "projectiles": 1,
+    "spread": 2,
+    "recoil": 20
+  },
+  ".50 BMG": {
+    "damage": 320,
+    "projectiles": 1,
+    "spread": 2,
+    "recoil": 30
+  },
+  "12Ga": {
+    "damage": 32,
+    "projectiles": 8,
+    "spread": 5,
+    "recoil": 25
+  }
+}
