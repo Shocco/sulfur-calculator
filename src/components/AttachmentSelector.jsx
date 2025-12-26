@@ -52,6 +52,12 @@ export default function AttachmentSelector({
   onRemoveAttachment,
   onRemoveAll
 }) {
+  const [openSlot, setOpenSlot] = useState(null)
+
+  const handleToggleSlot = (slotType) => {
+    setOpenSlot(openSlot === slotType ? null : slotType)
+  }
+
   return (
     <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
       <div className="flex justify-between items-center mb-4">
@@ -74,7 +80,12 @@ export default function AttachmentSelector({
             label={label}
             attachments={attachmentsByType[key] || []}
             selected={selectedAttachments[key]}
-            onSelect={(attachment) => onSelectAttachment(key, attachment)}
+            isOpen={openSlot === key}
+            onToggle={() => handleToggleSlot(key)}
+            onSelect={(attachment) => {
+              onSelectAttachment(key, attachment)
+              setOpenSlot(null) // Close dropdown after selection
+            }}
             onRemove={() => onRemoveAttachment(key)}
           />
         ))}
@@ -83,9 +94,7 @@ export default function AttachmentSelector({
   )
 }
 
-function AttachmentSlot({ type, label, attachments, selected, onSelect, onRemove }) {
-  const [isOpen, setIsOpen] = useState(false)
-
+function AttachmentSlot({ type, label, attachments, selected, isOpen, onToggle, onSelect, onRemove }) {
   return (
     <div className="bg-gray-700 rounded p-3">
       <div className="text-sm font-semibold text-gray-300 mb-2">{label}</div>
@@ -117,7 +126,7 @@ function AttachmentSlot({ type, label, attachments, selected, onSelect, onRemove
       ) : (
         <div className="relative">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={onToggle}
             className="w-full px-3 py-2 bg-gray-600 hover:bg-gray-500 text-white text-sm rounded"
           >
             Select {label}
@@ -128,10 +137,7 @@ function AttachmentSlot({ type, label, attachments, selected, onSelect, onRemove
               {attachments.map((attachment) => (
                 <button
                   key={attachment.name}
-                  onClick={() => {
-                    onSelect(attachment)
-                    setIsOpen(false)
-                  }}
+                  onClick={() => onSelect(attachment)}
                   className="w-full px-3 py-2 text-left hover:bg-gray-700 text-sm text-white flex items-start gap-2 border-b border-gray-700 last:border-b-0"
                 >
                   <img

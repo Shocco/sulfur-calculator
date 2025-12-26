@@ -8,6 +8,7 @@ import SavedConfigs from './components/SavedConfigs'
 import { calculateModifiedStats } from './utils/calculator'
 
 const STORAGE_KEY = 'sulfur_saved_configs'
+const CURRENT_BUILD_KEY = 'sulfur_current_build'
 
 function App() {
   const [weapons, setWeapons] = useState([])
@@ -87,6 +88,20 @@ function App() {
     } catch (err) {
       console.error('Error loading saved configs:', err)
     }
+
+    // Load current build from localStorage
+    try {
+      const currentBuild = localStorage.getItem(CURRENT_BUILD_KEY)
+      if (currentBuild) {
+        const build = JSON.parse(currentBuild)
+        if (build.weapon) setSelectedWeapon(build.weapon)
+        if (build.attachments) setSelectedAttachments(build.attachments)
+        if (build.oils) setSelectedOils(build.oils)
+        if (build.scroll) setSelectedScroll(build.scroll)
+      }
+    } catch (err) {
+      console.error('Error loading current build:', err)
+    }
   }, [])
 
   // Calculate modified stats when weapon, attachments, or enchantments change
@@ -112,6 +127,23 @@ function App() {
     }
   }, [selectedWeapon, selectedAttachments, selectedOils, selectedScroll, caliberModifiers])
 
+  // Auto-save current build to localStorage
+  useEffect(() => {
+    if (selectedWeapon) {
+      const currentBuild = {
+        weapon: selectedWeapon,
+        attachments: selectedAttachments,
+        oils: selectedOils,
+        scroll: selectedScroll
+      }
+      try {
+        localStorage.setItem(CURRENT_BUILD_KEY, JSON.stringify(currentBuild))
+      } catch (err) {
+        console.error('Error saving current build:', err)
+      }
+    }
+  }, [selectedWeapon, selectedAttachments, selectedOils, selectedScroll])
+
   const resetAll = () => {
     setSelectedWeapon(null)
     setSelectedOils([])
@@ -124,6 +156,12 @@ function App() {
       chisel: null,
       insurance: null
     })
+    // Clear current build from localStorage
+    try {
+      localStorage.removeItem(CURRENT_BUILD_KEY)
+    } catch (err) {
+      console.error('Error clearing current build:', err)
+    }
   }
 
   const handleSelectAttachment = (type, attachment) => {
