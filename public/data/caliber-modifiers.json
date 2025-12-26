@@ -1,32 +1,37 @@
 {
-  "9mm": {
-    "damage": 96,
-    "projectiles": 1,
-    "spread": 2,
-    "recoil": 5
+  "baseAmmoDamage": {
+    "9mm": 60,
+    "5.56mm": 80,
+    "7.62mm": 100,
+    ".50 BMG": 200,
+    "12Ga": 20,
+    "Energy Cell": 50
   },
-  "5.56mm": {
-    "damage": 128,
-    "projectiles": 1,
-    "spread": 2,
-    "recoil": 10
-  },
-  "7.62mm": {
-    "damage": 160,
-    "projectiles": 1,
-    "spread": 2,
-    "recoil": 20
-  },
-  ".50 BMG": {
-    "damage": 320,
-    "projectiles": 1,
-    "spread": 2,
-    "recoil": 30
-  },
-  "12Ga": {
-    "damage": 32,
-    "projectiles": 8,
-    "spread": 5,
-    "recoil": 25
+  "calibers": {
+    "9mm": {
+      "Spread": 2,
+      "Recoil": 5,
+      "ProjectileCount": 1
+    },
+    "5.56mm": {
+      "Spread": 2,
+      "Recoil": 10,
+      "ProjectileCount": 1
+    },
+    "7.62mm": {
+      "Spread": 2,
+      "Recoil": 20,
+      "ProjectileCount": 1
+    },
+    ".50 BMG": {
+      "Spread": 2,
+      "Recoil": 30,
+      "ProjectileCount": 1
+    },
+    "12Ga": {
+      "Spread": 5,
+      "Recoil": 25,
+      "ProjectileCount": 8
+    }
   }
 }

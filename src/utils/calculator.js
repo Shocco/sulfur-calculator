@@ -10,18 +10,29 @@
  * modifiers applied first, then oil modifiers are calculated based on those values
  */
 
-function applyCaliberConversion(weaponStats, caliber, caliberModifiers) {
-  if (!caliber || !caliberModifiers[caliber]) {
+function applyCaliberConversion(weaponStats, caliber, caliberModifiers, weapon) {
+  if (!caliber || !caliberModifiers.calibers || !caliberModifiers.calibers[caliber]) {
     return weaponStats
   }
 
-  const conversion = caliberModifiers[caliber]
+  const newCaliberStats = caliberModifiers.calibers[caliber]
+  const baseAmmoDamage = caliberModifiers.baseAmmoDamage
+
+  // Calculate weapon's damage multiplier from current ammo type
+  const currentAmmoType = weapon.ammoType
+  const currentBaseDamage = baseAmmoDamage[currentAmmoType]
+  const weaponMultiplier = currentBaseDamage ? weaponStats.Damage / currentBaseDamage : 1
+
+  // Apply multiplier to new ammo type's base damage
+  const newBaseDamage = baseAmmoDamage[caliber]
+  const newDamage = newBaseDamage * weaponMultiplier
+
   return {
     ...weaponStats,
-    Damage: conversion.damage,
-    ProjectileCount: conversion.projectiles,
-    Spread: conversion.spread,
-    Recoil: conversion.recoil
+    Damage: newDamage,
+    ProjectileCount: newCaliberStats.ProjectileCount,
+    Spread: newCaliberStats.Spread,
+    Recoil: newCaliberStats.Recoil
   }
 }
 
@@ -72,7 +83,8 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     baseStats = applyCaliberConversion(
       baseStats,
       chisel.specialEffects.caliberConversion,
-      caliberModifiers
+      caliberModifiers,
+      weapon
     )
   }
 
@@ -107,7 +119,12 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
         if (!attachmentMods[stat]) {
           attachmentMods[stat] = []
         }
-        attachmentMods[stat].push({ value, type: 'flat' })
+        // Support both simple values (flat) and objects with {value, type}
+        if (typeof value === 'object' && value !== null && 'value' in value) {
+          attachmentMods[stat].push({ value: value.value, type: value.type || 'flat' })
+        } else {
+          attachmentMods[stat].push({ value, type: 'flat' })
+        }
       })
     }
   })
@@ -141,10 +158,14 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
       intermediateValue = currentValue
     }
 
-    // Step 2: Apply attachment modifiers (flat values)
+    // Step 2: Apply attachment modifiers (flat or percentage)
     if (attachmentMods[stat]) {
       attachmentMods[stat].forEach(mod => {
-        currentValue += mod.value
+        if (mod.type === 'percent') {
+          currentValue = currentValue + (currentValue * mod.value)
+        } else {
+          currentValue += mod.value
+        }
       })
       intermediateValue = currentValue
     }

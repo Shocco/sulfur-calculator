@@ -92,7 +92,7 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
         </div>
       )}
 
-      <div className={`grid grid-cols-1 ${hasEnchantments && modifiedStats ? 'md:grid-cols-2' : ''} gap-6`}>
+      <div className={`grid grid-cols-1 ${(hasEnchantments || hasAttachments) && modifiedStats ? 'md:grid-cols-2' : ''} gap-6`}>
         {/* Base Stats */}
         <div>
           <h3 className="font-bold text-lg mb-3 text-gray-300">Base Stats</h3>
@@ -136,10 +136,10 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
           </div>
         </div>
 
-        {/* Modified Stats - Only show if enchantments are selected */}
-        {hasEnchantments && modifiedStats && (
+        {/* Modified Stats - Show if enchantments or attachments are selected */}
+        {(hasEnchantments || hasAttachments) && modifiedStats && (
           <div>
-            <h3 className="font-bold text-lg mb-3 text-cyan-300">After Enchantments</h3>
+            <h3 className="font-bold text-lg mb-3 text-cyan-300">After Modifications</h3>
             <div className="space-y-2">
               {modifiedStats
                 .filter(({ stat }) => stat !== 'ProjectileCount') // Don't show ProjectileCount separately

@@ -15,8 +15,17 @@ function formatModifiers(attachment) {
   // Format regular modifiers
   if (attachment.modifiers && Object.keys(attachment.modifiers).length > 0) {
     Object.entries(attachment.modifiers).forEach(([stat, value]) => {
-      const sign = value > 0 ? '+' : ''
-      lines.push(`${stat}: ${sign}${value}`)
+      // Support both simple values and objects with {value, type}
+      if (typeof value === 'object' && value !== null && 'value' in value) {
+        const sign = value.value > 0 ? '+' : ''
+        const displayValue = value.type === 'percent'
+          ? `${sign}${(value.value * 100).toFixed(0)}%`
+          : `${sign}${value.value}`
+        lines.push(`${stat}: ${displayValue}`)
+      } else {
+        const sign = value > 0 ? '+' : ''
+        lines.push(`${stat}: ${sign}${value}`)
+      }
     })
   }
 

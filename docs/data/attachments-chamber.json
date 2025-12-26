@@ -18,7 +18,7 @@
     "image": "https://sulfur.wiki.gg/images/Priming_Bolt.png",
     "modifiers": {
       "Spread": -0.1,
-      "Damage": 10
+      "Damage": { "value": 0.1, "type": "percent" }
     },
     "specialEffects": {
       "firingMode": "semiautomatic"
