@@ -4,7 +4,7 @@
     "type": "laser",
     "rarity": "Common",
     "description": "Tactical device allowing for more accurate hip fire",
-    "image": "https://sulfur.wiki.gg/images/Laser_Sight_%28Red%29.png",
+    "image": "/images/attachments/Laser_Sight_(Red).png",
     "modifiers": {
       "AccuracyWhileMoving": 50
     }
@@ -14,9 +14,9 @@
     "type": "laser",
     "rarity": "Uncommon",
     "description": "High-visibility green laser for improved hip fire",
-    "image": "https://sulfur.wiki.gg/images/Laser_Sight_%28Green%29.png",
+    "image": "/images/attachments/Laser_Sight_(Green).png",
     "modifiers": {
-      "AccuracyWhileMoving": 75
+      "AccuracyWhileMoving": 50
     }
   },
   {
@@ -24,9 +24,9 @@
     "type": "laser",
     "rarity": "Rare",
     "description": "Premium laser sight with maximum hip fire accuracy",
-    "image": "https://sulfur.wiki.gg/images/Laser_Sight_%28Yellow%29.png",
+    "image": "/images/attachments/Laser_Sight_(Yellow).png",
     "modifiers": {
-      "AccuracyWhileMoving": 100
+      "AccuracyWhileMoving": 50
     }
   }
 ]

@@ -4,7 +4,7 @@
     "type": "chisel",
     "rarity": "Uncommon",
     "description": "Converts weapon to 9mm caliber - provides reduced recoil but lower damage",
-    "image": "https://sulfur.wiki.gg/images/Chamber_Chisel_%289mm%29.png",
+    "image": "/images/attachments/Chamber_Chisel_(9mm).png",
     "modifiers": {},
     "specialEffects": {
       "caliberConversion": "9mm"
@@ -15,7 +15,7 @@
     "type": "chisel",
     "rarity": "Uncommon",
     "description": "Converts weapon to 5.56mm caliber - balanced damage and recoil",
-    "image": "https://sulfur.wiki.gg/images/Chamber_Chisel_%285.56mm%29.png",
+    "image": "/images/attachments/Chamber_Chisel_(5.56mm).png",
     "modifiers": {},
     "specialEffects": {
       "caliberConversion": "5.56mm"
@@ -26,7 +26,7 @@
     "type": "chisel",
     "rarity": "Rare",
     "description": "Converts weapon to 7.62mm caliber - high damage with increased recoil",
-    "image": "https://sulfur.wiki.gg/images/Chamber_Chisel_%287.62mm%29.png",
+    "image": "/images/attachments/Chamber_Chisel_(7.62mm).png",
     "modifiers": {},
     "specialEffects": {
       "caliberConversion": "7.62mm"
@@ -37,7 +37,7 @@
     "type": "chisel",
     "rarity": "Legendary",
     "description": "Converts weapon to .50 BMG caliber - extreme damage with very high recoil",
-    "image": "https://sulfur.wiki.gg/images/Chamber_Chisel_%28.50_BMG%29.png",
+    "image": "/images/attachments/Chamber_Chisel_(.50_BMG).png",
     "modifiers": {},
     "specialEffects": {
       "caliberConversion": ".50 BMG"
@@ -48,7 +48,7 @@
     "type": "chisel",
     "rarity": "Rare",
     "description": "Converts weapon to 12 Gauge shotgun shells - multiple pellets with spread",
-    "image": "https://sulfur.wiki.gg/images/Chamber_Chisel_%2812Ga%29.png",
+    "image": "/images/attachments/Chamber_Chisel_(12Ga).png",
     "modifiers": {},
     "specialEffects": {
       "caliberConversion": "12Ga"

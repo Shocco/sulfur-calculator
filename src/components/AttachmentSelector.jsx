@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const ATTACHMENT_TYPES = [
   { key: 'muzzle', label: 'Muzzle' },
@@ -24,7 +24,9 @@ function formatModifiers(attachment) {
         lines.push(`${stat}: ${displayValue}`)
       } else {
         const sign = value > 0 ? '+' : ''
-        lines.push(`${stat}: ${sign}${value}`)
+        // Format CritChance and ADSCritChance as percentage
+        const displayValue = (stat === 'CritChance' || stat === 'ADSCritChance') ? `${sign}${Math.round(value * 100)}%` : `${sign}${value}`
+        lines.push(`${stat}: ${displayValue}`)
       }
     })
   }
@@ -48,18 +50,58 @@ function formatModifiers(attachment) {
 export default function AttachmentSelector({
   attachmentsByType,
   selectedAttachments,
+  selectedWeapon,
   onSelectAttachment,
   onRemoveAttachment,
   onRemoveAll
 }) {
   const [openSlot, setOpenSlot] = useState(null)
+  const containerRef = useRef(null)
 
   const handleToggleSlot = (slotType) => {
     setOpenSlot(openSlot === slotType ? null : slotType)
   }
 
+  // Get allowed attachment types for the selected weapon
+  const allowedTypes = selectedWeapon?.allowedAttachments || ['muzzle', 'sight', 'laser', 'chamber', 'chisel', 'insurance']
+
+  // Filter attachment types to only show allowed ones
+  const availableAttachmentTypes = ATTACHMENT_TYPES.filter(({ key }) => allowedTypes.includes(key))
+
+  // Filter attachments by specific weapon compatibility
+  const getFilteredAttachments = (type) => {
+    const attachments = attachmentsByType[type] || []
+
+    // If weapon has specific attachment restrictions, use them
+    if (selectedWeapon?.specificAttachments && selectedWeapon.specificAttachments.length > 0) {
+      return attachments.filter(attachment =>
+        selectedWeapon.specificAttachments.includes(attachment.name)
+      )
+    }
+
+    // Otherwise, show all attachments of this type (fallback)
+    return attachments
+  }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setOpenSlot(null)
+      }
+    }
+
+    if (openSlot !== null) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [openSlot])
+
   return (
-    <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+    <div ref={containerRef} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold text-red-500">Attachments</h2>
         {Object.values(selectedAttachments).some(a => a) && (
@@ -72,24 +114,30 @@ export default function AttachmentSelector({
         )}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {ATTACHMENT_TYPES.map(({ key, label }) => (
-          <AttachmentSlot
-            key={key}
-            type={key}
-            label={label}
-            attachments={attachmentsByType[key] || []}
-            selected={selectedAttachments[key]}
-            isOpen={openSlot === key}
-            onToggle={() => handleToggleSlot(key)}
-            onSelect={(attachment) => {
-              onSelectAttachment(key, attachment)
-              setOpenSlot(null) // Close dropdown after selection
-            }}
-            onRemove={() => onRemoveAttachment(key)}
-          />
-        ))}
-      </div>
+      {!selectedWeapon ? (
+        <p className="text-gray-400 text-center py-4">Select a weapon to see available attachments</p>
+      ) : availableAttachmentTypes.length === 0 ? (
+        <p className="text-gray-400 text-center py-4">No attachments available for this weapon</p>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {availableAttachmentTypes.map(({ key, label }) => (
+            <AttachmentSlot
+              key={key}
+              type={key}
+              label={label}
+              attachments={getFilteredAttachments(key)}
+              selected={selectedAttachments[key]}
+              isOpen={openSlot === key}
+              onToggle={() => handleToggleSlot(key)}
+              onSelect={(attachment) => {
+                onSelectAttachment(key, attachment)
+                setOpenSlot(null) // Close dropdown after selection
+              }}
+              onRemove={() => onRemoveAttachment(key)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -103,7 +151,7 @@ function AttachmentSlot({ type, label, attachments, selected, isOpen, onToggle, 
         <div className="space-y-2">
           <div className="flex items-start gap-2">
             <img
-              src={selected.image}
+              src={`${import.meta.env.BASE_URL}${selected.image.startsWith('/') ? selected.image.slice(1) : selected.image}`}
               alt={selected.name}
               className="w-12 h-12 object-contain bg-gray-600 rounded flex-shrink-0"
             />
@@ -141,7 +189,7 @@ function AttachmentSlot({ type, label, attachments, selected, isOpen, onToggle, 
                   className="w-full px-3 py-2 text-left hover:bg-gray-700 text-sm text-white flex items-start gap-2 border-b border-gray-700 last:border-b-0"
                 >
                   <img
-                    src={attachment.image}
+                    src={`${import.meta.env.BASE_URL}${attachment.image.startsWith('/') ? attachment.image.slice(1) : attachment.image}`}
                     alt={attachment.name}
                     className="w-10 h-10 object-contain flex-shrink-0"
                   />

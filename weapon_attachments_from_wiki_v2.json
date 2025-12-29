@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "total_weapons": 45,
+    "weapons_found": 45,
+    "weapons_with_attachments": 44,
+    "missing_weapons": []
+  },
+  "weapons": {
+    ".357 Balthazar": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "1889 Mario": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Arbiter 2": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Augusta": [
+      "Sight",
+      "Laser Sights",
+      "Gun Crank"
+    ],
+    "Beck 8": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Breacher 8": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Chamber Chisel"
+    ],
+    "Bronco 89": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Catacoil Rapid X": [
+      "Sight",
+      "Laser Sights"
+    ],
+    "Corpsemaker": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "D4RT": [],
+    "Deathstar PG": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Dolphin 99": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Drifter 9": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Duhar": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Farsight": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Ferryman": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Flicker": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Flock 76": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Gravekeeper": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Hell 'N' Back": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Impala Gravita": [
+      "Muzzle",
+      "Sight",
+      "Chamber Chisel",
+      "Laser Sights"
+    ],
+    "Knop .22": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Longboy": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "M11A2 Fisk": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "M182 Pierre-Fusil": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "M3 Termite": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Majordome": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Mossman": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Neuraxis F22": [
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt"
+    ],
+    "P38 Dirk": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Palehorse Topclipper": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Ploika Compact": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Rektor 100rd": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Rokua .308": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Salamander": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Snut .38": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Socom 9": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Star & Witness": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Tailor Marksman MKII": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Gun Crank",
+      "Chamber Chisel"
+    ],
+    "Type 80 Typhoon": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Unknown": [
+      "Sight",
+      "Laser Sights"
+    ],
+    "Valet": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Vrede": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Wingman": [
+      "Muzzle Attachments",
+      "Sight",
+      "Laser Sights",
+      "Priming Bolt",
+      "Chamber Chisel"
+    ],
+    "Wyatt PULSAR": [
+      "Sight",
+      "Laser Sights"
+    ]
+  }
+}

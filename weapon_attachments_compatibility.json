@@ -1,0 +1,291 @@
+{
+  ".357 Balthazar": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "1889 Mario": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Arbiter 2": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Augusta": [
+    "chamber",
+    "laser",
+    "sight"
+  ],
+  "Beck 8": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Breacher 8": [
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Bronco 89": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Catacoil Rapid X": [
+    "laser",
+    "sight"
+  ],
+  "Corpsemaker": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "D4RT": [
+    "laser",
+    "sight"
+  ],
+  "Deathstar PG": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Dolphin 99": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Drifter 9": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Duhar": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Farsight": [
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Ferryman": [
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Flicker": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Flock 76": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Gravekeeper": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Hell 'N' Back": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Impala Gravita": [
+    "chisel",
+    "muzzle",
+    "sight"
+  ],
+  "Knop .22": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Longboy": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "M11A2 Fisk": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "M182 Pierre-Fusil": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "M3 Termite": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Majordome": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Mossman": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Neuraxis F22": [
+    "laser",
+    "sight"
+  ],
+  "P38 Dirk": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Palehorse Topclipper": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Ploika Compact": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Rektor 100rd": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Rokua .308": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Salamander": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Snut .38": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Socom 9": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Star & Witness": [
+    "chamber",
+    "chisel",
+    "laser"
+  ],
+  "Tailor Marksman MKII": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Type 80 Typhoon": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Unknown": [
+    "laser",
+    "sight"
+  ],
+  "Valet": [
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Vrede": [
+    "chamber",
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Wingman": [
+    "chisel",
+    "laser",
+    "muzzle",
+    "sight"
+  ],
+  "Wyatt PULSAR": [
+    "laser",
+    "sight"
+  ]
+}

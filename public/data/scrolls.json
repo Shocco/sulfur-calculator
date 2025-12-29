@@ -29,11 +29,18 @@
         "attribute": "BulletSize",
         "modType": 200,
         "value": 1.0
+      },
+      {
+        "attribute": "Damage",
+        "modType": 100,
+        "value": 50.0
       }
     ],
     "specialEffects": {
       "BltSize": "+100%",
-      "Stun": "\u2713"
+      "Stun": "\u2713",
+      "bypassPercentages": true,
+      "perBulletDamage": 50
     },
     "effects": [
       "Dark Damage +50",
@@ -113,7 +120,11 @@
         "modType": 100,
         "value": 25.0
       }
-    ]
+    ],
+    "specialEffects": {
+      "bypassPercentages": true,
+      "perBulletDamage": 25
+    }
   },
   {
     "id": "Scroll_of_Fear",

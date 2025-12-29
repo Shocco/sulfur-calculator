@@ -29,14 +29,18 @@ export default function SavedConfigs({ savedConfigs, onLoadConfig, onDeleteConfi
 
   const getWeaponImageUrl = (weapon) => {
     return weapon.image
-      ? `https://sulfur.wiki.gg/wiki/Special:FilePath/${encodeURIComponent(weapon.image)}`
+      ? `${import.meta.env.BASE_URL}images/weapons/${weapon.image}`
       : null
   }
 
   const getEnchantmentImageUrl = (enchantment) => {
     // Enchantments use the name with .png extension
     const imageName = `${enchantment.name}.png`
-    return `https://sulfur.wiki.gg/wiki/Special:FilePath/${encodeURIComponent(imageName)}`
+    // Check if it's a scroll or oil
+    if (enchantment.name.startsWith('Scroll')) {
+      return `${import.meta.env.BASE_URL}images/scrolls/${imageName}`
+    }
+    return `${import.meta.env.BASE_URL}images/oils/${imageName}`
   }
 
   const calculateTotalDamage = (weapon) => {

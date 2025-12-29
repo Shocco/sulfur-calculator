@@ -299,6 +299,7 @@ function App() {
           <AttachmentSelector
             attachmentsByType={attachmentsByType}
             selectedAttachments={selectedAttachments}
+            selectedWeapon={selectedWeapon}
             onSelectAttachment={handleSelectAttachment}
             onRemoveAttachment={handleRemoveAttachment}
             onRemoveAll={handleRemoveAllAttachments}

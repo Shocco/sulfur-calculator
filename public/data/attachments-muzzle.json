@@ -4,7 +4,7 @@
     "type": "muzzle",
     "rarity": "Uncommon",
     "description": "A muzzle device designed to lower the spread of guns",
-    "image": "https://sulfur.wiki.gg/images/A12C_Muzzle_Brake.png?7f26d1",
+    "image": "/images/attachments/A12C_Muzzle_Brake.png",
     "modifiers": {
       "Spread": -0.75
     }
@@ -14,10 +14,12 @@
     "type": "muzzle",
     "rarity": "Rare",
     "description": "Reduces noise and muzzle flash",
-    "image": "https://sulfur.wiki.gg/images/Aftermarket_Haukland_Silencer.png?9d5d29",
+    "image": "/images/attachments/Aftermarket_Haukland_Silencer.png",
     "modifiers": {
-      "Damage": -10,
-      "Recoil": -2
+      "Spread": -0.5
+    },
+    "specialEffects": {
+      "silencesFire": true
     }
   },
   {
@@ -25,10 +27,10 @@
     "type": "muzzle",
     "rarity": "Common",
     "description": "Extends barrel length by 2 inches",
-    "image": "https://sulfur.wiki.gg/images/Barrel_Extension_2%22.png?8d6ff4",
+    "image": "/images/attachments/Barrel_Extension_2\".png",
     "modifiers": {
-      "Damage": 5,
-      "Spread": -0.25
+      "Spread": -0.5,
+      "MoveSpeed": -0.05
     }
   },
   {
@@ -36,10 +38,10 @@
     "type": "muzzle",
     "rarity": "Uncommon",
     "description": "Extends barrel length by 4 inches",
-    "image": "https://sulfur.wiki.gg/images/Barrel_Extension_4%22.png?6944b7",
+    "image": "/images/attachments/Barrel_Extension_4\".png",
     "modifiers": {
-      "Damage": 10,
-      "Spread": -0.5
+      "Spread": -0.75,
+      "MoveSpeed": -0.07
     }
   },
   {
@@ -47,30 +49,30 @@
     "type": "muzzle",
     "rarity": "Rare",
     "description": "Extends barrel length by 6 inches",
-    "image": "https://sulfur.wiki.gg/images/Barrel_Extension_6%22.png?3fd4c6",
+    "image": "/images/attachments/Barrel_Extension_6\".png",
     "modifiers": {
-      "Damage": 15,
-      "Spread": -0.75
+      "Spread": -0.75,
+      "MoveSpeed": -0.1
     }
   },
   {
     "name": "Breznik BMD",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "description": "Muzzle brake device for recoil reduction",
-    "image": "https://sulfur.wiki.gg/images/Breznik_BMD.png?e689eb",
+    "description": "Muzzle brake device for spread reduction",
+    "image": "/images/attachments/Breznik_BMD.png",
     "modifiers": {
-      "Recoil": -3
+      "Spread": -0.75
     }
   },
   {
     "name": "Breznik BMD (Tactical)",
     "type": "muzzle",
     "rarity": "Rare",
-    "description": "Tactical version with improved recoil reduction",
-    "image": "https://sulfur.wiki.gg/images/Breznik_BMD_%28Tactical%29.png?5e9dd9",
+    "description": "Tactical version with spread reduction",
+    "image": "/images/attachments/Breznik_BMD_(Tactical).png",
     "modifiers": {
-      "Recoil": -5
+      "Spread": -0.75
     }
   },
   {
@@ -78,9 +80,9 @@
     "type": "muzzle",
     "rarity": "Common",
     "description": "Reduces muzzle flash",
-    "image": "https://sulfur.wiki.gg/images/Haukland_Flash_Hider.png?78ad08",
+    "image": "/images/attachments/Haukland_Flash_Hider.png",
     "modifiers": {
-      "Recoil": -1
+      "Spread": -0.75
     }
   },
   {
@@ -88,10 +90,12 @@
     "type": "muzzle",
     "rarity": "Uncommon",
     "description": "Standard silencer for reduced noise",
-    "image": "https://sulfur.wiki.gg/images/Haukland_Silencer.png?17c207",
+    "image": "/images/attachments/Haukland_Silencer.png",
     "modifiers": {
-      "Damage": -5,
-      "Recoil": -1.5
+      "Spread": -0.75
+    },
+    "specialEffects": {
+      "silencesFire": true
     }
   },
   {
@@ -99,10 +103,10 @@
     "type": "muzzle",
     "rarity": "Common",
     "description": "Makeshift barrel extension",
-    "image": "https://sulfur.wiki.gg/images/Improvised_Barrel_Extension.png?38904b",
+    "image": "/images/attachments/Improvised_Barrel_Extension.png",
     "modifiers": {
-      "Damage": 3,
-      "Spread": -0.15
+      "Spread": -0.25,
+      "MoveSpeed": -0.03
     }
   },
   {
@@ -110,10 +114,12 @@
     "type": "muzzle",
     "rarity": "Legendary",
     "description": "High-end silencer with minimal performance loss",
-    "image": "https://sulfur.wiki.gg/images/M87_%22Albatross%22_Silencer.png?ac6ffc",
+    "image": "/images/attachments/M87_\"Albatross\"_Silencer.png",
     "modifiers": {
-      "Damage": -2,
-      "Recoil": -3
+      "Spread": -0.25
+    },
+    "specialEffects": {
+      "silencesFire": true
     }
   },
   {
@@ -121,10 +127,12 @@
     "type": "muzzle",
     "rarity": "Rare",
     "description": "Military-grade silencer",
-    "image": "https://sulfur.wiki.gg/images/SR-P3_Silencer.png?f3988c",
+    "image": "/images/attachments/SR-P3_Silencer.png",
     "modifiers": {
-      "Damage": -7,
-      "Recoil": -2
+      "Spread": -0.75
+    },
+    "specialEffects": {
+      "silencesFire": true
     }
   },
   {
@@ -132,22 +140,19 @@
     "type": "muzzle",
     "rarity": "Rare",
     "description": "Barrel extension with heat shroud",
-    "image": "https://sulfur.wiki.gg/images/Shrouded_Barrel_Extension.png?7e4c6c",
+    "image": "/images/attachments/Shrouded_Barrel_Extension.png",
     "modifiers": {
-      "Damage": 12,
-      "Spread": -0.6,
-      "Recoil": -1
+      "Spread": -0.75
     }
   },
   {
     "name": "Warmage Compensator",
     "type": "muzzle",
     "rarity": "Legendary",
-    "description": "Advanced compensator for superior recoil control",
-    "image": "https://sulfur.wiki.gg/images/Warmage_Compensator.png?242cdb",
+    "description": "Advanced compensator for superior spread control",
+    "image": "/images/attachments/Warmage_Compensator.png",
     "modifiers": {
-      "Recoil": -7,
-      "Spread": -0.5
+      "Spread": -0.75
     }
   }
 ]

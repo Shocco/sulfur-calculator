@@ -1,5 +1,32 @@
 import React from 'react'
 
+// Format stat names for display (convert camelCase to Title Case)
+function formatStatName(stat) {
+  const statNameMap = {
+    'CritChance': 'Crit Chance',
+    'ADSCritChance': 'ADS Crit Chance',
+    'ProjectileCount': 'Projectile Count',
+    'MagazineSize': 'Magazine Size',
+    'ReloadTime': 'Reload Time',
+    'MaxDurability': 'Max Durability',
+    'ProjectileSpeed': 'Projectile Speed',
+    'ReloadSpeed': 'Reload Speed',
+    'BulletSpeed': 'Bullet Speed',
+    'AmmoConsumeChance': 'Ammo Consume Chance',
+    'BulletDrop': 'Bullet Drop',
+    'BulletBounces': 'Bullet Bounces',
+    'BulletPenetrations': 'Bullet Penetrations',
+    'BulletSize': 'Bullet Size',
+    'JumpPower': 'Jump Power',
+    'LootChance': 'Loot Chance',
+    'MoveSpeed': 'Move Speed',
+    'MoveAccuracy': 'Move Accuracy',
+    'BulletBounciness': 'Bullet Bounciness'
+  }
+
+  return statNameMap[stat] || stat
+}
+
 export default function StatsDisplay({ weapon, selectedOils, selectedScroll, selectedAttachments, modifiedStats }) {
   const hasEnchantments = selectedOils.length > 0 || selectedScroll
   const hasAttachments = selectedAttachments && Object.values(selectedAttachments).some(a => a)
@@ -17,9 +44,9 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
     ...(selectedScroll ? [selectedScroll.name] : [])
   ]
 
-  // Construct wiki image URL using Special:FilePath
+  // Use local image
   const imageUrl = weapon.image
-    ? `https://sulfur.wiki.gg/wiki/Special:FilePath/${encodeURIComponent(weapon.image)}`
+    ? `${import.meta.env.BASE_URL}images/weapons/${weapon.image}`
     : null
 
   return (
@@ -78,7 +105,7 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                   title={`${attachment.name}${attachment.modifiers ? '\n' + Object.entries(attachment.modifiers).map(([k, v]) => `${k}: ${v > 0 ? '+' : ''}${v}`).join('\n') : ''}`}
                 >
                   <img
-                    src={attachment.image}
+                    src={`${import.meta.env.BASE_URL}${attachment.image.startsWith('/') ? attachment.image.slice(1) : attachment.image}`}
                     alt={attachment.name}
                     className="w-16 h-16 object-contain bg-gray-700 rounded border-2 border-gray-600 hover:border-red-500 transition-colors"
                   />
@@ -98,7 +125,37 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
           <h3 className="font-bold text-lg mb-3 text-gray-300">Base Stats</h3>
           <div className="space-y-2">
             {Object.entries(weapon.baseStats || weapon.base_stats || {})
-              .filter(([stat]) => stat !== 'ProjectileCount') // Don't show ProjectileCount separately
+              .filter(([stat]) => {
+                // Hide these stats in base stats (only show if modified)
+                const hiddenStats = [
+                  'CritChance', 'ADSCritChance', 'ProjectileSpeed', 'MoveSpeed',
+                  'AmmoConsumeChance', 'BulletDrop', 'BulletBounces',
+                  'BulletPenetrations', 'BulletSize', 'JumpPower',
+                  'LootChance', 'MoveAccuracy', 'BulletBounciness'
+                ]
+                return !hiddenStats.includes(stat)
+              })
+              .sort(([statA], [statB]) => {
+                // Define base stats order
+                const baseStatsOrder = {
+                  'Damage': 1,
+                  'ProjectileCount': 2,
+                  'RPM': 3,
+                  'MagazineSize': 4,
+                  'Spread': 5,
+                  'Recoil': 6,
+                  'Durability': 7,
+                  'MaxDurability': 8,
+                  'Weight': 9,
+                  'ProjectileSpeed': 10,
+                  'MoveSpeed': 11
+                }
+                const orderA = baseStatsOrder[statA] || 999
+                const orderB = baseStatsOrder[statB] || 999
+
+                if (orderA !== orderB) return orderA - orderB
+                return statA.localeCompare(statB)
+              })
               .map(([stat, value]) => {
                 // Format Damage with projectile count
                 let displayValue = value
@@ -108,10 +165,14 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                     displayValue = `${value}x${Math.round(projectiles)}`
                   }
                 }
+                // Format ProjectileCount as integer
+                if (stat === 'ProjectileCount') {
+                  displayValue = Math.round(value)
+                }
 
                 return (
                   <div key={stat} className="flex justify-between p-2 bg-gray-700 rounded">
-                    <span className="text-gray-300">{stat}</span>
+                    <span className="text-gray-300">{formatStatName(stat)}</span>
                     <span className="font-mono text-green-400">{displayValue}</span>
                   </div>
                 )
@@ -142,7 +203,61 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
             <h3 className="font-bold text-lg mb-3 text-cyan-300">After Modifications</h3>
             <div className="space-y-2">
               {modifiedStats
-                .filter(({ stat }) => stat !== 'ProjectileCount') // Don't show ProjectileCount separately
+                .filter(({ stat, change }) => {
+                  // Only show these stats if they've been modified
+                  const conditionalStats = [
+                    'CritChance', 'ADSCritChance', 'ProjectileSpeed',
+                    'AmmoConsumeChance', 'BulletDrop', 'BulletBounces',
+                    'BulletPenetrations', 'BulletSize', 'JumpPower',
+                    'LootChance', 'MoveSpeed', 'MoveAccuracy', 'BulletBounciness'
+                  ]
+
+                  // If it's a conditional stat, only show if changed
+                  if (conditionalStats.includes(stat)) {
+                    return change !== 0
+                  }
+
+                  // Show all other stats
+                  return true
+                })
+                .sort((a, b) => {
+                  // Define stat order: CritChance and ADSCritChance between Damage and ProjectileCount
+                  const statOrder = {
+                    'Damage': 1,
+                    'CritChance': 2,
+                    'ADSCritChance': 3,
+                    'ProjectileCount': 4,
+                    'RPM': 5,
+                    'MagazineSize': 6,
+                    'Spread': 7,
+                    'Recoil': 8,
+                    'Durability': 9,
+                    'MaxDurability': 10,
+                    'Weight': 11,
+                    // Conditional stats (only show if modified)
+                    'ProjectileSpeed': 12,
+                    'ReloadTime': 13,
+                    'Range': 14,
+                    'ReloadSpeed': 15,
+                    'BulletSpeed': 16,
+                    'AmmoConsumeChance': 17,
+                    'BulletDrop': 18,
+                    'BulletBounces': 19,
+                    'BulletPenetrations': 20,
+                    'BulletSize': 21,
+                    'JumpPower': 22,
+                    'LootChance': 23,
+                    'MoveSpeed': 24,
+                    'MoveAccuracy': 25,
+                    'BulletBounciness': 26
+                  }
+
+                  const orderA = statOrder[a.stat] || 999
+                  const orderB = statOrder[b.stat] || 999
+
+                  if (orderA !== orderB) return orderA - orderB
+                  return a.stat.localeCompare(b.stat)
+                })
                 .map(({ stat, baseValue, modifiedValue, change, modifier }) => {
                   // Format Damage with projectile count
                   let displayModified = modifiedValue
@@ -159,11 +274,21 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                       }
                     }
                   }
+                  // Format ProjectileCount as integer
+                  if (stat === 'ProjectileCount') {
+                    displayModified = Math.round(modifiedValue)
+                    displayBase = Math.round(baseValue)
+                  }
+                  // Format CritChance as percentage
+                  if (stat === 'CritChance' || stat === 'ADSCritChance') {
+                    displayModified = `${Math.round(modifiedValue * 100)}%`
+                    displayBase = `${Math.round(baseValue * 100)}%`
+                  }
 
                   return (
                     <div key={stat} className="p-2 bg-gray-700 rounded">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-300">{stat}</span>
+                        <span className="text-gray-300">{formatStatName(stat)}</span>
                         <span className={`font-mono ${change !== 0 ? 'text-cyan-400 font-bold' : 'text-gray-400'}`}>
                           {displayModified}
                         </span>
@@ -172,7 +297,7 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                         <div className="text-xs text-gray-500 mt-1">
                           {displayBase} → {displayModified}
                           <span className={change > 0 ? 'text-green-400' : 'text-red-400'}>
-                            {' '}({change > 0 ? '+' : ''}{change})
+                            {' '}({change > 0 ? '+' : ''}{(stat === 'CritChance' || stat === 'ADSCritChance') ? `${Math.round(change * 100)}%` : Math.round(change)})
                           </span>
                         </div>
                       )}

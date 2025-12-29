@@ -36,9 +36,14 @@ function applyCaliberConversion(weaponStats, caliber, caliberModifiers, weapon) 
   }
 }
 
-function applyModifier(currentValue, baseValue, mod) {
+function applyModifier(currentValue, baseValue, mod, statName) {
   const modType = mod.modType || mod.mod_type || mod.mod_type_id
   const value = mod.value
+
+  // Special case: CritChance and ADSCritChance are always additive, even for PercentAdd/PercentMult types
+  if (statName === 'CritChance' || statName === 'ADSCritChance') {
+    return currentValue + value
+  }
 
   if (modType === 'Flat' || modType === 100) {
     return currentValue + value
@@ -88,12 +93,15 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     )
   }
 
-  // Separate scrolls with ConvertWpn from other enchantments
+  // Separate special scrolls
   const convertScrolls = enchantmentList.filter(ench =>
     ench && ench.specialEffects && ench.specialEffects.ConvertWpn
   )
+  const bypassPercentageScrolls = enchantmentList.filter(ench =>
+    ench && ench.specialEffects && ench.specialEffects.bypassPercentages
+  )
   const otherEnchantments = enchantmentList.filter(ench =>
-    !ench || !ench.specialEffects || !ench.specialEffects.ConvertWpn
+    !ench || !ench.specialEffects || (!ench.specialEffects.ConvertWpn && !ench.specialEffects.bypassPercentages)
   )
 
   // Collect modifiers from convert scrolls (applied first)
@@ -151,29 +159,75 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     let intermediateValue = originalBase
 
     // Step 1: Apply convert scroll modifiers first (e.g., Scroll of Light)
+    // Order: Flat (100) -> PercentAdd (200) -> PercentMult (300)
     if (convertScrollMods[stat]) {
-      convertScrollMods[stat].forEach(mod => {
-        currentValue = applyModifier(currentValue, originalBase, mod)
+      let scrollBase = originalBase
+
+      // Apply Flat modifiers first
+      convertScrollMods[stat].filter(m => (m.modType || m.mod_type) === 100 || (m.modType || m.mod_type) === 'Flat').forEach(mod => {
+        currentValue = applyModifier(currentValue, scrollBase, mod, stat)
+      })
+      // Update base after flat for percentage calculations
+      scrollBase = currentValue
+
+      // Then PercentAdd
+      convertScrollMods[stat].filter(m => (m.modType || m.mod_type) === 200 || (m.modType || m.mod_type) === 'PercentAdd').forEach(mod => {
+        currentValue = applyModifier(currentValue, scrollBase, mod, stat)
+      })
+      // Update base after PercentAdd for PercentMult
+      scrollBase = currentValue
+
+      // Then PercentMult
+      convertScrollMods[stat].filter(m => (m.modType || m.mod_type) === 300 || (m.modType || m.mod_type) === 'PercentMult').forEach(mod => {
+        currentValue = applyModifier(currentValue, scrollBase, mod, stat)
       })
       intermediateValue = currentValue
     }
 
-    // Step 2: Apply attachment modifiers (flat or percentage)
+    // Step 2: Apply attachment modifiers (flat first, then percentage)
     if (attachmentMods[stat]) {
-      attachmentMods[stat].forEach(mod => {
-        if (mod.type === 'percent') {
-          currentValue = currentValue + (currentValue * mod.value)
-        } else {
-          currentValue += mod.value
-        }
+      // Apply flat modifiers first
+      attachmentMods[stat].filter(m => m.type !== 'percent').forEach(mod => {
+        currentValue += mod.value
+      })
+      // Then percentage modifiers
+      attachmentMods[stat].filter(m => m.type === 'percent').forEach(mod => {
+        currentValue = currentValue + (currentValue * mod.value)
       })
       intermediateValue = currentValue
     }
 
     // Step 3: Apply other modifiers (oils) using the scroll/attachment-modified value as base
+    // Order: Flat (100) -> PercentAdd (200) -> PercentMult (300)
     if (otherMods[stat]) {
-      otherMods[stat].forEach(mod => {
-        currentValue = applyModifier(currentValue, intermediateValue, mod)
+      // Apply Flat modifiers first
+      otherMods[stat].filter(m => (m.modType || m.mod_type) === 100 || (m.modType || m.mod_type) === 'Flat').forEach(mod => {
+        currentValue = applyModifier(currentValue, intermediateValue, mod, stat)
+      })
+      // Update intermediate value after flat modifiers so percentages use correct base
+      intermediateValue = currentValue
+
+      // Then PercentAdd
+      otherMods[stat].filter(m => (m.modType || m.mod_type) === 200 || (m.modType || m.mod_type) === 'PercentAdd').forEach(mod => {
+        currentValue = applyModifier(currentValue, intermediateValue, mod, stat)
+      })
+      // Update intermediate value after PercentAdd for PercentMult
+      intermediateValue = currentValue
+
+      // Then PercentMult
+      otherMods[stat].filter(m => (m.modType || m.mod_type) === 300 || (m.modType || m.mod_type) === 'PercentMult').forEach(mod => {
+        currentValue = applyModifier(currentValue, intermediateValue, mod, stat)
+      })
+    }
+
+    // Special handling for Damage with bypass-percentage scrolls
+    if (stat === 'Damage' && bypassPercentageScrolls.length > 0) {
+      // Add per-bullet damage multiplied by projectile count
+      const projectileCount = baseStats.ProjectileCount || 1
+      bypassPercentageScrolls.forEach(scroll => {
+        if (scroll.specialEffects && scroll.specialEffects.perBulletDamage) {
+          currentValue += scroll.specialEffects.perBulletDamage * projectileCount
+        }
       })
     }
 
@@ -187,18 +241,43 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
   })
 
   // Add any stats that are only in modifiers (not in base stats)
-  const allModStats = new Set([...Object.keys(convertScrollMods), ...Object.keys(otherMods)])
+  const allModStats = new Set([...Object.keys(convertScrollMods), ...Object.keys(attachmentMods), ...Object.keys(otherMods)])
   allModStats.forEach(stat => {
     if (!baseStats[stat]) {
       let value = 0
+      // Apply convert scroll modifiers: Flat -> PercentAdd -> PercentMult
       if (convertScrollMods[stat]) {
-        convertScrollMods[stat].forEach(mod => {
-          value = applyModifier(value, 0, mod)
+        convertScrollMods[stat].filter(m => (m.modType || m.mod_type) === 100 || (m.modType || m.mod_type) === 'Flat').forEach(mod => {
+          value = applyModifier(value, 0, mod, stat)
+        })
+        convertScrollMods[stat].filter(m => (m.modType || m.mod_type) === 200 || (m.modType || m.mod_type) === 'PercentAdd').forEach(mod => {
+          value = applyModifier(value, 0, mod, stat)
+        })
+        convertScrollMods[stat].filter(m => (m.modType || m.mod_type) === 300 || (m.modType || m.mod_type) === 'PercentMult').forEach(mod => {
+          value = applyModifier(value, 0, mod, stat)
         })
       }
+      // Apply attachment modifiers
+      if (attachmentMods[stat]) {
+        // Apply flat modifiers first
+        attachmentMods[stat].filter(m => m.type !== 'percent').forEach(mod => {
+          value += mod.value
+        })
+        // Then percentage modifiers
+        attachmentMods[stat].filter(m => m.type === 'percent').forEach(mod => {
+          value = value + (value * mod.value)
+        })
+      }
+      // Apply other modifiers: Flat -> PercentAdd -> PercentMult
       if (otherMods[stat]) {
-        otherMods[stat].forEach(mod => {
-          value = applyModifier(value, value, mod)
+        otherMods[stat].filter(m => (m.modType || m.mod_type) === 100 || (m.modType || m.mod_type) === 'Flat').forEach(mod => {
+          value = applyModifier(value, value, mod, stat)
+        })
+        otherMods[stat].filter(m => (m.modType || m.mod_type) === 200 || (m.modType || m.mod_type) === 'PercentAdd').forEach(mod => {
+          value = applyModifier(value, value, mod, stat)
+        })
+        otherMods[stat].filter(m => (m.modType || m.mod_type) === 300 || (m.modType || m.mod_type) === 'PercentMult').forEach(mod => {
+          value = applyModifier(value, value, mod, stat)
         })
       }
 
@@ -211,6 +290,35 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
       })
     }
   })
+
+  // Calculate ADSCritChance (ADS crit = base crit + scope bonus)
+  // Always show ADSCritChance in the results
+  const critChanceStat = result.find(r => r.stat === 'CritChance')
+  let adsCritChanceStat = result.find(r => r.stat === 'ADSCritChance')
+
+  // Base crit chance from weapon/oils
+  const baseCritChance = critChanceStat ? critChanceStat.modifiedValue : (baseStats.CritChance || 0)
+
+  if (adsCritChanceStat) {
+    // ADS bonus from scopes exists
+    const adsBonus = adsCritChanceStat.modifiedValue
+    // Total ADS crit = base + ADS bonus
+    const totalADSCrit = baseCritChance + adsBonus
+
+    // Update the ADSCritChance stat to show total
+    adsCritChanceStat.baseValue = baseCritChance
+    adsCritChanceStat.modifiedValue = Math.round(totalADSCrit * 100) / 100
+    adsCritChanceStat.change = Math.round(adsBonus * 100) / 100
+  } else {
+    // No scope selected, but still show ADSCritChance = base crit chance
+    result.push({
+      stat: 'ADSCritChance',
+      baseValue: baseCritChance,
+      modifiedValue: baseCritChance,
+      change: 0,
+      modifier: null
+    })
+  }
 
   return result
 }

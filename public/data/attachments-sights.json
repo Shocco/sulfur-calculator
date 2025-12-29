@@ -4,9 +4,9 @@
     "type": "sight",
     "rarity": "Uncommon",
     "description": "Assault rifle optic for improved accuracy",
-    "image": "https://sulfur.wiki.gg/images/Assault_Scope.png",
+    "image": "/images/attachments/Assault_Scope.png",
     "modifiers": {
-      "CritChance": 20
+      "ADSCritChance": 0.2
     }
   },
   {
@@ -14,9 +14,9 @@
     "type": "sight",
     "rarity": "Common",
     "description": "Compact reflex sight for close quarters",
-    "image": "https://sulfur.wiki.gg/images/Compact_Sight.png",
+    "image": "/images/attachments/Compact_Sight.png",
     "modifiers": {
-      "CritChance": 20
+      "ADSCritChance": 0.2
     }
   },
   {
@@ -24,9 +24,9 @@
     "type": "sight",
     "rarity": "Uncommon",
     "description": "A close-range optic with T-shaped reticle",
-    "image": "https://sulfur.wiki.gg/images/Holographic_Sight.png",
+    "image": "/images/attachments/Holographic_Sight.png",
     "modifiers": {
-      "CritChance": 10
+      "ADSCritChance": 0.1
     }
   },
   {
@@ -34,9 +34,9 @@
     "type": "sight",
     "rarity": "Rare",
     "description": "Medium-range hunting optic",
-    "image": "https://sulfur.wiki.gg/images/Hunting_Scope.png",
+    "image": "/images/attachments/Hunting_Scope.png",
     "modifiers": {
-      "CritChance": 25
+      "ADSCritChance": 0.25
     }
   },
   {
@@ -44,9 +44,9 @@
     "type": "sight",
     "rarity": "Uncommon",
     "description": "Reconnaissance scope for scouting",
-    "image": "https://sulfur.wiki.gg/images/Recon_Scope.png",
+    "image": "/images/attachments/Recon_Scope.png",
     "modifiers": {
-      "CritChance": 10
+      "ADSCritChance": 0.1
     }
   },
   {
@@ -54,9 +54,9 @@
     "type": "sight",
     "rarity": "Uncommon",
     "description": "Quick acquisition reflex sight",
-    "image": "https://sulfur.wiki.gg/images/Reflex_Sight.png",
+    "image": "/images/attachments/Reflex_Sight.png",
     "modifiers": {
-      "CritChance": 15
+      "ADSCritChance": 0.15
     }
   },
   {
@@ -64,9 +64,9 @@
     "type": "sight",
     "rarity": "Rare",
     "description": "Long-range sniper optic",
-    "image": "https://sulfur.wiki.gg/images/Sniper_Scope.png",
+    "image": "/images/attachments/Sniper_Scope.png",
     "modifiers": {
-      "CritChance": 30
+      "ADSCritChance": 0.3
     }
   }
 ]

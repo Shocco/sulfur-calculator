@@ -35,6 +35,12 @@
         "modType": 200,
         "value": 0.3
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -61,6 +67,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": -0.3
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -137,12 +148,23 @@
         "modType": 100,
         "value": 30.0
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
     "id": "Assassin_Dart_Oil",
     "name": "Assassin Dart Oil",
     "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.25
+      },
       {
         "attribute": "BulletSpeed",
         "modType": 200,
@@ -194,6 +216,22 @@
     ]
   },
   {
+    "id": "Bad_Planet_Oil",
+    "name": "Bad Planet Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.3
+      }
+    ]
+  },
+  {
     "id": "Bandit_Oil",
     "name": "Bandit Oil",
     "modifiers": [
@@ -202,6 +240,12 @@
         "modType": 100,
         "value": 1.0
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -238,6 +282,11 @@
         "attribute": "ProjectileCount",
         "modType": 200,
         "value": 1.0
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.33
       }
     ]
   },
@@ -334,6 +383,12 @@
         "modType": 200,
         "value": 2.0
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -391,6 +446,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": -0.2
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -418,7 +478,29 @@
         "attribute": "BulletDrop",
         "modType": 100,
         "value": 10.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.4
       }
+    ]
+  },
+  {
+    "id": "Bystander_Oil",
+    "name": "Bystander Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -429,6 +511,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": 1.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.2
       }
     ]
   },
@@ -471,6 +558,11 @@
         "attribute": "ProjectileCount",
         "modType": 200,
         "value": 3.0
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.75
       }
     ]
   },
@@ -498,6 +590,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": -0.3
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.2
       }
     ]
   },
@@ -509,6 +606,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": -0.2
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.3
       }
     ]
   },
@@ -520,6 +622,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": 1.0
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 2.0
       }
     ]
   },
@@ -554,6 +661,11 @@
         "value": -0.1
       },
       {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.6
+      },
+      {
         "attribute": "ReloadSpeed",
         "modType": 200,
         "value": 0.8
@@ -584,6 +696,11 @@
         "attribute": "Damage",
         "modType": 100,
         "value": -25.0
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
       }
     ]
   },
@@ -595,6 +712,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": -0.45
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.2
       }
     ]
   },
@@ -644,6 +766,11 @@
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.25
       }
     ]
   },
@@ -680,6 +807,22 @@
     ]
   },
   {
+    "id": "Dense_Oil",
+    "name": "Dense Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.2
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.25
+      }
+    ]
+  },
+  {
     "id": "Detune_Oil",
     "name": "Detune Oil",
     "modifiers": [
@@ -687,6 +830,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.5
       }
     ]
   },
@@ -714,6 +862,11 @@
         "attribute": "Damage",
         "modType": 100,
         "value": 30.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.3
       }
     ]
   },
@@ -725,6 +878,11 @@
         "attribute": "Damage",
         "modType": 100,
         "value": 50.0
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.75
       }
     ]
   },
@@ -762,6 +920,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.2
       }
     ]
   },
@@ -773,6 +936,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.25
       }
     ]
   },
@@ -805,6 +973,11 @@
         "attribute": "ProjectileCount",
         "modType": 200,
         "value": 1.0
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -1.0
       }
     ]
   },
@@ -817,6 +990,12 @@
         "modType": 200,
         "value": 0.15
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -844,6 +1023,12 @@
         "modType": 200,
         "value": -0.2
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -882,6 +1067,11 @@
         "value": 0.1
       },
       {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.5
+      },
+      {
         "attribute": "ProjectileCount",
         "modType": 200,
         "value": 2.0
@@ -895,11 +1085,6 @@
         "attribute": "BulletSize",
         "modType": 100,
         "value": 200.0
-      },
-      {
-        "attribute": "MoveSpeed",
-        "modType": 200,
-        "value": -0.5
       }
     ]
   },
@@ -911,6 +1096,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": -1.5
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -923,6 +1113,12 @@
         "modType": 100,
         "value": 20.0
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -942,6 +1138,22 @@
     ]
   },
   {
+    "id": "Farsighted_Oil",
+    "name": "Farsighted Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 2.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.3
+      }
+    ]
+  },
+  {
     "id": "Fast_Bet_Oil",
     "name": "Fast Bet Oil",
     "modifiers": [
@@ -950,12 +1162,40 @@
         "modType": 200,
         "value": 0.5
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
+    ]
+  },
+  {
+    "id": "Feature_Gun_Oil",
+    "name": "Feature Gun Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.3
+      }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
     "id": "Fidget_Lord_Oil",
     "name": "Fidget Lord Oil",
     "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.6
+      },
       {
         "attribute": "ReloadSpeed",
         "modType": 200,
@@ -1033,6 +1273,23 @@
     ]
   },
   {
+    "id": "Food_Stamp_Oil",
+    "name": "Food Stamp Oil",
+    "modifiers": [
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.2
+      }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
+    ]
+  },
+  {
     "id": "Fragile_System_Oil",
     "name": "Fragile System Oil",
     "modifiers": [
@@ -1040,6 +1297,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.3
       }
     ]
   },
@@ -1052,6 +1314,12 @@
         "modType": 200,
         "value": 0.15
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -1062,6 +1330,11 @@
         "attribute": "Damage",
         "modType": 100,
         "value": 25.0
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -1098,6 +1371,17 @@
     ]
   },
   {
+    "id": "Gentle_Oil",
+    "name": "Gentle Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.1
+      }
+    ]
+  },
+  {
     "id": "Glass_Cannon_Oil",
     "name": "Glass Cannon Oil",
     "modifiers": [
@@ -1105,6 +1389,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": 0.25
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.35
       }
     ]
   },
@@ -1137,6 +1426,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": 0.15
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.1
       }
     ]
   },
@@ -1149,6 +1443,12 @@
         "modType": 200,
         "value": 0.4
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1175,6 +1475,11 @@
         "attribute": "BulletDrop",
         "modType": 100,
         "value": 20.0
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 2.0
       }
     ]
   },
@@ -1200,6 +1505,38 @@
     ]
   },
   {
+    "id": "Heavy_Pockets_Oil",
+    "name": "Heavy Pockets Oil",
+    "modifiers": [
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -1.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.2
+      }
+    ]
+  },
+  {
+    "id": "Hefty_Oil",
+    "name": "Hefty Oil",
+    "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.25
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.3
+      }
+    ]
+  },
+  {
     "id": "Helium_Oil",
     "name": "Helium Oil",
     "modifiers": [
@@ -1207,6 +1544,22 @@
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": -0.4
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.4
+      }
+    ]
+  },
+  {
+    "id": "High_Grade_Oil",
+    "name": "High Grade Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.25
       }
     ]
   },
@@ -1219,6 +1572,12 @@
         "modType": 200,
         "value": 0.2
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1230,6 +1589,12 @@
         "modType": 100,
         "value": -0.3
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1252,6 +1617,11 @@
     "id": "Hunter_Oil",
     "name": "Hunter Oil",
     "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.3
+      },
       {
         "attribute": "CritChance",
         "modType": 200,
@@ -1301,6 +1671,11 @@
     "name": "Imperfect Oil",
     "modifiers": [
       {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.15
+      },
+      {
         "attribute": "BulletBounces",
         "modType": 100,
         "value": 2.0
@@ -1315,6 +1690,27 @@
         "attribute": "Spread",
         "modType": 100,
         "value": 2.0
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "id": "Inherited_Oil",
+    "name": "Inherited Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.5
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -1.0
       }
     ]
   },
@@ -1327,6 +1723,12 @@
         "modType": 200,
         "value": 2.0
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1337,7 +1739,45 @@
         "attribute": "Damage",
         "modType": 100,
         "value": 25.0
+      },
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.15
       }
+    ]
+  },
+  {
+    "id": "Jungian_Oil",
+    "name": "Jungian Oil",
+    "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.15
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "id": "Keep_Oil",
+    "name": "Keep Oil",
+    "modifiers": [
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.2
+      }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -1369,6 +1809,22 @@
         "attribute": "BulletDrop",
         "modType": 100,
         "value": 20.0
+      }
+    ]
+  },
+  {
+    "id": "Last_Drop_Oil",
+    "name": "Last Drop Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.25
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.3
       }
     ]
   },
@@ -1456,6 +1912,12 @@
         "modType": 100,
         "value": 3.0
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1466,6 +1928,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": -0.6
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.3
       }
     ]
   },
@@ -1478,6 +1945,12 @@
         "modType": 200,
         "value": 0.1
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -1488,6 +1961,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -1499,6 +1977,11 @@
         "attribute": "ReloadSpeed",
         "modType": 200,
         "value": 0.3
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -1511,6 +1994,12 @@
         "modType": 200,
         "value": 0.2
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -1563,6 +2052,11 @@
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": 0.8
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.2
       }
     ]
   },
@@ -1574,6 +2068,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.1
       }
     ]
   },
@@ -1590,6 +2089,11 @@
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": -0.3
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.7
       }
     ]
   },
@@ -1599,6 +2103,11 @@
     "modifiers": [
       {
         "attribute": "ProjectileCount",
+        "modType": 200,
+        "value": 1.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
         "modType": 200,
         "value": 1.0
       }
@@ -1628,6 +2137,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
       }
     ]
   },
@@ -1661,6 +2175,12 @@
         "modType": 200,
         "value": 0.3
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1671,6 +2191,11 @@
         "attribute": "CritChance",
         "modType": 200,
         "value": 0.15
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.25
       }
     ]
   },
@@ -1682,6 +2207,11 @@
         "attribute": "CritChance",
         "modType": 200,
         "value": 0.2
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.3
       }
     ]
   },
@@ -1693,6 +2223,27 @@
         "attribute": "Damage",
         "modType": 200,
         "value": 0.4
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "Overdose_Oil",
+    "name": "Overdose Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.25
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 2.0
       }
     ]
   },
@@ -1724,6 +2275,17 @@
     ]
   },
   {
+    "id": "Penetration_Oil",
+    "name": "Penetration Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      }
+    ]
+  },
+  {
     "id": "Perfect_Bounce_Oil",
     "name": "Perfect Bounce Oil",
     "modifiers": [
@@ -1743,6 +2305,12 @@
         "modType": 200,
         "value": 0.2
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -1769,6 +2337,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": 1.25
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.2
       }
     ]
   },
@@ -1776,6 +2349,11 @@
     "id": "Pool_Oil",
     "name": "Pool Oil",
     "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.3
+      },
       {
         "attribute": "BulletBounces",
         "modType": 100,
@@ -1792,6 +2370,12 @@
         "modType": 100,
         "value": 35.0
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -1819,6 +2403,12 @@
         "modType": 200,
         "value": 0.15
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -1886,6 +2476,17 @@
     ]
   },
   {
+    "id": "Recycle_Oil",
+    "name": "Recycle Oil",
+    "modifiers": [
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.15
+      }
+    ]
+  },
+  {
     "id": "Relax_Oil",
     "name": "Relax Oil",
     "modifiers": [
@@ -1909,6 +2510,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": 1.5
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.4
       }
     ]
   },
@@ -1940,6 +2546,22 @@
     ]
   },
   {
+    "id": "Rigid_System_Oil",
+    "name": "Rigid System Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.4
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.2
+      }
+    ]
+  },
+  {
     "id": "Rigor_Oil",
     "name": "Rigor Oil",
     "modifiers": [
@@ -1947,6 +2569,11 @@
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": -0.5
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
       }
     ]
   },
@@ -1958,6 +2585,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.35
       }
     ]
   },
@@ -1985,6 +2617,11 @@
         "attribute": "Damage",
         "modType": 100,
         "value": -10.0
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.25
       }
     ]
   },
@@ -1996,6 +2633,11 @@
         "attribute": "ReloadSpeed",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.3
       }
     ]
   },
@@ -2023,6 +2665,27 @@
         "attribute": "ReloadSpeed",
         "modType": 200,
         "value": -0.6
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.3
+      }
+    ]
+  },
+  {
+    "id": "Saviour_Oil",
+    "name": "Saviour Oil",
+    "modifiers": [
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.4
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -1.0
       }
     ]
   },
@@ -2056,12 +2719,23 @@
         "modType": 100,
         "value": 1.0
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
     "id": "Seated_Fit_Oil",
     "name": "Seated Fit Oil",
     "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.7
+      },
       {
         "attribute": "BulletDrop",
         "modType": 100,
@@ -2077,7 +2751,29 @@
         "attribute": "Damage",
         "modType": 100,
         "value": 20.0
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.1
       }
+    ]
+  },
+  {
+    "id": "Sect_Oil",
+    "name": "Sect Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -2097,9 +2793,31 @@
     ]
   },
   {
+    "id": "Sensible_Oil",
+    "name": "Sensible Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.2
+      }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
+    ]
+  },
+  {
     "id": "Shaved_Clip_Oil",
     "name": "Shaved Clip Oil",
     "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.3
+      },
       {
         "attribute": "ReloadSpeed",
         "modType": 200,
@@ -2174,6 +2892,12 @@
         "modType": 200,
         "value": 1.0
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -2184,6 +2908,11 @@
         "attribute": "BulletBounces",
         "modType": 100,
         "value": 1.0
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.25
       }
     ]
   },
@@ -2195,6 +2924,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": -0.3
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.1
       }
     ]
   },
@@ -2206,6 +2940,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": 1.0
+      },
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.3
       }
     ]
   },
@@ -2217,6 +2956,11 @@
         "attribute": "CritChance",
         "modType": 200,
         "value": 0.25
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.2
       }
     ]
   },
@@ -2257,6 +3001,11 @@
     "name": "Soft Bullet Oil",
     "modifiers": [
       {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.25
+      },
+      {
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": -0.3
@@ -2292,6 +3041,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": 0.2
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -2363,6 +3117,12 @@
         "modType": 200,
         "value": -0.62
       }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -2378,6 +3138,16 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": -0.85
+      },
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.9
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.9
       }
     ]
   },
@@ -2385,6 +3155,11 @@
     "id": "Stiffy_Fit_Oil",
     "name": "Stiffy Fit Oil",
     "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.45
+      },
       {
         "attribute": "ReloadSpeed",
         "modType": 200,
@@ -2401,6 +3176,12 @@
         "modType": 100,
         "value": -0.3
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -2432,6 +3213,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": -0.3
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 3.0
       }
     ]
   },
@@ -2443,6 +3229,11 @@
         "attribute": "BulletBounces",
         "modType": 100,
         "value": 3.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": 0.3
       }
     ]
   },
@@ -2487,6 +3278,12 @@
         "modType": 200,
         "value": 0.3
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -2497,6 +3294,11 @@
         "attribute": "ReloadSpeed",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "JumpPower",
+        "modType": 200,
+        "value": -0.7
       }
     ]
   },
@@ -2508,6 +3310,11 @@
         "attribute": "Recoil",
         "modType": 200,
         "value": -0.35
+      },
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.15
       }
     ]
   },
@@ -2519,6 +3326,11 @@
         "attribute": "Damage",
         "modType": 200,
         "value": 0.25
+      },
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.15
       }
     ]
   },
@@ -2530,6 +3342,11 @@
         "attribute": "Spread",
         "modType": 100,
         "value": -0.35
+      },
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.15
       }
     ]
   },
@@ -2538,10 +3355,49 @@
     "name": "Tight Barrel Oil",
     "modifiers": [
       {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": -0.2
+      },
+      {
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": 0.7
       }
+    ]
+  },
+  {
+    "id": "Too_Much_Oil",
+    "name": "Too Much Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
+    ]
+  },
+  {
+    "id": "Trusty_Old_Oil",
+    "name": "Trusty Old Oil",
+    "modifiers": [
+      {
+        "attribute": "MaxDurability",
+        "modType": 200,
+        "value": 0.2
+      }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -2553,6 +3409,12 @@
         "modType": 200,
         "value": 0.5
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -2590,6 +3452,12 @@
         "modType": 200,
         "value": 2.0
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -2597,9 +3465,30 @@
     "name": "Untechnical Oil",
     "modifiers": [
       {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
         "attribute": "ReloadSpeed",
         "modType": 200,
         "value": -0.25
+      }
+    ]
+  },
+  {
+    "id": "Vasectomy_Oil",
+    "name": "Vasectomy Oil",
+    "modifiers": [
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.5
       }
     ]
   },
@@ -2612,6 +3501,12 @@
         "modType": 100,
         "value": -0.2
       }
+    ],
+    "specialEffects": {
+      "noOrganDrops": true
+    },
+    "effects": [
+      "No organ drops"
     ]
   },
   {
@@ -2637,6 +3532,22 @@
     ]
   },
   {
+    "id": "Walk_Easy_Oil",
+    "name": "Walk Easy Oil",
+    "modifiers": [
+      {
+        "attribute": "MoveSpeed",
+        "modType": 200,
+        "value": -0.1
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.15
+      }
+    ]
+  },
+  {
     "id": "Waster_Oil",
     "name": "Waster Oil",
     "modifiers": [
@@ -2645,6 +3556,12 @@
         "modType": 200,
         "value": 0.2
       }
+    ],
+    "specialEffects": {
+      "noMoneyDrops": true
+    },
+    "effects": [
+      "No money drops"
     ]
   },
   {
@@ -2655,7 +3572,29 @@
         "attribute": "BulletSpeed",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -0.25
       }
+    ]
+  },
+  {
+    "id": "Whos_Counting_Oil",
+    "name": "Whos Counting Oil",
+    "modifiers": [
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -0.25
+      }
+    ],
+    "specialEffects": {
+      "disablesAiming": true
+    },
+    "effects": [
+      "Disables aiming"
     ]
   },
   {
@@ -2682,6 +3621,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": 0.5
+      },
+      {
+        "attribute": "LootChance",
+        "modType": 200,
+        "value": -1.0
       }
     ]
   },

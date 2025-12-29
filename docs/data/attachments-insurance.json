@@ -4,7 +4,7 @@
     "type": "insurance",
     "rarity": "Legendary",
     "description": "Protects weapon from complete destruction on death",
-    "image": "https://sulfur.wiki.gg/images/Insurance.png",
+    "image": "/images/attachments/Insurance.png",
     "modifiers": {},
     "specialEffects": {
       "protection": "Returns weapon to Collection Box on death"
