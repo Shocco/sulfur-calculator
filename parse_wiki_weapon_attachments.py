@@ -9,15 +9,16 @@ Output: weapon_attachments_from_wiki.json
 """
 
 import json
+import os
 import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
-# Wiki dump path
-WIKI_DUMP_PATH = "/mnt/z/Claude/sulfurdump/sulfur.wiki.gg-20251224-wikidump/sulfur.wiki.gg-20251224-history-fixed.xml"
-OUTPUT_PATH = "/mnt/z/Claude/Sulfur_Data/sulfur-calculator-github/weapon_attachments_from_wiki.json"
-WEAPONS_JSON_PATH = "/mnt/z/Claude/Sulfur_Data/sulfur-calculator-github/public/data/weapons.json"
+# Wiki dump path — override via environment variables
+WIKI_DUMP_PATH = os.environ.get('SULFUR_DUMP_PATH', "/mnt/z/Claude/sulfurdump/sulfur.wiki.gg-20251224-wikidump/sulfur.wiki.gg-20251224-history-fixed.xml")
+OUTPUT_PATH = os.environ.get('SULFUR_OUTPUT_PATH', "weapon_attachments_from_wiki.json")
+WEAPONS_JSON_PATH = os.environ.get('SULFUR_WEAPONS_JSON', "public/data/weapons.json")
 
 # MediaWiki namespace
 NS = {'mw': 'http://www.mediawiki.org/xml/export-0.11/'}

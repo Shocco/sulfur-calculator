@@ -10,12 +10,13 @@ This script:
 """
 
 import json
+import os
 import re
 from typing import Dict, List, Set
 
-# Path to wiki dump
-WIKI_DUMP_PATH = "/mnt/z/Claude/sulfurdump/sulfur.wiki.gg-20251224-wikidump/sulfur.wiki.gg-20251224-history.xml"
-OUTPUT_PATH = "/mnt/z/Claude/Sulfur_Data/sulfur-calculator-github/weapon_specific_attachments.json"
+# Path to wiki dump — override via environment variables
+WIKI_DUMP_PATH = os.environ.get('SULFUR_DUMP_PATH', "/mnt/z/Claude/sulfurdump/sulfur.wiki.gg-20251224-wikidump/sulfur.wiki.gg-20251224-history.xml")
+OUTPUT_PATH = os.environ.get('SULFUR_OUTPUT_PATH', "weapon_specific_attachments.json")
 
 
 def parse_wiki_links(text: str) -> List[str]:
