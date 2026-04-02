@@ -109,52 +109,74 @@ def parse_caliber_table(table_text: str) -> Dict[str, Dict]:
         lines = [ln.strip() for ln in row.splitlines() if ln.strip()]
         if not lines:
             continue
-        # A data row starts with | (not !) after stripping.
         first_line = lines[0]
-        if first_line.startswith("!"):
+        if first_line.startswith("!") or first_line.startswith("{|"):
             continue
 
-        # Join everything and split on ||
-        combined = "".join(lines)
+        # Parse cells: handle both `|| cell || cell` and `|cell\n|cell` formats
+        combined = " ".join(lines)
         # Remove leading | if present
         if combined.startswith("|"):
             combined = combined[1:]
 
-        cells = combined.split("||")
-        if len(cells) < 5:
+        # Split on || first (old format), then on | (new format with one cell per line)
+        if "||" in combined:
+            cells = combined.split("||")
+        else:
+            cells = combined.split("|")
+        cells = [c.strip().rstrip("|}") for c in cells if c.strip()]
+
+        if len(cells) < 3:
             continue
 
-        # Cell 0: caliber (may have style prefix like `style="text-align: left;|[[9mm]]`)
+        # Cell 0: caliber (may have style prefix or wikilink)
         raw_caliber_cell = cells[0].strip()
         # Strip any style prefix ending with `|`
-        pipe_idx = raw_caliber_cell.rfind("|")
-        if pipe_idx != -1:
-            raw_caliber_cell = raw_caliber_cell[pipe_idx + 1:].strip()
+        if 'style=' in raw_caliber_cell:
+            pipe_idx = raw_caliber_cell.rfind("|")
+            if pipe_idx != -1:
+                raw_caliber_cell = raw_caliber_cell[pipe_idx + 1:].strip()
 
         caliber_raw = extract_wikilink_text(raw_caliber_cell)
         caliber = _normalize_caliber(caliber_raw)
         if not caliber:
             continue
 
-        # Cell 2: Projectiles (format ×N)
-        raw_proj = cells[2].strip()
-        proj_match = re.match(r"[×x\u00d7](\d+)", raw_proj)
-        projectile_count = int(proj_match.group(1)) if proj_match else 1
-
-        # Cell 3: Spread
-        try:
-            spread = float(cells[3].strip())
-        except ValueError:
-            spread = 0.0
-
-        # Cell 4: Recoil (strip trailing table-close marker `|}` if present)
-        raw_recoil = cells[4].strip().rstrip("|}")
-        try:
-            recoil = float(raw_recoil.strip())
-        except ValueError:
+        # Detect column layout from header
+        # New format: Caliber, Damage, Spread, Projectiles (4 cols)
+        # Old format: Caliber, Damage, Projectiles, Spread, Recoil (5 cols)
+        if len(cells) == 4:
+            # New format: [caliber, damage, spread, projectiles]
+            try:
+                spread = float(cells[2].strip())
+            except ValueError:
+                spread = 0.0
+            raw_proj = cells[3].strip()
+            proj_match = re.match(r"[\u00d7x×]?(\d+)", raw_proj)
+            projectile_count = int(proj_match.group(1)) if proj_match else 1
             recoil = 0.0
+        else:
+            # Old format: [caliber, damage, projectiles, spread, recoil]
+            raw_proj = cells[2].strip()
+            proj_match = re.match(r"[\u00d7x×](\d+)", raw_proj)
+            projectile_count = int(proj_match.group(1)) if proj_match else 1
+            try:
+                spread = float(cells[3].strip()) if len(cells) > 3 else 0.0
+            except ValueError:
+                spread = 0.0
+            try:
+                recoil = float(cells[4].strip()) if len(cells) > 4 else 0.0
+            except ValueError:
+                recoil = 0.0
+
+        # Cell 1: Damage (new data available)
+        try:
+            damage = float(cells[1].strip())
+        except ValueError:
+            damage = 0.0
 
         result[caliber] = {
+            "Damage": damage,
             "Spread": spread,
             "Recoil": recoil,
             "ProjectileCount": projectile_count,

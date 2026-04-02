@@ -19,6 +19,7 @@ from scripts.wiki_parser import (
     extract_wikilink_text,
     iterate_pages,
     parse_infobox,
+    parse_modifier_value,
 )
 
 # ---------------------------------------------------------------------------
@@ -106,8 +107,76 @@ CHISEL_DESCRIPTIONS: Dict[str, str] = {
 
 
 # ---------------------------------------------------------------------------
+# Equipment Infobox type -> slot mapping
+# ---------------------------------------------------------------------------
+
+EQUIP_TYPE_TO_SLOT: Dict[str, str] = {
+    "muzzle attachments": "muzzle",
+    "muzzle": "muzzle",
+    "sight": "sight",
+    "sights": "sight",
+    "laser sights": "laser",
+    "laser sight": "laser",
+    "chamber attachment": "chamber",
+    "chamber attachments": "chamber",
+    "attachment": "insurance",
+}
+
+# Equipment Infobox bare-line stat name -> attribute name
+EQUIP_STAT_MAP: Dict[str, str] = {
+    "spread": "Spread",
+    "move speed": "MoveSpeed",
+    "recoil": "Recoil",
+}
+
+# ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+
+def _parse_equipment_infoboxes(wikitext: str) -> List[Dict]:
+    """Parse all {{Equipment Infobox ...}} blocks from a page.
+
+    Returns a list of dicts, one per infobox, with parsed fields.
+    """
+    results = []
+    for m in re.finditer(r'\{\{Equipment Infobox(.*?)\}\}', wikitext, re.DOTALL):
+        body = m.group(1)
+        info: Dict = {}
+
+        # Parse |key=value params
+        for pm in re.finditer(r'\|\s*([\w\s]+?)\s*=\s*(.*?)(?=\n\s*\||\n[A-Z]|$)', body, re.DOTALL):
+            key = pm.group(1).strip()
+            val = pm.group(2).strip()
+            if val:
+                info[key] = val
+
+        # Parse bare "Key: value" or "Key value" stat lines
+        for pm in re.finditer(r'^([A-Z][\w\s]+?):\s*(.+)$', body, re.MULTILINE):
+            key = pm.group(1).strip()
+            val = pm.group(2).strip()
+            info['stat_' + key] = val
+
+        results.append(info)
+    return results
+
+
+def _parse_misc_item_infobox(wikitext: str) -> Optional[Dict]:
+    """Parse a {{Misc Item Infobox ...}} block.
+
+    Returns a dict with parsed fields, or None if not found.
+    """
+    m = re.search(r'\{\{Misc Item Infobox(.*?)\}\}', wikitext, re.DOTALL)
+    if not m:
+        return None
+    body = m.group(1)
+    info: Dict = {}
+    for pm in re.finditer(r'\|\s*([\w\s]+?)\s*=\s*(.*?)(?=\n\s*\||\n\s*\}\}|$)', body, re.DOTALL):
+        key = pm.group(1).strip()
+        val = pm.group(2).strip()
+        if val:
+            info[key] = val
+    return info
 
 
 def _strip_html(text: str) -> str:
@@ -300,6 +369,143 @@ def parse_attachment_page(title: str, wikitext: str) -> Optional[Dict]:
     }
 
 
+def parse_equipment_attachment(title: str, wikitext: str) -> List[Dict]:
+    """Parse Equipment Infobox attachments from a page.
+
+    A single page may contain multiple Equipment Infobox blocks (e.g. variants).
+    Returns a list of attachment dicts.
+    """
+    if '{{Equipment Infobox' not in wikitext:
+        return []
+    if 'Category:Attachments' not in wikitext:
+        return []
+
+    infoboxes = _parse_equipment_infoboxes(wikitext)
+    description = _first_description_line(wikitext)
+    results = []
+
+    for info in infoboxes:
+        # Determine slot from Type field
+        raw_type = info.get('Type', '')
+        type_text = extract_wikilink_text(raw_type).lower().strip()
+        slot = EQUIP_TYPE_TO_SLOT.get(type_text)
+        if slot is None:
+            continue
+
+        # Name: use title field or page title
+        name = info.get('title', title)
+
+        # Modifiers from |key=value params
+        modifiers: Dict[str, Union[float, Dict]] = {}
+
+        raw_spread = info.get('Spread', '')
+        if raw_spread:
+            try:
+                modifiers['Spread'] = float(raw_spread)
+            except ValueError:
+                pass
+
+        raw_crit = info.get('CritADS', '')
+        if raw_crit:
+            raw_crit = raw_crit.strip().rstrip('%')
+            try:
+                modifiers['ADSCritChance'] = float(raw_crit)
+            except ValueError:
+                pass
+
+        # Modifiers from bare stat lines
+        for stat_key, body_val in info.items():
+            if not stat_key.startswith('stat_'):
+                continue
+            stat_name = stat_key[5:].lower()
+            attr = EQUIP_STAT_MAP.get(stat_name)
+            if attr and attr not in modifiers:
+                body_val = body_val.strip()
+                if '%' in body_val:
+                    pct_str = body_val.replace('%', '').strip()
+                    try:
+                        modifiers[attr] = float(pct_str)
+                    except ValueError:
+                        pass
+                else:
+                    try:
+                        modifiers[attr] = float(body_val)
+                    except ValueError:
+                        pass
+
+        # Special effects
+        special_effects: Dict = {}
+
+        # Silencer detection from name
+        if 'silencer' in name.lower():
+            special_effects['silencesFire'] = True
+
+        # Image
+        raw_image = info.get('image', '')
+        image_name = raw_image if raw_image else name.replace(' ', '_') + '.png'
+        image = f'/images/attachments/{image_name}'
+
+        rarity = KNOWN_RARITIES.get(name, DEFAULT_RARITY)
+
+        results.append({
+            'id': name.replace(' ', '_'),
+            'name': name,
+            'type': slot,
+            'rarity': rarity,
+            'modifiers': modifiers,
+            'specialEffects': special_effects,
+            'description': description,
+            'image': image,
+        })
+
+    return results
+
+
+def parse_chisel_from_misc_infobox(title: str, wikitext: str) -> Optional[Dict]:
+    """Parse a chisel from {{Misc Item Infobox}} format.
+
+    Returns a chisel dict or None.
+    """
+    if '{{Misc Item Infobox' not in wikitext:
+        return None
+    if 'Chamber Chisel' not in title:
+        return None
+
+    info = _parse_misc_item_infobox(wikitext)
+    if info is None:
+        return None
+
+    name = info.get('title', title)
+
+    # Extract caliber from title: "Chamber Chisel (9mm)" -> "9mm"
+    cal_match = re.search(r'\(([^)]+)\)', name)
+    caliber = _normalize_caliber(cal_match.group(1)) if cal_match else ''
+
+    description = CHISEL_DESCRIPTIONS.get(caliber, _first_description_line(wikitext))
+
+    raw_image = info.get('image', '')
+    image_name = raw_image if raw_image else name.replace(' ', '_') + '.png'
+    image = f'/images/attachments/{image_name}'
+
+    rarity = KNOWN_RARITIES.get(name, DEFAULT_RARITY)
+
+    result: Dict = {
+        'id': name.replace(' ', '_'),
+        'name': name,
+        'type': 'chisel',
+        'rarity': rarity,
+        'modifiers': {},
+        'specialEffects': {},
+        'description': description,
+        'image': image,
+    }
+
+    if caliber:
+        result['specialEffects']['caliberConversion'] = caliber
+
+    return result
+
+
 def parse_chisel_page(title: str, wikitext: str) -> Optional[Dict]:
     """Parse a wiki page and return a chisel dict if it is a chamber chisel.
 
@@ -383,6 +589,7 @@ def extract_attachments(dump_path: str, output_dir: str) -> Dict[str, List[str]]
     by_slot: Dict[str, List[Dict]] = {slot: [] for slot in SLOT_TO_FILENAME}
 
     for title, wikitext in iterate_pages(dump_path):
+        # Try old Item Infobox format first
         params = parse_infobox(wikitext)
         kind = params.get("kind", "").strip().lower()
 
@@ -390,12 +597,27 @@ def extract_attachments(dump_path: str, output_dir: str) -> Dict[str, List[str]]
             item = parse_chisel_page(title, wikitext)
             if item is not None:
                 by_slot["chisel"].append(item)
+                continue
         elif kind == "attachment":
             item = parse_attachment_page(title, wikitext)
             if item is not None:
                 slot = item["type"]
                 if slot in by_slot:
                     by_slot[slot].append(item)
+                continue
+
+        # Try new Equipment Infobox format
+        equip_items = parse_equipment_attachment(title, wikitext)
+        for item in equip_items:
+            slot = item["type"]
+            if slot in by_slot:
+                by_slot[slot].append(item)
+
+        # Try Misc Item Infobox format (chisels)
+        if not equip_items:
+            chisel = parse_chisel_from_misc_infobox(title, wikitext)
+            if chisel is not None:
+                by_slot["chisel"].append(chisel)
 
     # Write files and build summary
     summary: Dict[str, List[str]] = {}

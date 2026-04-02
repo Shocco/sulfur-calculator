@@ -1,5 +1,6 @@
 """Extract oil/enchantment data from a MediaWiki XML dump for the SULFUR calculator."""
 
+import re
 from typing import Dict, List, Optional, Tuple
 
 from scripts.wiki_parser import iterate_pages, parse_infobox, parse_modifier_value
@@ -70,8 +71,16 @@ def parse_oil_page(title: str, wikitext: str) -> Optional[Dict]:
 
     for param_key, raw_value in params.items():
         if param_key in PARAM_TO_ATTRIBUTE:
+            cleaned = raw_value.strip()
+            # Skip boolean/symbol values that aren't numeric modifiers
+            if cleaned in ('√', '✓', '✔', '&check;', '↑', '↓', 'ᛏ'):
+                continue
+            # Strip leading <br> tags
+            cleaned = re.sub(r'^<br\s*/?>\s*', '', cleaned)
+            if not cleaned:
+                continue
             attribute = PARAM_TO_ATTRIBUTE[param_key]
-            mod_type, value = parse_modifier_value(raw_value)
+            mod_type, value = parse_modifier_value(cleaned)
             modifiers.append({"attribute": attribute, "modType": mod_type, "value": value})
 
         elif param_key in SPECIAL_EFFECTS:

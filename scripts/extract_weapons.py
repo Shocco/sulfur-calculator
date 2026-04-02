@@ -12,6 +12,7 @@ from scripts.wiki_parser import (
     iterate_pages,
     parse_damage_field,
     parse_infobox,
+    parse_weapon_infobox,
 )
 
 ATTACHMENT_CATEGORY_TO_SLOT: Dict[str, str] = {
@@ -125,14 +126,23 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
         not a weapon.
     """
     infobox = parse_infobox(wikitext)
+    is_weapon_infobox = False
+
     if infobox.get("kind", "").strip().lower() != "weapon":
-        return None
+        # Try Weapon_Infobox format
+        weapon_ib = parse_weapon_infobox(wikitext)
+        if weapon_ib is not None:
+            infobox = weapon_ib
+            is_weapon_infobox = True
+        else:
+            return None
 
     # --- id ---
-    weapon_id = "Weapon_" + title.replace(" ", "_")
+    name = infobox.get("title", title) if is_weapon_infobox else title
+    weapon_id = "Weapon_" + name.replace(" ", "_")
 
     # --- type ---
-    raw_subtype = infobox.get("SubType", "")
+    raw_subtype = infobox.get("SubType", "") or infobox.get("Type", "")
     weapon_type = extract_wikilink_text(raw_subtype) if raw_subtype else ""
 
     # --- ammoType ---
@@ -140,7 +150,7 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
     ammo_type = extract_wikilink_text(raw_ammo) if raw_ammo else ""
 
     # --- image ---
-    image = infobox.get("image", "") or (title.replace(" ", "_") + ".png")
+    image = infobox.get("image", "") or (name.replace(" ", "_") + ".png")
 
     # --- baseStats ---
     base_stats: Dict = {}
@@ -154,31 +164,32 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
     else:
         base_stats["Damage"] = 0.0
 
+    def _safe_float(raw: str) -> float:
+        """Parse a float from a potentially dirty infobox value."""
+        if not raw:
+            return 0.0
+        m = re.match(r'-?[\d.]+', raw.strip())
+        return float(m.group()) if m else 0.0
+
     # RPM
-    raw_rpm = infobox.get("RPM", "")
-    base_stats["RPM"] = float(raw_rpm) if raw_rpm else 0.0
+    base_stats["RPM"] = _safe_float(infobox.get("RPM", ""))
 
     # MagazineSize
-    raw_mag = infobox.get("Mag", "")
-    base_stats["MagazineSize"] = float(raw_mag) if raw_mag else 0.0
+    base_stats["MagazineSize"] = _safe_float(infobox.get("Mag", ""))
 
     # Spread
-    raw_spread = infobox.get("Spread", "")
-    base_stats["Spread"] = float(raw_spread) if raw_spread else 0.0
+    base_stats["Spread"] = _safe_float(infobox.get("Spread", ""))
 
     # Recoil
-    raw_recoil = infobox.get("Recoil", "")
-    base_stats["Recoil"] = float(raw_recoil) if raw_recoil else 0.0
+    base_stats["Recoil"] = _safe_float(infobox.get("Recoil", ""))
 
     # Durability (also MaxDurability)
-    raw_durability = infobox.get("Durability", "")
-    durability_val = float(raw_durability) if raw_durability else 0.0
+    durability_val = _safe_float(infobox.get("Durability", ""))
     base_stats["Durability"] = durability_val
     base_stats["MaxDurability"] = durability_val
 
     # Weight
-    raw_weight = infobox.get("Weight", "")
-    base_stats["Weight"] = float(raw_weight) if raw_weight else 0.0
+    base_stats["Weight"] = _safe_float(infobox.get("Weight", ""))
 
     # Defaults
     base_stats["ProjectileSpeed"] = 100.0
@@ -197,7 +208,7 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
 
     return {
         "id": weapon_id,
-        "name": title,
+        "name": name,
         "type": weapon_type,
         "ammoType": ammo_type,
         "image": image,

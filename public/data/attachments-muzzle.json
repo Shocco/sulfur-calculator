@@ -1,158 +1,185 @@
 [
   {
+    "id": "A12C_Muzzle_Brake",
     "name": "A12C Muzzle Brake",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "description": "A muzzle device designed to lower the spread of guns",
-    "image": "/images/attachments/A12C_Muzzle_Brake.png",
     "modifiers": {
       "Spread": -0.75
-    }
+    },
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/A12CMuzzleBrake.png"
   },
   {
+    "id": "Aftermarket_Haukland_Silencer",
     "name": "Aftermarket Haukland Silencer",
     "type": "muzzle",
     "rarity": "Rare",
-    "description": "Reduces noise and muzzle flash",
-    "image": "/images/attachments/Aftermarket_Haukland_Silencer.png",
-    "modifiers": {
-      "Spread": -0.5
-    },
+    "modifiers": {},
     "specialEffects": {
       "silencesFire": true
-    }
+    },
+    "description": "A muzzle device used to lower the sound signature of a firearm. Produced as a response to the Haukland Company discontinuing their production line of silencers.",
+    "image": "/images/attachments/Aftermarket_Haukland_Silencer.png"
   },
   {
+    "id": "Barrel_Extension_2\"",
     "name": "Barrel Extension 2\"",
     "type": "muzzle",
     "rarity": "Common",
-    "description": "Extends barrel length by 2 inches",
-    "image": "/images/attachments/Barrel_Extension_2\".png",
     "modifiers": {
       "Spread": -0.5,
-      "MoveSpeed": -0.05
-    }
+      "MoveSpeed": -5.0
+    },
+    "specialEffects": {},
+    "description": "A 2\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
+    "image": "/images/attachments/BarrelExtension2inch.png"
   },
   {
+    "id": "Barrel_Extension_4\"",
     "name": "Barrel Extension 4\"",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "description": "Extends barrel length by 4 inches",
-    "image": "/images/attachments/Barrel_Extension_4\".png",
     "modifiers": {
       "Spread": -0.75,
-      "MoveSpeed": -0.07
-    }
+      "MoveSpeed": -7.0
+    },
+    "specialEffects": {},
+    "description": "A 4\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
+    "image": "/images/attachments/BarrelExtension4inch.png"
   },
   {
+    "id": "Barrel_Extension_6\"",
     "name": "Barrel Extension 6\"",
     "type": "muzzle",
     "rarity": "Rare",
-    "description": "Extends barrel length by 6 inches",
-    "image": "/images/attachments/Barrel_Extension_6\".png",
     "modifiers": {
-      "Spread": -0.75,
-      "MoveSpeed": -0.1
-    }
+      "Spread": -1.0,
+      "MoveSpeed": -10.0
+    },
+    "specialEffects": {},
+    "description": "A 6\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
+    "image": "/images/attachments/BarrelExtension6inch.png"
   },
   {
+    "id": "Breznik_BMD",
     "name": "Breznik BMD",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "description": "Muzzle brake device for spread reduction",
-    "image": "/images/attachments/Breznik_BMD.png",
-    "modifiers": {
-      "Spread": -0.75
-    }
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/BreznikBMD.png"
   },
   {
+    "id": "Breznik_BMD_(Tactical)",
     "name": "Breznik BMD (Tactical)",
     "type": "muzzle",
     "rarity": "Rare",
-    "description": "Tactical version with spread reduction",
-    "image": "/images/attachments/Breznik_BMD_(Tactical).png",
-    "modifiers": {
-      "Spread": -0.75
-    }
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/BreznikBMDTactical.png"
   },
   {
+    "id": "Breznik_BMD_(Tactical)",
+    "name": "Breznik BMD (Tactical)",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "modifiers": {
+      "Spread": -0.75
+    },
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/Breznik_BMD_(Tactical).png"
+  },
+  {
+    "id": "Haukland_Flash_Hider",
     "name": "Haukland Flash Hider",
     "type": "muzzle",
     "rarity": "Common",
-    "description": "Reduces muzzle flash",
-    "image": "/images/attachments/Haukland_Flash_Hider.png",
-    "modifiers": {
-      "Spread": -0.75
-    }
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "The historical Haukland best seller. A Haukland customer once famously won \"free Haukland Flash Hider for life\", and this largely contributed to the company's eventual bankruptcy.",
+    "image": "/images/attachments/HauklandFlashHider.png"
   },
   {
+    "id": "Haukland_Silencer",
     "name": "Haukland Silencer",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "description": "Standard silencer for reduced noise",
-    "image": "/images/attachments/Haukland_Silencer.png",
-    "modifiers": {
-      "Spread": -0.75
-    },
+    "modifiers": {},
     "specialEffects": {
       "silencesFire": true
-    }
+    },
+    "description": "A muzzle device designed to lower the sound signature of a firearm. Made by the Haukland Company.",
+    "image": "/images/attachments/Haukland_Silencer.png"
   },
   {
+    "id": "Improvised_Barrel_Extension",
     "name": "Improvised Barrel Extension",
     "type": "muzzle",
     "rarity": "Common",
-    "description": "Makeshift barrel extension",
-    "image": "/images/attachments/Improvised_Barrel_Extension.png",
     "modifiers": {
-      "Spread": -0.25,
-      "MoveSpeed": -0.03
-    }
+      "Spread": -0.3
+    },
+    "specialEffects": {},
+    "description": "A compact collimator sight with an illuminated reticle for quicker target acquisition. Fits standard rails.",
+    "image": "/images/attachments/Improvised_Barrel_Extension.png"
   },
   {
+    "id": "M87_\"Albatross\"_Silencer",
     "name": "M87 \"Albatross\" Silencer",
     "type": "muzzle",
-    "rarity": "Legendary",
-    "description": "High-end silencer with minimal performance loss",
-    "image": "/images/attachments/M87_\"Albatross\"_Silencer.png",
-    "modifiers": {
-      "Spread": -0.25
-    },
+    "rarity": "Rare",
+    "modifiers": {},
     "specialEffects": {
       "silencesFire": true
-    }
+    },
+    "description": "",
+    "image": "/images/attachments/suppressorold.png"
   },
   {
+    "id": "SR-P3_Silencer",
     "name": "SR-P3 Silencer",
     "type": "muzzle",
     "rarity": "Rare",
-    "description": "Military-grade silencer",
-    "image": "/images/attachments/SR-P3_Silencer.png",
-    "modifiers": {
-      "Spread": -0.75
-    },
+    "modifiers": {},
     "specialEffects": {
       "silencesFire": true
-    }
+    },
+    "description": "A muzzle device designed to lower the sound signature of a firearm. Made only in small amounts to be used by radio operators during the night raids of the first robot war.",
+    "image": "/images/attachments/SR-P3_Silencer.png"
   },
   {
+    "id": "Shrouded_Barrel_Extension",
     "name": "Shrouded Barrel Extension",
     "type": "muzzle",
-    "rarity": "Rare",
-    "description": "Barrel extension with heat shroud",
-    "image": "/images/attachments/Shrouded_Barrel_Extension.png",
-    "modifiers": {
-      "Spread": -0.75
-    }
+    "rarity": "Uncommon",
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/ShroudedBarrelExtension.png"
   },
   {
-    "name": "Warmage Compensator",
+    "id": "Breznik_BMD",
+    "name": "Breznik BMD",
     "type": "muzzle",
-    "rarity": "Legendary",
-    "description": "Advanced compensator for superior spread control",
-    "image": "/images/attachments/Warmage_Compensator.png",
-    "modifiers": {
-      "Spread": -0.75
-    }
+    "rarity": "Uncommon",
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/BreznikBMD.png"
+  },
+  {
+    "id": "Breznik_BMD_(Tactical)",
+    "name": "Breznik BMD (Tactical)",
+    "type": "muzzle",
+    "rarity": "Rare",
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
+    "image": "/images/attachments/BreznikBMDTactical.png"
   }
 ]

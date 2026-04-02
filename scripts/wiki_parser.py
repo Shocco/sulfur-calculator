@@ -27,12 +27,13 @@ def iterate_pages(dump_path: str, namespace: str = 'http://www.mediawiki.org/xml
 
         title = title_elem.text
 
-        # Get the first (most recent) revision
-        revision = elem.find('mw:revision', ns_map)
-        if revision is None:
+        # Get the most recent revision (last in history dumps)
+        revisions = elem.findall('mw:revision', ns_map)
+        if not revisions:
             elem.clear()
             continue
 
+        revision = revisions[-1]
         text_elem = revision.find('mw:text', ns_map)
         if text_elem is None or not text_elem.text:
             elem.clear()
@@ -40,6 +41,38 @@ def iterate_pages(dump_path: str, namespace: str = 'http://www.mediawiki.org/xml
 
         yield title, text_elem.text
         elem.clear()
+
+
+def _parse_infobox_body(body: str) -> Dict[str, str]:
+    """Parse key-value pairs from an infobox body string."""
+    result = {}
+    # Split body into lines, then reassemble param values
+    current_key = None
+    current_val_lines: List[str] = []
+
+    for line in body.split('\n'):
+        stripped = line.strip()
+        # Check if this is a new param: starts with | key =
+        m = re.match(r'\|\s*([\w\s]+?)\s*=\s*(.*)', stripped)
+        if m:
+            # Save previous param
+            if current_key is not None:
+                val = '\n'.join(current_val_lines).strip()
+                if val:
+                    result[current_key] = val
+            current_key = m.group(1).strip()
+            current_val_lines = [m.group(2).strip()]
+        elif stripped and not stripped.startswith('}}') and current_key is not None:
+            # Continuation of previous value
+            current_val_lines.append(stripped)
+
+    # Save last param
+    if current_key is not None:
+        val = '\n'.join(current_val_lines).strip()
+        if val:
+            result[current_key] = val
+
+    return result
 
 
 def parse_infobox(wikitext: str) -> Dict[str, str]:
@@ -51,17 +84,19 @@ def parse_infobox(wikitext: str) -> Dict[str, str]:
     match = re.search(r'\{\{Item Infobox(.*?)\}\}', wikitext, re.DOTALL)
     if not match:
         return {}
+    return _parse_infobox_body(match.group(1))
 
-    body = match.group(1)
-    result = {}
 
-    for param_match in re.finditer(r'\|\s*([\w\s]+?)\s*=\s*(.*?)(?=\n\s*\||$)', body, re.DOTALL):
-        key = param_match.group(1).strip()
-        value = param_match.group(2).strip()
-        if value:
-            result[key] = value
+def parse_weapon_infobox(wikitext: str) -> Optional[Dict[str, str]]:
+    """
+    Extract key-value pairs from a {{Weapon_Infobox ...}} template.
 
-    return result
+    Returns dict of param_name -> raw_value, or None if not found.
+    """
+    match = re.search(r'\{\{Weapon[_ ]Infobox(.*?)\}\}', wikitext, re.DOTALL)
+    if not match:
+        return None
+    return _parse_infobox_body(match.group(1))
 
 
 def parse_modifier_value(raw: str) -> Tuple[int, float]:
@@ -94,8 +129,11 @@ def parse_damage_field(raw: str) -> Tuple[float, int]:
     raw = raw.replace('&times;', '\u00d7')
     if '\u00d7' in raw:
         parts = raw.split('\u00d7')
-        return (float(parts[0].strip()), int(parts[1].strip()))
-    return (float(raw.strip()), 1)
+        count_str = re.match(r'\d+', parts[1].strip())
+        return (float(parts[0].strip()), int(count_str.group()) if count_str else 1)
+    # Strip trailing non-numeric chars
+    num_match = re.match(r'[\d.]+', raw.strip())
+    return (float(num_match.group()) if num_match else 0.0, 1)
 
 
 def extract_wikilink_text(raw: str) -> str:
@@ -123,7 +161,7 @@ def extract_section(wikitext: str, heading: str) -> Optional[str]:
 
     Returns text from after ==heading== until the next == or end of text.
     """
-    pattern = rf'=={re.escape(heading)}==\s*(.*?)(?:\n==|$)'
+    pattern = rf'==\s*{re.escape(heading)}\s*==\s*(.*?)(?:\n==|$)'
     match = re.search(pattern, wikitext, re.DOTALL | re.IGNORECASE)
     if match:
         return match.group(1).strip()

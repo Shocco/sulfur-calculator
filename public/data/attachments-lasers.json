@@ -1,32 +1,32 @@
 [
   {
-    "name": "Laser Sight (Red)",
-    "type": "laser",
-    "rarity": "Common",
-    "description": "Tactical device allowing for more accurate hip fire",
-    "image": "/images/attachments/Laser_Sight_(Red).png",
-    "modifiers": {
-      "AccuracyWhileMoving": 50
-    }
-  },
-  {
+    "id": "Laser_Sight_(Green)",
     "name": "Laser Sight (Green)",
     "type": "laser",
     "rarity": "Uncommon",
-    "description": "High-visibility green laser for improved hip fire",
-    "image": "/images/attachments/Laser_Sight_(Green).png",
-    "modifiers": {
-      "AccuracyWhileMoving": 50
-    }
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits green light.",
+    "image": "/images/attachments/LaserSightGreen.png"
   },
   {
+    "id": "Laser_Sight_(Red)",
+    "name": "Laser Sight (Red)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits redlight.",
+    "image": "/images/attachments/LaserSightRed.png"
+  },
+  {
+    "id": "Laser_Sight_(Yellow)",
     "name": "Laser Sight (Yellow)",
     "type": "laser",
     "rarity": "Rare",
-    "description": "Premium laser sight with maximum hip fire accuracy",
-    "image": "/images/attachments/Laser_Sight_(Yellow).png",
-    "modifiers": {
-      "AccuracyWhileMoving": 50
-    }
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits yellow light.",
+    "image": "/images/attachments/LaserSightYellow.png"
   }
 ]
