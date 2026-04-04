@@ -24,18 +24,6 @@
     "image": "/images/attachments/Holographic_Sight.png"
   },
   {
-    "id": "Holographic_Sight",
-    "name": "Holographic Sight",
-    "type": "sight",
-    "rarity": "Uncommon",
-    "modifiers": {
-      "ADSCritChance": 0.2
-    },
-    "specialEffects": {},
-    "description": "The Hunting Scope is a zoomed scope well-suited for ranged combat at medium to long distance.",
-    "image": "/images/attachments/Holographic_Sight.png"
-  },
-  {
     "id": "Recon_Scope",
     "name": "Recon Scope",
     "type": "sight",

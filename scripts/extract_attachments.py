@@ -151,11 +151,18 @@ def _parse_equipment_infoboxes(wikitext: str) -> List[Dict]:
             if val:
                 info[key] = val
 
-        # Parse bare "Key: value" or "Key value" stat lines
+        # Parse bare "Key: value" stat lines
         for pm in re.finditer(r'^([A-Z][\w\s]+?):\s*(.+)$', body, re.MULTILINE):
             key = pm.group(1).strip()
             val = pm.group(2).strip()
             info['stat_' + key] = val
+
+        # Parse bare "Key value" stat lines (e.g. "Spread -0.75")
+        for pm in re.finditer(r'^(Spread|Move [Ss]peed|Recoil)\s+([-+]?\d*\.?\d+)$', body, re.MULTILINE):
+            key = pm.group(1).strip()
+            val = pm.group(2).strip()
+            if 'stat_' + key not in info:
+                info['stat_' + key] = val
 
         results.append(info)
     return results
@@ -631,7 +638,20 @@ def extract_attachments(dump_path: str, output_dir: str) -> Dict[str, List[str]]
     # Write files and build summary
     summary: Dict[str, List[str]] = {}
     for slot, filename in SLOT_TO_FILENAME.items():
-        items = by_slot[slot]
+        # Deduplicate by name: prefer items with more data (non-empty modifiers)
+        seen_names: Dict[str, int] = {}
+        deduped: List[Dict] = []
+        for item in by_slot[slot]:
+            name = item["name"]
+            if name in seen_names:
+                existing_idx = seen_names[name]
+                existing = deduped[existing_idx]
+                if item.get("modifiers") and not existing.get("modifiers"):
+                    deduped[existing_idx] = item
+            else:
+                seen_names[name] = len(deduped)
+                deduped.append(item)
+        items = deduped
         output_path = out / filename
         with open(output_path, "w", encoding="utf-8") as fh:
             json.dump(items, fh, indent=2, ensure_ascii=False)

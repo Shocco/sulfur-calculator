@@ -67,20 +67,12 @@
     "name": "Breznik BMD",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "modifiers": {},
+    "modifiers": {
+      "Spread": -0.75
+    },
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
     "image": "/images/attachments/Breznik_BMD.png"
-  },
-  {
-    "id": "Breznik_BMD_(Tactical)",
-    "name": "Breznik BMD (Tactical)",
-    "type": "muzzle",
-    "rarity": "Rare",
-    "modifiers": {},
-    "specialEffects": {},
-    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/Breznik_BMD_(Tactical).png"
   },
   {
     "id": "Breznik_BMD_(Tactical)",
@@ -161,26 +153,6 @@
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
     "image": "/images/attachments/Shrouded_Barrel_Extension.png"
-  },
-  {
-    "id": "Breznik_BMD",
-    "name": "Breznik BMD",
-    "type": "muzzle",
-    "rarity": "Uncommon",
-    "modifiers": {},
-    "specialEffects": {},
-    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/Breznik_BMD.png"
-  },
-  {
-    "id": "Breznik_BMD_(Tactical)",
-    "name": "Breznik BMD (Tactical)",
-    "type": "muzzle",
-    "rarity": "Rare",
-    "modifiers": {},
-    "specialEffects": {},
-    "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/Breznik_BMD_(Tactical).png"
   },
   {
     "name": "Warmage Compensator",
