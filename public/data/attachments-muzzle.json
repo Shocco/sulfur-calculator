@@ -9,7 +9,7 @@
     },
     "specialEffects": {},
     "description": "A muzzle device designed to lower the spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/A12CMuzzleBrake.png"
+    "image": "/images/attachments/A12C_Muzzle_Brake.png"
   },
   {
     "id": "Aftermarket_Haukland_Silencer",
@@ -34,7 +34,7 @@
     },
     "specialEffects": {},
     "description": "A 2\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
-    "image": "/images/attachments/BarrelExtension2inch.png"
+    "image": "/images/attachments/Barrel_Extension_2\".png"
   },
   {
     "id": "Barrel_Extension_4\"",
@@ -47,7 +47,7 @@
     },
     "specialEffects": {},
     "description": "A 4\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
-    "image": "/images/attachments/BarrelExtension4inch.png"
+    "image": "/images/attachments/Barrel_Extension_4\".png"
   },
   {
     "id": "Barrel_Extension_6\"",
@@ -60,7 +60,7 @@
     },
     "specialEffects": {},
     "description": "A 6\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
-    "image": "/images/attachments/BarrelExtension6inch.png"
+    "image": "/images/attachments/Barrel_Extension_6\".png"
   },
   {
     "id": "Breznik_BMD",
@@ -70,7 +70,7 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/BreznikBMD.png"
+    "image": "/images/attachments/Breznik_BMD.png"
   },
   {
     "id": "Breznik_BMD_(Tactical)",
@@ -80,7 +80,7 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/BreznikBMDTactical.png"
+    "image": "/images/attachments/Breznik_BMD_(Tactical).png"
   },
   {
     "id": "Breznik_BMD_(Tactical)",
@@ -102,7 +102,7 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "The historical Haukland best seller. A Haukland customer once famously won \"free Haukland Flash Hider for life\", and this largely contributed to the company's eventual bankruptcy.",
-    "image": "/images/attachments/HauklandFlashHider.png"
+    "image": "/images/attachments/Haukland_Flash_Hider.png"
   },
   {
     "id": "Haukland_Silencer",
@@ -138,7 +138,7 @@
       "silencesFire": true
     },
     "description": "",
-    "image": "/images/attachments/suppressorold.png"
+    "image": "/images/attachments/M87_\"Albatross\"_Silencer.png"
   },
   {
     "id": "SR-P3_Silencer",
@@ -160,7 +160,7 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/ShroudedBarrelExtension.png"
+    "image": "/images/attachments/Shrouded_Barrel_Extension.png"
   },
   {
     "id": "Breznik_BMD",
@@ -170,7 +170,7 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/BreznikBMD.png"
+    "image": "/images/attachments/Breznik_BMD.png"
   },
   {
     "id": "Breznik_BMD_(Tactical)",
@@ -180,6 +180,16 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
-    "image": "/images/attachments/BreznikBMDTactical.png"
+    "image": "/images/attachments/Breznik_BMD_(Tactical).png"
+  },
+  {
+    "name": "Warmage Compensator",
+    "type": "muzzle",
+    "rarity": "Legendary",
+    "description": "Advanced compensator for superior spread control",
+    "image": "/images/attachments/Warmage_Compensator.png",
+    "modifiers": {
+      "Spread": -0.75
+    }
   }
 ]

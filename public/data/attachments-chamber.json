@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "name": "Gun Crank",
+    "type": "chamber",
+    "rarity": "Uncommon",
+    "description": "Changes firing mode to automatic",
+    "image": "/images/attachments/Gun_Crank.png",
+    "modifiers": {},
+    "specialEffects": {
+      "firingMode": "automatic"
+    }
+  },
+  {
+    "name": "Priming Bolt",
+    "type": "chamber",
+    "rarity": "Rare",
+    "description": "Makes weapon semiautomatic with improved damage and accuracy",
+    "image": "/images/attachments/Priming_Bolt.png",
+    "modifiers": {
+      "Spread": -0.1,
+      "Damage": {
+        "value": 0.1,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {
+      "firingMode": "semiautomatic"
+    }
+  }
+]

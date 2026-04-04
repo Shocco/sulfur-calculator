@@ -7,6 +7,17 @@
     "modifiers": {},
     "specialEffects": {},
     "description": "Makes weapon non-automatic",
-    "image": "/images/attachments/|Grid Size=2x1"
+    "image": "/images/attachments/Priming_Bolt.png"
+  },
+  {
+    "name": "Insurance",
+    "type": "insurance",
+    "rarity": "Legendary",
+    "description": "Protects weapon from complete destruction on death",
+    "image": "/images/attachments/Insurance.png",
+    "modifiers": {},
+    "specialEffects": {
+      "protection": "Returns weapon to Collection Box on death"
+    }
   }
 ]

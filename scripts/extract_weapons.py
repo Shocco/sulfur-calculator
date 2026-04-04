@@ -61,6 +61,10 @@ def _parse_attachments_section(
     """
     Parse the Available Attachments section.
 
+    Supports two wiki formats:
+    - Old: ===Category=== sub-headings with * bullet items underneath
+    - New: flat bullet list (• or *) where each bullet IS the category/attachment
+
     Args:
         section_text: Raw wikitext of the Available Attachments section.
         attachment_data: Optional mapping of slot -> list of attachment names
@@ -72,8 +76,6 @@ def _parse_attachments_section(
     allowed_slots: List[str] = []
     specific_attachments: List[str] = []
 
-    # Walk through lines looking for category headers (===Category===) and
-    # list items (* [[AttachmentName]])
     current_category: Optional[str] = None
     current_slot: Optional[str] = None
 
@@ -82,27 +84,36 @@ def _parse_attachments_section(
         if not line:
             continue
 
-        # Match ===Category Name=== or ==Category Name==
+        # Match ===Category Name=== or ==Category Name== (old format)
         heading_match = re.match(r"={2,3}\s*(.+?)\s*={2,3}", line)
         if heading_match:
             current_category = heading_match.group(1).strip()
             current_slot = ATTACHMENT_CATEGORY_TO_SLOT.get(current_category)
 
-            # Individual attachments categories go to specificAttachments
             if current_category in INDIVIDUAL_ATTACHMENTS:
-                current_slot = None  # handled per-item below
+                current_slot = None
             continue
 
-        # Match bullet list items
-        if line.startswith("*"):
-            item_text = line.lstrip("* ").strip()
-            # Extract the display text from wikilinks
+        # Match bullet list items: * or • (U+2022) or · (U+00B7)
+        if line.startswith(("*", "\u2022", "\u00b7")):
+            item_text = line.lstrip("*\u2022\u00b7 ").strip()
             links = extract_wikilinks(item_text)
             display = extract_wikilink_text(item_text)
-
-            # Determine attachment name (prefer wikilink target, fall back to display)
             name = links[0] if links else display
 
+            # New flat format: each bullet IS a category or individual attachment
+            # Try to resolve the bullet text as a category name first
+            if current_category is None and current_slot is None:
+                bullet_slot = ATTACHMENT_CATEGORY_TO_SLOT.get(name)
+                if bullet_slot is not None:
+                    if name in INDIVIDUAL_ATTACHMENTS:
+                        if name not in specific_attachments:
+                            specific_attachments.append(name)
+                    elif bullet_slot not in allowed_slots:
+                        allowed_slots.append(bullet_slot)
+                    continue
+
+            # Old format: items under a category heading
             if current_category in INDIVIDUAL_ATTACHMENTS:
                 if name not in specific_attachments:
                     specific_attachments.append(name)
@@ -150,7 +161,8 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
     ammo_type = extract_wikilink_text(raw_ammo) if raw_ammo else ""
 
     # --- image ---
-    image = infobox.get("image", "") or (name.replace(" ", "_") + ".png")
+    # Always use title-based naming to match files on disk
+    image = name.replace(" ", "_") + ".png"
 
     # --- baseStats ---
     base_stats: Dict = {}

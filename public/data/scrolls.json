@@ -1,5 +1,59 @@
 [
   {
+    "id": "Scroll_of_Aftershock",
+    "name": "Scroll of Aftershock",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Adds chance to shock the area on hit,stunning nearby units."
+    ]
+  },
+  {
+    "id": "Scroll_of_Chain_Lightning",
+    "name": "Scroll of Chain Lightning",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Adds a chance of spawning a bolt that electrocutes and spreads to nearby enemies."
+    ]
+  },
+  {
+    "id": "Scroll_of_Chaos_Strike",
+    "name": "Scroll of Chaos Strike",
+    "modifiers": [
+      {
+        "attribute": "BulletSize",
+        "modType": 200,
+        "value": 1.0
+      },
+      {
+        "attribute": "Damage",
+        "modType": 100,
+        "value": 50.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
+    "id": "Scroll_of_Charm",
+    "name": "Scroll of Charm",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Bullets get a chance to charm the target, making them fight for you."
+    ]
+  },
+  {
     "id": "Scroll_of_Corpse_Explosion",
     "name": "Scroll of Corpse Explosion",
     "modifiers": [],
@@ -10,6 +64,176 @@
     "effects": [
       "Increase corpse explosion power per hit",
       "Durability loss: +200%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Crusader",
+    "name": "Scroll of Crusader",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Increases damage on target for evry bullet hit."
+    ]
+  },
+  {
+    "id": "Scroll_of_Dark",
+    "name": "Scroll of Dark",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.8
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Chance to blind targets"
+    ]
+  },
+  {
+    "id": "Scroll_of_Earth",
+    "name": "Scroll of Earth",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Chance to stun target"
+    ]
+  },
+  {
+    "id": "Scroll_of_Embers",
+    "name": "Scroll of Embers",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Chance to set target on fire"
+    ]
+  },
+  {
+    "id": "Scroll_of_Explosions",
+    "name": "Scroll of Explosions",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 100,
+        "value": 25.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Bullets explode on impact"
+    ]
+  },
+  {
+    "id": "Scroll_of_Fear",
+    "name": "Scroll of Fear",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Adds a chance to fear target on hit."
+    ]
+  },
+  {
+    "id": "Scroll_of_Flame_Thrower",
+    "name": "Scroll of Flame Thrower",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.86
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 1.5
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
+        "attribute": "BulletBounces",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "BulletBounciness",
+        "modType": 100,
+        "value": 0.2
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Increases damage on target for every bullet hit."
+    ]
+  },
+  {
+    "id": "Scroll_of_Frostbite",
+    "name": "Scroll of Frostbite",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment.",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Freezes target"
+    ]
+  },
+  {
+    "id": "Scroll_of_Holy_Fire",
+    "name": "Scroll of Holy Fire",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
+    "id": "Scroll_of_Holy_Purge",
+    "name": "Scroll of Holy Purge",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
+    "id": "Scroll_of_Lava",
+    "name": "Scroll of Lava",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 25.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Spawns lava on hit that burns targets.",
+      "Morebullet drop"
     ]
   },
   {
@@ -33,6 +257,71 @@
     ]
   },
   {
+    "id": "Scroll_of_Light",
+    "name": "Scroll of Light",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Rail gun",
+      "Bullets penetrate +999"
+    ]
+  },
+  {
+    "id": "Scroll_of_Noxiosa",
+    "name": "Scroll of Noxiosa",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Creates a cloud of deadly poison on hit."
+    ]
+  },
+  {
+    "id": "Scroll_of_Pesticide",
+    "name": "Scroll of Pesticide",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.86
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 1.5
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
+        "attribute": "BulletBounces",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "BulletBounciness",
+        "modType": 100,
+        "value": 0.2
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
     "id": "Scroll_of_Petrification",
     "name": "Scroll of Petrification",
     "modifiers": [],
@@ -40,6 +329,133 @@
       "Petrify": "✓"
     },
     "effects": []
+  },
+  {
+    "id": "Scroll_of_Petroleum",
+    "name": "Scroll of Petroleum",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 25.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
+    "id": "Scroll_of_Plague",
+    "name": "Scroll of Plague",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment.",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Bullets apply poison"
+    ]
+  },
+  {
+    "id": "Scroll_of_Poison_Blood",
+    "name": "Scroll of Poison Blood",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "NO DESCRIPTION??? POSSIBLE BUG? REPORTED****"
+    ]
+  },
+  {
+    "id": "Scroll_of_Prism",
+    "name": "Scroll of Prism",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
+    "id": "Scroll_of_Rocket_Launcher",
+    "name": "Scroll of Rocket Launcher",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 10.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "More bullet drop",
+      "Bullets become rockets that explode on impact"
+    ]
+  },
+  {
+    "id": "Scroll_of_Sacrifice",
+    "name": "Scroll of Sacrifice",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+    ]
+  },
+  {
+    "id": "Scroll_of_Slush",
+    "name": "Scroll of Slush",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 40.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Spawn frost puddles",
+      "Chance to solid freeze +10%",
+      "More bullet drop"
+    ]
+  },
+  {
+    "id": "Scroll_of_Storm_Surge",
+    "name": "Scroll of Storm Surge",
+    "modifiers": [
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 25.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "'Creates a deadly discharge of electricity on hit that can damage multiple targets. More bullet drop."
+    ]
+  },
+  {
+    "id": "Scroll_of_Surge",
+    "name": "Scroll of Surge",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment.",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Chance to electrocute target"
+    ]
   },
   {
     "id": "Scroll_of_Thunderbolt",
@@ -59,6 +475,68 @@
       "Railgun",
       "Electrocutes targets",
       "RPM: -80%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Toxic_Lobotomy",
+    "name": "Scroll of Toxic Lobotomy",
+    "modifiers": [
+      {
+        "attribute": "HeadshotDamage",
+        "modType": 200,
+        "value": 3.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Headshot damage +300%",
+      "Always drop organs on hit",
+      "Durability Loss +25"
+    ]
+  },
+  {
+    "id": "Scroll_of_Voodoo",
+    "name": "Scroll of Voodoo",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": [
+      "Elemental enchantment",
+      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
+      "Bullets link targets together.",
+      "Linked targets share a percentage of their damage taken."
+    ]
+  },
+  {
+    "id": "Scroll_of_Nature",
+    "name": "Scroll of Nature",
+    "modifiers": [],
+    "specialEffects": {
+      "Proc": "40%",
+      "Root": "🙒"
+    }
+  },
+  {
+    "id": "Scroll_of_Water",
+    "name": "Scroll of Water",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.99
+      },
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 5.0
+      }
+    ],
+    "specialEffects": {
+      "Wet": "🜄"
+    },
+    "effects": [
+      "Wet 🜄"
     ]
   }
 ]

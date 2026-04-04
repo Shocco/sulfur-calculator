@@ -1,5 +1,15 @@
 [
   {
+    "id": "Priming_Bolt",
+    "name": "Priming Bolt",
+    "type": "insurance",
+    "rarity": "Rare",
+    "modifiers": {},
+    "specialEffects": {},
+    "description": "Makes weapon non-automatic",
+    "image": "/images/attachments/Priming_Bolt.png"
+  },
+  {
     "name": "Insurance",
     "type": "insurance",
     "rarity": "Legendary",

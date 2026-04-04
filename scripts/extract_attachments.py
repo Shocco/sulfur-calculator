@@ -296,19 +296,27 @@ def parse_attachment_page(title: str, wikitext: str) -> Optional[Dict]:
         except ValueError:
             pass
 
-    # CritADS -> ADSCritChance plain float
+    # CritADS -> ADSCritChance as fraction (wiki stores as "10%" or "<br>+20%")
     raw_crit = params.get("CritADS", "")
     if raw_crit:
+        cleaned = re.sub(r'<br\s*/?>', '', raw_crit).strip().lstrip('+')
+        is_pct = cleaned.endswith('%')
+        cleaned = cleaned.rstrip('%').strip()
         try:
-            modifiers["ADSCritChance"] = float(raw_crit)
+            val = float(cleaned)
+            modifiers["ADSCritChance"] = val / 100.0 if is_pct else val
         except ValueError:
             pass
 
-    # MoveAccuracy -> AccuracyWhileMoving plain float
+    # MoveAccuracy -> AccuracyWhileMoving as fraction (wiki stores as "<br>+50%")
     raw_move_acc = params.get("MoveAccuracy", "")
     if raw_move_acc:
+        cleaned = re.sub(r'<br\s*/?>', '', raw_move_acc).strip().lstrip('+')
+        is_pct = cleaned.endswith('%')
+        cleaned = cleaned.rstrip('%').strip()
         try:
-            modifiers["AccuracyWhileMoving"] = float(raw_move_acc)
+            val = float(cleaned)
+            modifiers["AccuracyWhileMoving"] = val / 100.0 if is_pct else val
         except ValueError:
             pass
 
@@ -407,9 +415,12 @@ def parse_equipment_attachment(title: str, wikitext: str) -> List[Dict]:
 
         raw_crit = info.get('CritADS', '')
         if raw_crit:
-            raw_crit = raw_crit.strip().rstrip('%')
+            cleaned_crit = re.sub(r'<br\s*/?>', '', raw_crit).strip().lstrip('+')
+            is_pct = cleaned_crit.endswith('%')
+            cleaned_crit = cleaned_crit.rstrip('%').strip()
             try:
-                modifiers['ADSCritChance'] = float(raw_crit)
+                val = float(cleaned_crit)
+                modifiers['ADSCritChance'] = val / 100.0 if is_pct else val
             except ValueError:
                 pass
 
@@ -440,9 +451,8 @@ def parse_equipment_attachment(title: str, wikitext: str) -> List[Dict]:
         if 'silencer' in name.lower():
             special_effects['silencesFire'] = True
 
-        # Image
-        raw_image = info.get('image', '')
-        image_name = raw_image if raw_image else name.replace(' ', '_') + '.png'
+        # Image — always use title-based naming (matches files on disk)
+        image_name = name.replace(' ', '_') + '.png'
         image = f'/images/attachments/{image_name}'
 
         rarity = KNOWN_RARITIES.get(name, DEFAULT_RARITY)
@@ -483,8 +493,7 @@ def parse_chisel_from_misc_infobox(title: str, wikitext: str) -> Optional[Dict]:
 
     description = CHISEL_DESCRIPTIONS.get(caliber, _first_description_line(wikitext))
 
-    raw_image = info.get('image', '')
-    image_name = raw_image if raw_image else name.replace(' ', '_') + '.png'
+    image_name = name.replace(' ', '_') + '.png'
     image = f'/images/attachments/{image_name}'
 
     rarity = KNOWN_RARITIES.get(name, DEFAULT_RARITY)

@@ -3,7 +3,13 @@
 import re
 from typing import Dict, List, Optional, Tuple
 
-from scripts.wiki_parser import iterate_pages, parse_infobox, parse_modifier_value
+from scripts.wiki_parser import (
+    extract_section,
+    extract_wikilink_text,
+    iterate_pages,
+    parse_infobox,
+    parse_modifier_value,
+)
 
 
 # Mapping from wiki infobox param names to JSON attribute names.
@@ -28,6 +34,41 @@ PARAM_TO_ATTRIBUTE: Dict[str, str] = {
     "AmmoConsume": "AmmoConsumeChance",
     "AmmoExConsume": "AmmoConsumeChance",
     "MoveAccuracy": "MoveAccuracy",
+}
+
+# Mapping from description bullet text labels to JSON attribute names.
+# Used for parsing Equipment/Enchantment Infobox description-based modifiers.
+DESCRIPTION_LABEL_TO_ATTRIBUTE: Dict[str, str] = {
+    "damage": "Damage",
+    "spread": "Spread",
+    "recoil": "Recoil",
+    "rpm": "RPM",
+    "reload speed": "ReloadSpeed",
+    "bullet speed": "BulletSpeed",
+    "bullet bounces": "BulletBounces",
+    "bullet bounciness": "BulletBounciness",
+    "bullet drop": "BulletDrop",
+    "bullet size": "BulletSize",
+    "bullet penetrations": "BulletPenetrations",
+    "bullet penetration": "BulletPenetrations",
+    "move speed": "MoveSpeed",
+    "movement speed": "MoveSpeed",
+    "crit chance": "CritChance",
+    "critical chance": "CritChance",
+    "loot chance": "LootChance",
+    "projectile count": "ProjectileCount",
+    "projectile amount": "ProjectileCount",
+    "jump power": "JumpPower",
+    "max durability": "MaxDurability",
+    "durability": "MaxDurability",
+    "ammo consume chance": "AmmoConsumeChance",
+    "move accuracy": "MoveAccuracy",
+    "accuracy while moving": "MoveAccuracy",
+    "fire rate": "RPM",
+    "rate of fire": "RPM",
+    "magazine size": "MagazineSize",
+    "mag size": "MagazineSize",
+    "weight": "Weight",
 }
 
 # Mapping from wiki infobox param names to special effect definitions.
@@ -102,6 +143,98 @@ def parse_oil_page(title: str, wikitext: str) -> Optional[Dict]:
     return result
 
 
+def _parse_description_modifiers(wikitext: str) -> List[Dict]:
+    """Parse modifier values from Description section bullet points.
+
+    Handles formats like:
+    - '''Damage: +25'''
+    - '''Bullet speed: -80%'''
+    - * '''Recoil: +15%'''
+
+    Returns list of modifier dicts.
+    """
+    section = extract_section(wikitext, "Description")
+    if not section:
+        return []
+
+    modifiers: List[Dict] = []
+    for line in section.split('\n'):
+        line = line.strip()
+        # Strip bullet markers and bold markup
+        line = line.lstrip('*\u2022\u00b7- ').strip()
+        line = re.sub(r"'''|''", '', line).strip()
+        if not line:
+            continue
+
+        # Match "Label: +/-value%" or "Label: +/-value"
+        m = re.match(r'^(.+?):\s*([+-]?\d+(?:\.\d+)?%?)$', line)
+        if not m:
+            continue
+
+        label = m.group(1).strip().lower()
+        raw_value = m.group(2).strip()
+
+        attribute = DESCRIPTION_LABEL_TO_ATTRIBUTE.get(label)
+        if attribute is None:
+            continue
+
+        mod_type, value = parse_modifier_value(raw_value)
+        modifiers.append({"attribute": attribute, "modType": mod_type, "value": value})
+
+    return modifiers
+
+
+def _parse_equip_or_enchant_infobox(wikitext: str) -> Optional[Dict[str, str]]:
+    """Parse an Equipment Infobox or Enchantment Infobox from wikitext.
+
+    Returns the infobox params dict, or None if not found.
+    """
+    for template in ('Equipment Infobox', 'Enchantment Infobox'):
+        pattern = r'\{\{' + re.escape(template) + r'(.*?)\}\}'
+        match = re.search(pattern, wikitext, re.DOTALL)
+        if match:
+            body = match.group(1)
+            result: Dict[str, str] = {}
+            for pm in re.finditer(r'\|\s*([\w\s]+?)\s*=\s*(.*?)(?=\n\s*\||\n\s*\}\}|$)', body, re.DOTALL):
+                key = pm.group(1).strip()
+                val = pm.group(2).strip()
+                if val:
+                    result[key] = val
+            return result
+    return None
+
+
+def parse_oil_from_equipment_infobox(title: str, wikitext: str) -> Optional[Dict]:
+    """Parse an oil from Equipment Infobox or Enchantment Infobox format.
+
+    These templates use Type=[[Oil]] and store modifiers in Description bullets.
+    """
+    params = _parse_equip_or_enchant_infobox(wikitext)
+    if params is None:
+        return None
+
+    raw_type = params.get('Type', '')
+    type_text = extract_wikilink_text(raw_type).lower().strip()
+    if type_text not in ('oil', 'oils'):
+        return None
+
+    modifiers = _parse_description_modifiers(wikitext)
+
+    # Normalize CritChance flat values: wiki sometimes writes "+10" meaning "+10%".
+    # Display code multiplies CritChance by 100, so values must be in 0-1 range.
+    for mod in modifiers:
+        if mod.get('attribute') == 'CritChance' and mod.get('modType') == 100 and mod.get('value', 0) > 1.0:
+            mod['value'] = mod['value'] / 100.0
+
+    result: Dict = {
+        "id": title.replace(" ", "_"),
+        "name": title,
+        "modifiers": modifiers,
+    }
+
+    return result
+
+
 def extract_enchantments(dump_path: str, output_path: str) -> List[Dict]:
     """Extract all oil/enchantment entries from a MediaWiki XML dump and write JSON.
 
@@ -115,11 +248,21 @@ def extract_enchantments(dump_path: str, output_path: str) -> List[Dict]:
     import json
 
     oils: List[Dict] = []
+    seen_names: set = set()
 
     for title, wikitext in iterate_pages(dump_path):
+        # Try Item Infobox (kind=oil) first
         oil = parse_oil_page(title, wikitext)
         if oil is not None:
             oils.append(oil)
+            seen_names.add(title)
+            continue
+
+        # Try Equipment/Enchantment Infobox with Type=Oil
+        oil = parse_oil_from_equipment_infobox(title, wikitext)
+        if oil is not None and title not in seen_names:
+            oils.append(oil)
+            seen_names.add(title)
 
     with open(output_path, "w", encoding="utf-8") as fh:
         json.dump(oils, fh, indent=2, ensure_ascii=False)

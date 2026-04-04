@@ -5,11 +5,11 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 20.0
+      "ADSCritChance": 0.2
     },
     "specialEffects": {},
     "description": "A firearm optic with an 4x zoom factor, designed to be effective both in close and long range engagements.",
-    "image": "/images/attachments/ScopeAssault.png"
+    "image": "/images/attachments/Assault_Scope.png"
   },
   {
     "id": "Holographic_Sight",
@@ -17,11 +17,11 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 10.0
+      "ADSCritChance": 0.1
     },
     "specialEffects": {},
     "description": "A compact collimator sight with an illuminated reticle for quicker target acquisition. Fits standard rails.",
-    "image": "/images/attachments/HolographicSight.png"
+    "image": "/images/attachments/Holographic_Sight.png"
   },
   {
     "id": "Holographic_Sight",
@@ -29,11 +29,11 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 20.0
+      "ADSCritChance": 0.2
     },
     "specialEffects": {},
     "description": "The Hunting Scope is a zoomed scope well-suited for ranged combat at medium to long distance.",
-    "image": "/images/attachments/HuntingScope.png"
+    "image": "/images/attachments/Holographic_Sight.png"
   },
   {
     "id": "Recon_Scope",
@@ -41,11 +41,11 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 10.0
+      "ADSCritChance": 0.1
     },
     "specialEffects": {},
     "description": "A long range means of communication with a 12x zoom factor, designed for use by snipers.",
-    "image": "/images/attachments/ReconScope.png"
+    "image": "/images/attachments/Recon_Scope.png"
   },
   {
     "id": "Reflex_Sight",
@@ -53,11 +53,11 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 15.0
+      "ADSCritChance": 0.15
     },
     "specialEffects": {},
     "description": "An open red dot sight that aids in target acquisition. Compatible with most guns.",
-    "image": "/images/attachments/ReflexSight.png"
+    "image": "/images/attachments/Reflex_Sight.png"
   },
   {
     "id": "Sniper_Scope",
@@ -65,10 +65,30 @@
     "type": "sight",
     "rarity": "Rare",
     "modifiers": {
-      "ADSCritChance": 30.0
+      "ADSCritChance": 0.3
     },
     "specialEffects": {},
     "description": "A long range means of communication with a 12x zoom factor, designed for use by snipers to deliver words of encouragement and love.",
-    "image": "/images/attachments/SniperScope.png"
+    "image": "/images/attachments/Sniper_Scope.png"
+  },
+  {
+    "name": "Compact Sight",
+    "type": "sight",
+    "rarity": "Common",
+    "description": "Compact reflex sight for close quarters",
+    "image": "/images/attachments/Compact_Sight.png",
+    "modifiers": {
+      "ADSCritChance": 0.2
+    }
+  },
+  {
+    "name": "Hunting Scope",
+    "type": "sight",
+    "rarity": "Rare",
+    "description": "Medium-range hunting optic",
+    "image": "/images/attachments/Hunting_Scope.png",
+    "modifiers": {
+      "ADSCritChance": 0.25
+    }
   }
 ]

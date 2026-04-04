@@ -2,11 +2,13 @@
 
 import html
 import json
+import re
 from typing import Dict, List, Optional
 
 from scripts.wiki_parser import (
     extract_bullet_points,
     extract_section,
+    extract_wikilink_text,
     iterate_pages,
     parse_infobox,
     parse_modifier_value,
@@ -159,6 +161,62 @@ def parse_scroll_page(title: str, wikitext: str) -> Optional[Dict]:
     return result
 
 
+def _parse_equip_or_enchant_infobox(wikitext: str) -> Optional[Dict[str, str]]:
+    """Parse an Equipment Infobox or Enchantment Infobox from wikitext."""
+    for template in ('Equipment Infobox', 'Enchantment Infobox'):
+        pattern = r'\{\{' + re.escape(template) + r'(.*?)\}\}'
+        match = re.search(pattern, wikitext, re.DOTALL)
+        if match:
+            body = match.group(1)
+            result: Dict[str, str] = {}
+            for pm in re.finditer(r'\|\s*([\w\s]+?)\s*=\s*(.*?)(?=\n\s*\||\n\s*\}\}|$)', body, re.DOTALL):
+                key = pm.group(1).strip()
+                val = pm.group(2).strip()
+                if val:
+                    result[key] = val
+            return result
+    return None
+
+
+def parse_scroll_from_equipment_infobox(title: str, wikitext: str) -> Optional[Dict]:
+    """Parse a scroll from Equipment Infobox or Enchantment Infobox format.
+
+    These templates use Type=[[Scroll Enchantment]] and store effects in Description.
+    """
+    params = _parse_equip_or_enchant_infobox(wikitext)
+    if params is None:
+        return None
+
+    raw_type = params.get('Type', '')
+    type_text = extract_wikilink_text(raw_type).lower().strip()
+    if 'scroll' not in type_text:
+        return None
+
+    # Extract effects from Description section
+    effects: List[str] = []
+    description_section = extract_section(wikitext, "Description")
+    if description_section:
+        effects = extract_bullet_points(description_section)
+        # If no bullet points, try to get the description text itself
+        if not effects:
+            for line in description_section.split('\n'):
+                line = line.strip()
+                if line and not line.startswith(('=', '{', '|', '!', '[[Category')):
+                    line = re.sub(r"'''|''", '', line)
+                    if line:
+                        effects.append(line)
+
+    result: Dict = {
+        "id": title.replace(" ", "_"),
+        "name": title,
+        "modifiers": [],
+        "specialEffects": {},
+        "effects": effects,
+    }
+
+    return result
+
+
 def extract_scrolls(dump_path: str, output_path: str) -> List[Dict]:
     """Extract all scroll entries from a MediaWiki XML dump and write JSON.
 
@@ -170,11 +228,21 @@ def extract_scrolls(dump_path: str, output_path: str) -> List[Dict]:
         List of parsed scroll dicts that were written to output_path.
     """
     scrolls: List[Dict] = []
+    seen_names: set = set()
 
     for title, wikitext in iterate_pages(dump_path):
+        # Try Item Infobox (kind=scroll) first
         scroll = parse_scroll_page(title, wikitext)
         if scroll is not None:
             scrolls.append(scroll)
+            seen_names.add(title)
+            continue
+
+        # Try Equipment/Enchantment Infobox with Type=Scroll Enchantment
+        scroll = parse_scroll_from_equipment_infobox(title, wikitext)
+        if scroll is not None and title not in seen_names:
+            scrolls.append(scroll)
+            seen_names.add(title)
 
     with open(output_path, "w", encoding="utf-8") as fh:
         json.dump(scrolls, fh, indent=2, ensure_ascii=False)
