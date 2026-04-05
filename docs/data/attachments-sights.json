@@ -5,23 +5,29 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 0.2
+      "ADSCritChance": {
+        "value": 0.2,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
     "description": "A firearm optic with an 4x zoom factor, designed to be effective both in close and long range engagements.",
     "image": "/images/attachments/Assault_Scope.png"
   },
   {
-    "id": "Holographic_Sight",
-    "name": "Holographic Sight",
+    "id": "Compact_Sight",
+    "name": "Compact Sight",
     "type": "sight",
-    "rarity": "Uncommon",
+    "rarity": "Common",
     "modifiers": {
-      "ADSCritChance": 0.1
+      "ADSCritChance": {
+        "value": 0.2,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
-    "description": "A compact collimator sight with an illuminated reticle for quicker target acquisition. Fits standard rails.",
-    "image": "/images/attachments/Holographic_Sight.png"
+    "description": "A small optic with an 2x zoom factor, designed to be effective in both close to medium range engagements.",
+    "image": "/images/attachments/Compact_Sight.png"
   },
   {
     "id": "Holographic_Sight",
@@ -29,11 +35,29 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 0.2
+      "ADSCritChance": {
+        "value": 0.1,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
-    "description": "The Hunting Scope is a zoomed scope well-suited for ranged combat at medium to long distance.",
+    "description": "A compact collimator sight with an illuminated reticle for quicker target acquisition. Fits standard rails.",
     "image": "/images/attachments/Holographic_Sight.png"
+  },
+  {
+    "id": "Hunting_Scope",
+    "name": "Hunting Scope",
+    "type": "sight",
+    "rarity": "Rare",
+    "modifiers": {
+      "ADSCritChance": {
+        "value": 0.25,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A firearm optic with an 8x zoom factor, favored for use by hunters.",
+    "image": "/images/attachments/Hunting_Scope.png"
   },
   {
     "id": "Recon_Scope",
@@ -41,10 +65,13 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 0.1
+      "ADSCritChance": {
+        "value": 0.1,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
-    "description": "A long range means of communication with a 12x zoom factor, designed for use by snipers.",
+    "description": "A long range rifle scope with a 12x zoom factor, designed for use by snipers.",
     "image": "/images/attachments/Recon_Scope.png"
   },
   {
@@ -53,7 +80,10 @@
     "type": "sight",
     "rarity": "Uncommon",
     "modifiers": {
-      "ADSCritChance": 0.15
+      "ADSCritChance": {
+        "value": 0.15,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
     "description": "An open red dot sight that aids in target acquisition. Compatible with most guns.",
@@ -65,30 +95,13 @@
     "type": "sight",
     "rarity": "Rare",
     "modifiers": {
-      "ADSCritChance": 0.3
+      "ADSCritChance": {
+        "value": 0.3,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
     "description": "A long range means of communication with a 12x zoom factor, designed for use by snipers to deliver words of encouragement and love.",
     "image": "/images/attachments/Sniper_Scope.png"
-  },
-  {
-    "name": "Compact Sight",
-    "type": "sight",
-    "rarity": "Common",
-    "description": "Compact reflex sight for close quarters",
-    "image": "/images/attachments/Compact_Sight.png",
-    "modifiers": {
-      "ADSCritChance": 0.2
-    }
-  },
-  {
-    "name": "Hunting Scope",
-    "type": "sight",
-    "rarity": "Rare",
-    "description": "Medium-range hunting optic",
-    "image": "/images/attachments/Hunting_Scope.png",
-    "modifiers": {
-      "ADSCritChance": 0.25
-    }
   }
 ]
