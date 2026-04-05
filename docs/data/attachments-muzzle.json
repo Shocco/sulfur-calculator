@@ -16,7 +16,16 @@
     "name": "Aftermarket Haukland Silencer",
     "type": "muzzle",
     "rarity": "Rare",
-    "modifiers": {},
+    "modifiers": {
+      "CritChance": {
+        "value": 0.25,
+        "type": "percent"
+      },
+      "RPM": {
+        "value": -0.15,
+        "type": "percent"
+      }
+    },
     "specialEffects": {
       "silencesFire": true
     },
@@ -30,7 +39,7 @@
     "rarity": "Common",
     "modifiers": {
       "Spread": -0.5,
-      "MoveSpeed": -5.0
+      "MoveSpeed": -0.05
     },
     "specialEffects": {},
     "description": "A 2\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
@@ -43,7 +52,7 @@
     "rarity": "Uncommon",
     "modifiers": {
       "Spread": -0.75,
-      "MoveSpeed": -7.0
+      "MoveSpeed": -0.07
     },
     "specialEffects": {},
     "description": "A 4\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
@@ -56,7 +65,7 @@
     "rarity": "Rare",
     "modifiers": {
       "Spread": -1.0,
-      "MoveSpeed": -10.0
+      "MoveSpeed": -0.1
     },
     "specialEffects": {},
     "description": "A 6\" multi-caliber, multi-threaded muzzle attachment designed to increase the length of a firearm barrel, thereby making any gun shoot more precisely.",
@@ -99,7 +108,9 @@
     "name": "Haukland Flash Hider",
     "type": "muzzle",
     "rarity": "Common",
-    "modifiers": {},
+    "modifiers": {
+      "Spread": -0.75
+    },
     "specialEffects": {},
     "description": "The historical Haukland best seller. A Haukland customer once famously won \"free Haukland Flash Hider for life\", and this largely contributed to the company's eventual bankruptcy.",
     "image": "/images/attachments/Haukland_Flash_Hider.png"
@@ -109,7 +120,9 @@
     "name": "Haukland Silencer",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "modifiers": {},
+    "modifiers": {
+      "Spread": -0.75
+    },
     "specialEffects": {
       "silencesFire": true
     },
@@ -122,7 +135,8 @@
     "type": "muzzle",
     "rarity": "Common",
     "modifiers": {
-      "Spread": -0.3
+      "Spread": -0.3,
+      "MoveSpeed": -0.03
     },
     "specialEffects": {},
     "description": "A compact collimator sight with an illuminated reticle for quicker target acquisition. Fits standard rails.",
@@ -133,7 +147,9 @@
     "name": "M87 \"Albatross\" Silencer",
     "type": "muzzle",
     "rarity": "Rare",
-    "modifiers": {},
+    "modifiers": {
+      "Spread": -0.25
+    },
     "specialEffects": {
       "silencesFire": true
     },
@@ -145,7 +161,9 @@
     "name": "SR-P3 Silencer",
     "type": "muzzle",
     "rarity": "Rare",
-    "modifiers": {},
+    "modifiers": {
+      "Spread": -0.75
+    },
     "specialEffects": {
       "silencesFire": true
     },
@@ -157,7 +175,9 @@
     "name": "Shrouded Barrel Extension",
     "type": "muzzle",
     "rarity": "Uncommon",
-    "modifiers": {},
+    "modifiers": {
+      "Spread": -0.75
+    },
     "specialEffects": {},
     "description": "A muzzle device designed to lower the recoil and spread of guns. Compatible with most barrels.",
     "image": "/images/attachments/Shrouded_Barrel_Extension.png"

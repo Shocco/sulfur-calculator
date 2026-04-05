@@ -17,6 +17,7 @@ from typing import Dict, List, Optional, Union
 from scripts.wiki_parser import (
     extract_section,
     extract_wikilink_text,
+    extract_wikilinks,
     iterate_pages,
     parse_infobox,
     parse_modifier_value,
@@ -127,6 +128,19 @@ EQUIP_STAT_MAP: Dict[str, str] = {
     "spread": "Spread",
     "move speed": "MoveSpeed",
     "recoil": "Recoil",
+}
+
+# Description bullet label -> attribute name (for Equipment Infobox description parsing)
+DESCRIPTION_LABEL_MAP: Dict[str, str] = {
+    "damage": "Damage",
+    "spread": "Spread",
+    "recoil": "Recoil",
+    "move speed": "MoveSpeed",
+    "movement speed": "MoveSpeed",
+    "move accuracy": "AccuracyWhileMoving",
+    "accuracy while moving": "AccuracyWhileMoving",
+    "ads crit chance": "ADSCritChance",
+    "crit chance": "CritChance",
 }
 
 # ---------------------------------------------------------------------------
@@ -285,63 +299,35 @@ def parse_attachment_page(title: str, wikitext: str) -> Optional[Dict]:
         return None
 
     # --- Modifiers ---
+    # Map from Item Infobox param name -> stat attribute name
+    ITEM_PARAM_MAP: Dict[str, str] = {
+        "Spread": "Spread",
+        "Recoil": "Recoil",
+        "Dmg": "Damage",
+        "RPM": "RPM",
+        "CritChance": "CritChance",
+        "CritADS": "ADSCritChance",
+        "Speed": "MoveSpeed",
+        "MoveAccuracy": "AccuracyWhileMoving",
+        "BltSpeed": "ProjectileSpeed",
+        "MaxDrb": "MaxDurability",
+    }
+
     modifiers: Dict[str, Union[float, Dict]] = {}
 
-    # Spread -> plain float
-    raw_spread = params.get("Spread", "")
-    if raw_spread:
+    for param, attr in ITEM_PARAM_MAP.items():
+        raw = params.get(param, "")
+        if not raw:
+            continue
+        raw = re.sub(r'<br\s*/?>', '', raw).strip()
         try:
-            modifiers["Spread"] = float(raw_spread)
+            mod_type, value = parse_modifier_value(raw)
+            if mod_type == 200:
+                modifiers[attr] = {"value": value, "type": "percent"}
+            else:
+                modifiers[attr] = value
         except ValueError:
             pass
-
-    # Speed -> MoveSpeed plain float
-    raw_speed = params.get("Speed", "")
-    if raw_speed:
-        try:
-            modifiers["MoveSpeed"] = float(raw_speed)
-        except ValueError:
-            pass
-
-    # CritADS -> ADSCritChance as fraction (wiki stores as "10%" or "<br>+20%")
-    raw_crit = params.get("CritADS", "")
-    if raw_crit:
-        cleaned = re.sub(r'<br\s*/?>', '', raw_crit).strip().lstrip('+')
-        is_pct = cleaned.endswith('%')
-        cleaned = cleaned.rstrip('%').strip()
-        try:
-            val = float(cleaned)
-            modifiers["ADSCritChance"] = val / 100.0 if is_pct else val
-        except ValueError:
-            pass
-
-    # MoveAccuracy -> AccuracyWhileMoving as fraction (wiki stores as "<br>+50%")
-    raw_move_acc = params.get("MoveAccuracy", "")
-    if raw_move_acc:
-        cleaned = re.sub(r'<br\s*/?>', '', raw_move_acc).strip().lstrip('+')
-        is_pct = cleaned.endswith('%')
-        cleaned = cleaned.rstrip('%').strip()
-        try:
-            val = float(cleaned)
-            modifiers["AccuracyWhileMoving"] = val / 100.0 if is_pct else val
-        except ValueError:
-            pass
-
-    # Dmg -> percent dict or plain float
-    raw_dmg = params.get("Dmg", "")
-    if raw_dmg:
-        dmg_stripped = raw_dmg.strip()
-        if "%" in dmg_stripped:
-            try:
-                pct_str = dmg_stripped.replace("%", "").strip()
-                modifiers["Dmg"] = {"value": float(pct_str), "type": "percent"}
-            except ValueError:
-                pass
-        else:
-            try:
-                modifiers["Dmg"] = float(dmg_stripped)
-            except ValueError:
-                pass
 
     # --- Special effects ---
     special_effects: Dict = {}
@@ -400,10 +386,14 @@ def parse_equipment_attachment(title: str, wikitext: str) -> List[Dict]:
     results = []
 
     for info in infoboxes:
-        # Determine slot from Type field
+        # Determine slot from Type field — try all wikilinks, prefer most specific
         raw_type = info.get('Type', '')
-        type_text = extract_wikilink_text(raw_type).lower().strip()
-        slot = EQUIP_TYPE_TO_SLOT.get(type_text)
+        slot = None
+        for link_text in extract_wikilinks(raw_type):
+            candidate = EQUIP_TYPE_TO_SLOT.get(link_text.lower().strip())
+            if candidate is not None:
+                slot = candidate
+                # Keep going — a later more-specific link may override
         if slot is None:
             continue
 
@@ -438,18 +428,34 @@ def parse_equipment_attachment(title: str, wikitext: str) -> List[Dict]:
             stat_name = stat_key[5:].lower()
             attr = EQUIP_STAT_MAP.get(stat_name)
             if attr and attr not in modifiers:
-                body_val = body_val.strip()
-                if '%' in body_val:
-                    pct_str = body_val.replace('%', '').strip()
-                    try:
-                        modifiers[attr] = float(pct_str)
-                    except ValueError:
-                        pass
+                try:
+                    mod_type, value = parse_modifier_value(body_val.strip().lstrip('+'))
+                    if mod_type == 200:
+                        modifiers[attr] = {'value': value, 'type': 'percent'}
+                    else:
+                        modifiers[attr] = value
+                except ValueError:
+                    pass
+
+        # Modifiers from Description section bullet points (e.g. "Damage: +10%")
+        desc_section = extract_section(wikitext, 'Description') or ''
+        for line in desc_section.splitlines():
+            line = line.strip().lstrip('*•').strip().strip("'")
+            m = re.match(r'^([^:]+):\s*(.+)$', line)
+            if not m:
+                continue
+            label = m.group(1).strip().lower().strip("'")
+            raw_val = m.group(2).strip().strip("'")
+            attr = DESCRIPTION_LABEL_MAP.get(label)
+            if attr and attr not in modifiers:
+                mod_type, value = parse_modifier_value(raw_val)
+                if attr in ('ADSCritChance', 'CritChance') and mod_type == 100 and value > 1.0:
+                    modifiers[attr] = value / 100.0
+                elif mod_type == 200:
+                    # PercentAdd: store as {value, type: 'percent'} for calculator
+                    modifiers[attr] = {'value': value, 'type': 'percent'}
                 else:
-                    try:
-                        modifiers[attr] = float(body_val)
-                    except ValueError:
-                        pass
+                    modifiers[attr] = value
 
         # Special effects
         special_effects: Dict = {}

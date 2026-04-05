@@ -3,7 +3,10 @@
     "id": "Scroll_of_Aftershock",
     "name": "Scroll of Aftershock",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "StunArea": "🜃",
+      "Proc": "10%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -14,9 +17,11 @@
     "id": "Scroll_of_Chain_Lightning",
     "name": "Scroll of Chain Lightning",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Electrocution": "Spreading",
+      "Proc": "35%"
+    },
     "effects": [
-      "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Adds a chance of spawning a bolt that electrocutes and spreads to nearby enemies."
     ]
@@ -29,24 +34,30 @@
         "attribute": "BulletSize",
         "modType": 200,
         "value": 1.0
-      },
-      {
-        "attribute": "Damage",
-        "modType": 100,
-        "value": 50.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "Stun": "✓",
+      "Swap": "<br>✓",
+      "bypassPercentages": true,
+      "BltSize": "+100%"
+    },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Dark Damage +50",
+      "Chance to increase dark damage up to 800%",
+      "Chance to stun target",
+      "Swap places with target",
+      "Bigger Bullets"
     ]
   },
   {
     "id": "Scroll_of_Charm",
     "name": "Scroll of Charm",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Charm": "♡",
+      "Proc": "3%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -58,19 +69,19 @@
     "name": "Scroll of Corpse Explosion",
     "modifiers": [],
     "specialEffects": {
-      "CrpsExpl": "<br>+1",
-      "DrbConsume": "<br>+200%"
+      "CrpsExpl": "<br>+1"
     },
     "effects": [
-      "Increase corpse explosion power per hit",
-      "Durability loss: +200%"
+      "Increase corpse explosion power per hit"
     ]
   },
   {
     "id": "Scroll_of_Crusader",
     "name": "Scroll of Crusader",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "MoreDmgOnHit": "<br>+5%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -87,7 +98,9 @@
         "value": -0.8
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "Blind": "🝯"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -98,7 +111,10 @@
     "id": "Scroll_of_Earth",
     "name": "Scroll of Earth",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Stun": "🜃",
+      "Proc": "20%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -109,7 +125,10 @@
     "id": "Scroll_of_Embers",
     "name": "Scroll of Embers",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Fire": "🜂",
+      "Proc": "20%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -126,7 +145,9 @@
         "value": 25.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "Explosion": "¤"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -137,7 +158,10 @@
     "id": "Scroll_of_Fear",
     "name": "Scroll of Fear",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Fear": "✓",
+      "Proc": "20%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -174,18 +198,30 @@
         "value": 0.2
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "ConvertWpn": "Flamethrower",
+      "LifeTime": "0.8 seconds",
+      "LessForceSpd": "🜂",
+      "Drag": "8"
+    },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Increases damage on target for every bullet hit."
+      "Spread +150%",
+      "Bullet speed -70%",
+      "More drag",
+      "Less force speed",
+      "Damage -86%",
+      "Converts into Flamethrower",
+      "More life time",
+      "Bullets bounce +1"
     ]
   },
   {
     "id": "Scroll_of_Frostbite",
     "name": "Scroll of Frostbite",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Frost": "❆"
+    },
     "effects": [
       "Elemental enchantment.",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -202,7 +238,10 @@
         "value": -0.5
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "ConvertWpn": "Railgun",
+      "PenDmgMult": "<br>+50%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it."
@@ -212,10 +251,19 @@
     "id": "Scroll_of_Holy_Purge",
     "name": "Scroll of Holy Purge",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "ConvertWpn": "Area Burst around Player",
+      "AreaBlind": "<br>☼",
+      "SelfBlind": "☼",
+      "SelfDmg": "<br>10",
+      "WpnAreaDmg": "<br>10%",
+      "DrbConsume": "<br>+250%"
+    },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Weapon-based area damage: +10%",
+      "Blinds surrounding enemies as well as yourself",
+      "Durability Loss +250%",
+      "Do self damage on each bullet -10"
     ]
   },
   {
@@ -228,7 +276,9 @@
         "value": 25.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "Lava": "🝦"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -247,7 +297,7 @@
       }
     ],
     "specialEffects": {
-      "Homing": "✓",
+      "Homing": "↝",
       "DrbConsume": "<br>+200%"
     },
     "effects": [
@@ -266,7 +316,10 @@
         "value": -0.5
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "ConvertWpn": "Railgun",
+      "PenDmgMult": "<br>-50%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -275,10 +328,22 @@
     ]
   },
   {
+    "id": "Scroll_of_Nature",
+    "name": "Scroll of Nature",
+    "modifiers": [],
+    "specialEffects": {
+      "Root": "🙒",
+      "Proc": "40%"
+    },
+    "effects": []
+  },
+  {
     "id": "Scroll_of_Noxiosa",
     "name": "Scroll of Noxiosa",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "PsnCloud": "🝤"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -315,10 +380,21 @@
         "value": 0.2
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "ConvertWpn": "Poison Sprayer",
+      "LifeTime": "0.8 seconds",
+      "LessForceSpd": "🝤",
+      "Drag": "8"
+    },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Spread +150%",
+      "Bullet speed -70%",
+      "More drag",
+      "Less force speed",
+      "Damage -86%",
+      "Converts into poison sprayer",
+      "More life time",
+      "Bullets bounce +1"
     ]
   },
   {
@@ -326,7 +402,8 @@
     "name": "Scroll of Petrification",
     "modifiers": [],
     "specialEffects": {
-      "Petrify": "✓"
+      "Petrify": "🝁",
+      "Proc": "5%"
     },
     "effects": []
   },
@@ -340,7 +417,10 @@
         "value": 25.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "Oily": "🝆",
+      "OilPuddle": "🝆"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it."
@@ -350,7 +430,10 @@
     "id": "Scroll_of_Plague",
     "name": "Scroll of Plague",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Poison": "🝤",
+      "Proc": "25%"
+    },
     "effects": [
       "Elemental enchantment.",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -361,7 +444,9 @@
     "id": "Scroll_of_Poison_Blood",
     "name": "Scroll of Poison Blood",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "PsnPuddle": "🝤"
+    },
     "effects": [
       "NO DESCRIPTION??? POSSIBLE BUG? REPORTED****"
     ]
@@ -370,7 +455,14 @@
     "id": "Scroll_of_Prism",
     "name": "Scroll of Prism",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Poison": "🝤",
+      "Wet": "🜄",
+      "Fire": "🜂",
+      "Electrocution": "↯",
+      "Frost": "❆",
+      "Proc": "20%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it."
@@ -386,7 +478,10 @@
         "value": 10.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "RocketBlt": "<br>🠶",
+      "Explosion": "¤"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -404,7 +499,9 @@
         "value": 1.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "SelfDmg": "<br>5%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it."
@@ -420,7 +517,9 @@
         "value": 40.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "FrostPuddle": "❆"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -439,7 +538,9 @@
         "value": 25.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "ElecArea": "☈"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -450,7 +551,10 @@
     "id": "Scroll_of_Surge",
     "name": "Scroll of Surge",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "Electrocution": "↯",
+      "Proc": "15%"
+    },
     "effects": [
       "Elemental enchantment.",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
@@ -464,17 +568,17 @@
       {
         "attribute": "RPM",
         "modType": 200,
-        "value": -0.8
+        "value": -0.5
       }
     ],
     "specialEffects": {
       "ConvertWpn": "Railgun",
-      "Electrocution": "✓"
+      "Electrocution": "☈"
     },
     "effects": [
       "Railgun",
       "Electrocutes targets",
-      "RPM: -80%"
+      "RPM: -50%"
     ]
   },
   {
@@ -487,35 +591,32 @@
         "value": 3.0
       }
     ],
-    "specialEffects": {},
+    "specialEffects": {
+      "ConvertWpn": "Railgun",
+      "AlwaysOrgans": "🜊",
+      "DrbConsume": "<br>+350%"
+    },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Headshot damage +300%",
       "Always drop organs on hit",
-      "Durability Loss +25"
+      "Durability Loss +350%",
+      "Railgun"
     ]
   },
   {
     "id": "Scroll_of_Voodoo",
     "name": "Scroll of Voodoo",
     "modifiers": [],
-    "specialEffects": {},
+    "specialEffects": {
+      "LinkBlt": "☌",
+      "ShareDmg": "100%"
+    },
     "effects": [
       "Elemental enchantment",
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Bullets link targets together.",
       "Linked targets share a percentage of their damage taken."
     ]
-  },
-  {
-    "id": "Scroll_of_Nature",
-    "name": "Scroll of Nature",
-    "modifiers": [],
-    "specialEffects": {
-      "Proc": "40%",
-      "Root": "🙒"
-    }
   },
   {
     "id": "Scroll_of_Water",

@@ -1943,11 +1943,6 @@
     ]
   },
   {
-    "id": "Overclock_oil",
-    "name": "Overclock oil",
-    "modifiers": []
-  },
-  {
     "id": "Overdose_Oil",
     "name": "Overdose Oil",
     "modifiers": [
@@ -2373,11 +2368,6 @@
     "effects": [
       "No organ drops"
     ]
-  },
-  {
-    "id": "Scroll_of_Water",
-    "name": "Scroll of Water",
-    "modifiers": []
   },
   {
     "id": "Seated_Oil",
@@ -3013,11 +3003,6 @@
     ]
   },
   {
-    "id": "Triple_Oil_(DEMO)",
-    "name": "Triple Oil (DEMO)",
-    "modifiers": []
-  },
-  {
     "id": "Trusty_Old_Oil",
     "name": "Trusty Old Oil",
     "modifiers": [
@@ -3464,22 +3449,6 @@
         "attribute": "BulletBounces",
         "modType": 100,
         "value": 2.0
-      }
-    ]
-  },
-  {
-    "id": "Satiety_Oil",
-    "name": "Satiety Oil",
-    "modifiers": [
-      {
-        "attribute": "ReloadSpeed",
-        "modType": 200,
-        "value": -0.6
-      },
-      {
-        "attribute": "AmmoConsumeChance",
-        "modType": 200,
-        "value": -0.3
       }
     ]
   },

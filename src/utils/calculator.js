@@ -20,11 +20,11 @@ function applyCaliberConversion(weaponStats, caliber, caliberModifiers, weapon) 
 
   // Calculate weapon's damage multiplier from current ammo type
   const currentAmmoType = weapon.ammoType
-  const currentBaseDamage = baseAmmoDamage[currentAmmoType]
+  const currentBaseDamage = baseAmmoDamage[currentAmmoType] ?? caliberModifiers.calibers[currentAmmoType]?.Damage
   const weaponMultiplier = currentBaseDamage ? weaponStats.Damage / currentBaseDamage : 1
 
   // Apply multiplier to new ammo type's base damage
-  const newBaseDamage = baseAmmoDamage[caliber]
+  const newBaseDamage = baseAmmoDamage[caliber] ?? newCaliberStats.Damage
   const newDamage = newBaseDamage * weaponMultiplier
 
   return {

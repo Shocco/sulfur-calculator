@@ -72,14 +72,14 @@ export default function AttachmentSelector({
   const getFilteredAttachments = (type) => {
     const attachments = attachmentsByType[type] || []
 
-    // If weapon has specific attachment restrictions, use them
     if (selectedWeapon?.specificAttachments && selectedWeapon.specificAttachments.length > 0) {
-      return attachments.filter(attachment =>
+      const typeSpecific = attachments.filter(attachment =>
         selectedWeapon.specificAttachments.includes(attachment.name)
       )
+      // Only restrict if some specificAttachments actually belong to this slot type
+      if (typeSpecific.length > 0) return typeSpecific
     }
 
-    // Otherwise, show all attachments of this type (fallback)
     return attachments
   }
 

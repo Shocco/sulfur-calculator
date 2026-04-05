@@ -5,7 +5,10 @@
     "type": "laser",
     "rarity": "Uncommon",
     "modifiers": {
-      "AccuracyWhileMoving": 0.5
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
     "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits green light.",
@@ -17,7 +20,10 @@
     "type": "laser",
     "rarity": "Common",
     "modifiers": {
-      "AccuracyWhileMoving": 0.5
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
     "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits redlight.",
@@ -29,7 +35,10 @@
     "type": "laser",
     "rarity": "Rare",
     "modifiers": {
-      "AccuracyWhileMoving": 0.5
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
     },
     "specialEffects": {},
     "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits yellow light.",

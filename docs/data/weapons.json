@@ -16,7 +16,7 @@
       "Weight": 16.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
-      "ProjectileCount": 1.0
+      "ProjectileCount": 8.0
     },
     "allowedAttachments": [
       "chamber",
@@ -536,7 +536,7 @@
       "Weight": 8.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
-      "ProjectileCount": 1.0
+      "ProjectileCount": 8.0
     },
     "allowedAttachments": [
       "muzzle",
@@ -578,28 +578,6 @@
       "Warmage Compensator",
       "Insurance"
     ]
-  },
-  {
-    "id": "Weapon_Guard_Dog",
-    "name": "Guard Dog",
-    "type": "",
-    "ammoType": "",
-    "image": "Dog.png",
-    "baseStats": {
-      "Damage": 0.0,
-      "RPM": 0.0,
-      "MagazineSize": 0.0,
-      "Spread": 0.0,
-      "Recoil": 0.0,
-      "Durability": 0.0,
-      "MaxDurability": 0.0,
-      "Weight": 0.0,
-      "ProjectileSpeed": 100.0,
-      "MoveSpeed": 1.0,
-      "ProjectileCount": 1.0
-    },
-    "allowedAttachments": [],
-    "specificAttachments": []
   },
   {
     "id": "Weapon_Hell_'N'_Back",

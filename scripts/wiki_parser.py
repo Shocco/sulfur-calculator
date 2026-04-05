@@ -39,7 +39,19 @@ def iterate_pages(dump_path: str, namespace: str = 'http://www.mediawiki.org/xml
             elem.clear()
             continue
 
-        yield title, text_elem.text
+        text = text_elem.text
+
+        # Skip redirect pages
+        if text.lstrip().startswith('#REDIRECT') or text.lstrip().startswith('#redirect'):
+            elem.clear()
+            continue
+
+        # Skip cut/removed content pages
+        if 'Removed Content' in text or 'Category:Cut Content' in text:
+            elem.clear()
+            continue
+
+        yield title, text
         elem.clear()
 
 
@@ -80,8 +92,13 @@ def parse_infobox(wikitext: str) -> Dict[str, str]:
     Extract key-value pairs from a {{Item Infobox ...}} template.
 
     Returns dict of param_name -> raw_value (strings, not yet parsed).
+    Handles unclosed templates (missing closing }}) by parsing to end of string.
     """
     match = re.search(r'\{\{Item Infobox(.*?)\}\}', wikitext, re.DOTALL)
+    if match:
+        return _parse_infobox_body(match.group(1))
+    # Fallback: try unclosed template (parse from opening to end of string)
+    match = re.search(r'\{\{Item Infobox(.*)', wikitext, re.DOTALL)
     if not match:
         return {}
     return _parse_infobox_body(match.group(1))
@@ -107,6 +124,8 @@ def parse_modifier_value(raw: str) -> Tuple[int, float]:
     - "+15" or "-15" or "0.3" or "-0.75" -> (100, value)  [Flat]
     """
     raw = raw.strip()
+    # Strip HTML entities and footnote markers (e.g. &dagger;, &ast;)
+    raw = re.sub(r'&[a-zA-Z]+;', '', raw).strip()
 
     if raw.endswith('%'):
         # PercentAdd
@@ -127,8 +146,9 @@ def parse_damage_field(raw: str) -> Tuple[float, int]:
     "40x8" or "40&times;8" -> (40.0, 8)
     """
     raw = raw.replace('&times;', '\u00d7')
-    if '\u00d7' in raw:
-        parts = raw.split('\u00d7')
+    sep = '\u00d7' if '\u00d7' in raw else ('x' if re.search(r'\d+x\d+', raw) else None)
+    if sep:
+        parts = raw.split(sep, 1)
         count_str = re.match(r'\d+', parts[1].strip())
         return (float(parts[0].strip()), int(count_str.group()) if count_str else 1)
     # Strip trailing non-numeric chars
