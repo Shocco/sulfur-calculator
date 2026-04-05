@@ -40,17 +40,18 @@ function App() {
   // Load data on mount
   useEffect(() => {
     const baseUrl = import.meta.env.BASE_URL
+    const v = __BUILD_TIME__
     Promise.all([
-      fetch(`${baseUrl}data/weapons.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/enchantments.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/scrolls.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/attachments-muzzle.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/attachments-sights.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/attachments-lasers.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/attachments-chamber.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/attachments-chisels.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/attachments-insurance.json`).then(r => r.json()),
-      fetch(`${baseUrl}data/caliber-modifiers.json`).then(r => r.json())
+      fetch(`${baseUrl}data/weapons.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/enchantments.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/scrolls.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/attachments-muzzle.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/attachments-sights.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/attachments-lasers.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/attachments-chamber.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/attachments-chisels.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/attachments-insurance.json?v=${v}`).then(r => r.json()),
+      fetch(`${baseUrl}data/caliber-modifiers.json?v=${v}`).then(r => r.json())
     ]).then(([
       weaponData,
       oilsData,
