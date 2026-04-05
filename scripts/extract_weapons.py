@@ -218,6 +218,10 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
             attachments_section
         )
 
+    # Insurance is available on all weapons regardless of wiki listing
+    if 'insurance' not in allowed_attachments:
+        allowed_attachments.append('insurance')
+
     return {
         "id": weapon_id,
         "name": name,
