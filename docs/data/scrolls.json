@@ -14,6 +14,37 @@
     ]
   },
   {
+    "id": "Scroll_of_Beam",
+    "name": "Scroll of Beam",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": 9.0
+      },
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.9
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {
+      "ConvertWpn": "Beam Gun"
+    },
+    "effects": [
+      "Turns the weapon into a Beam Gun, which will drain ammo while doing damage continuously to the target.",
+      "RPM: +900%",
+      "Damage: -90%",
+      "Recoil: -70%",
+      "Spread: +100%"
+    ]
+  },
+  {
     "id": "Scroll_of_Chain_Lightning",
     "name": "Scroll of Chain Lightning",
     "modifiers": [],
@@ -43,11 +74,11 @@
       "BltSize": "+100%"
     },
     "effects": [
+      "Chance to increase dark damage up to 300%",
       "Dark Damage +50",
-      "Chance to increase dark damage up to 800%",
       "Chance to stun target",
       "Swap places with target",
-      "Bigger Bullets"
+      "Bullet size: +1"
     ]
   },
   {
@@ -87,6 +118,23 @@
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Increases damage on target for evry bullet hit."
     ]
+  },
+  {
+    "id": "Scroll_of_Cryo_Rockets",
+    "name": "Scroll of Cryo Rockets",
+    "modifiers": [],
+    "specialEffects": {
+      "RocketBlt": "<br>🠶",
+      "Frost": "❆"
+    },
+    "effects": []
+  },
+  {
+    "id": "Scroll_of_Cryo_Snakes",
+    "name": "Scroll of Cryo Snakes",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": []
   },
   {
     "id": "Scroll_of_Dark",
@@ -134,6 +182,13 @@
       "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Chance to set target on fire"
     ]
+  },
+  {
+    "id": "Scroll_of_Evil_Seed",
+    "name": "Scroll of Evil Seed",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": []
   },
   {
     "id": "Scroll_of_Explosions",
@@ -208,12 +263,20 @@
       "Spread +150%",
       "Bullet speed -70%",
       "More drag",
-      "Less force speed",
+      "Bullet Velocity: -60%",
       "Damage -86%",
       "Converts into Flamethrower",
-      "More life time",
       "Bullets bounce +1"
     ]
+  },
+  {
+    "id": "Scroll_of_Foul_Fate",
+    "name": "Scroll of Foul Fate",
+    "modifiers": [],
+    "specialEffects": {
+      "DrbConsume": "+1"
+    },
+    "effects": []
   },
   {
     "id": "Scroll_of_Frostbite",
@@ -235,7 +298,7 @@
       {
         "attribute": "RPM",
         "modType": 200,
-        "value": -0.5
+        "value": -0.25
       }
     ],
     "specialEffects": {
@@ -256,14 +319,55 @@
       "AreaBlind": "<br>☼",
       "SelfBlind": "☼",
       "SelfDmg": "<br>10",
-      "WpnAreaDmg": "<br>10%",
-      "DrbConsume": "<br>+250%"
+      "WpnAreaDmg": "<br>25%"
     },
     "effects": [
       "Weapon-based area damage: +10%",
       "Blinds surrounding enemies as well as yourself",
       "Durability Loss +250%",
       "Do self damage on each bullet -10"
+    ]
+  },
+  {
+    "id": "Scroll_of_Holy_Water",
+    "name": "Scroll of Holy Water",
+    "modifiers": [],
+    "specialEffects": {
+      "Wet": "🜄"
+    },
+    "effects": []
+  },
+  {
+    "id": "Scroll_of_Ice_Beam",
+    "name": "Scroll of Ice Beam",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": 9.0
+      },
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.9
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 2.0
+      }
+    ],
+    "specialEffects": {
+      "Frost": "❆",
+      "ConvertWpn": "Ice Beam Gun"
+    },
+    "effects": [
+      "Railgun",
+      "RPM: +900%",
+      "Damage: -90%",
+      "Freeze target",
+      "Recoil: -70%",
+      "Spread: +200%"
     ]
   },
   {
@@ -298,7 +402,7 @@
     ],
     "specialEffects": {
       "Homing": "↝",
-      "DrbConsume": "<br>+200%"
+      "DrbConsume": "+200%"
     },
     "effects": [
       "Homing bullets",
@@ -313,7 +417,7 @@
       {
         "attribute": "RPM",
         "modType": 200,
-        "value": -0.5
+        "value": -0.25
       }
     ],
     "specialEffects": {
@@ -326,6 +430,91 @@
       "Rail gun",
       "Bullets penetrate +999"
     ]
+  },
+  {
+    "id": "Scroll_of_Mega_Soaker",
+    "name": "Scroll of Mega Soaker",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": 9.0
+      },
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.99
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 2.0
+      }
+    ],
+    "specialEffects": {
+      "Wet": "🜄",
+      "ConvertWpn": "Mega Soaker"
+    },
+    "effects": [
+      "Turns the weapon into a Beam Gun, which will drain ammo while doing damage continuously to the target.",
+      "Railgun",
+      "RPM: +900%",
+      "Damage: -99%",
+      "Spread: +200%",
+      "Recoil: -70%",
+      "Makes target wet",
+      "Ammo consume chance: -200%",
+      "Knockback: +10"
+    ]
+  },
+  {
+    "id": "Scroll_of_Metamorph",
+    "name": "Scroll of Metamorph",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.9
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Bullets have a chance to metamorph the target into another unit... or item.",
+      "Damage: -90%"
+    ]
+  },
+  {
+    "id": "Scroll_of_Mud_Ball",
+    "name": "Scroll of Mud Ball",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.95
+      },
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.25
+      },
+      {
+        "attribute": "BulletBounces",
+        "modType": 100,
+        "value": 1.0
+      },
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 40.0
+      }
+    ],
+    "specialEffects": {},
+    "effects": []
   },
   {
     "id": "Scroll_of_Nature",
@@ -390,10 +579,9 @@
       "Spread +150%",
       "Bullet speed -70%",
       "More drag",
-      "Less force speed",
+      "Muzzle Velocity: -60%",
       "Damage -86%",
       "Converts into poison sprayer",
-      "More life time",
       "Bullets bounce +1"
     ]
   },
@@ -403,7 +591,7 @@
     "modifiers": [],
     "specialEffects": {
       "Petrify": "🝁",
-      "Proc": "5%"
+      "Proc": "10%"
     },
     "effects": []
   },
@@ -452,6 +640,17 @@
     ]
   },
   {
+    "id": "Scroll_of_Pollen",
+    "name": "Scroll of Pollen",
+    "modifiers": [],
+    "specialEffects": {
+      "PsnPuddle": "🝤",
+      "Fear": "✓",
+      "DrbConsume": "+1"
+    },
+    "effects": []
+  },
+  {
     "id": "Scroll_of_Prism",
     "name": "Scroll of Prism",
     "modifiers": [],
@@ -488,6 +687,15 @@
       "More bullet drop",
       "Bullets become rockets that explode on impact"
     ]
+  },
+  {
+    "id": "Scroll_of_Sacred_Ground",
+    "name": "Scroll of Sacred Ground",
+    "modifiers": [],
+    "specialEffects": {
+      "DrbConsume": "+1"
+    },
+    "effects": []
   },
   {
     "id": "Scroll_of_Sacrifice",
@@ -529,6 +737,68 @@
     ]
   },
   {
+    "id": "Scroll_of_Snowman_Head",
+    "name": "Scroll of Snowman Head",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.5
+      },
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.6
+      }
+    ],
+    "specialEffects": {
+      "Frost": "❆"
+    },
+    "effects": []
+  },
+  {
+    "id": "Scroll_of_Steam",
+    "name": "Scroll of Steam",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -1.0
+      },
+      {
+        "attribute": "Spread",
+        "modType": 200,
+        "value": 5.0
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
+        "attribute": "BulletBounces",
+        "modType": 100,
+        "value": 1.0
+      }
+    ],
+    "specialEffects": {
+      "ConvertWpn": "Steam Sprayer",
+      "DrbConsume": "+200%"
+    },
+    "effects": [
+      "Converts gun into a steam sprayer that does Knockback.",
+      "More drag",
+      "Knockback: +1",
+      "Bullet bounces: +1",
+      "Spread: +500%",
+      "Damage: -100%",
+      "Ammo consume chance: -100%",
+      "Bullet speed: -70%",
+      "Muzzle Velocity: -70%",
+      "Durability loss: +200%"
+    ]
+  },
+  {
     "id": "Scroll_of_Storm_Surge",
     "name": "Scroll of Storm Surge",
     "modifiers": [
@@ -562,6 +832,13 @@
     ]
   },
   {
+    "id": "Scroll_of_Teslacold",
+    "name": "Scroll of Teslacold",
+    "modifiers": [],
+    "specialEffects": {},
+    "effects": []
+  },
+  {
     "id": "Scroll_of_Thunderbolt",
     "name": "Scroll of Thunderbolt",
     "modifiers": [
@@ -582,6 +859,25 @@
     ]
   },
   {
+    "id": "Scroll_of_Titanic",
+    "name": "Scroll of Titanic",
+    "modifiers": [
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
+    "specialEffects": {
+      "Frost": "❆"
+    },
+    "effects": [
+      "Bullets have a chance to summon bodies of water that allow swimming. Enemies inside will be considered underwater, become wet and cold... Brrrrr.",
+      "Freezes target",
+      "RPM: -50%"
+    ]
+  },
+  {
     "id": "Scroll_of_Toxic_Lobotomy",
     "name": "Scroll of Toxic Lobotomy",
     "modifiers": [
@@ -594,13 +890,29 @@
     "specialEffects": {
       "ConvertWpn": "Railgun",
       "AlwaysOrgans": "🜊",
-      "DrbConsume": "<br>+350%"
+      "DrbConsume": "+350%"
     },
     "effects": [
       "Headshot damage +300%",
       "Always drop organs on hit",
       "Durability Loss +350%",
       "Railgun"
+    ]
+  },
+  {
+    "id": "Scroll_of_Vinesprout",
+    "name": "Scroll of Vinesprout",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
+    "specialEffects": {},
+    "effects": [
+      "Bullets spawn a vine on terrain that slows enemies. Direct hits roots enemies.",
+      "Damage: -50%"
     ]
   },
   {
@@ -639,5 +951,41 @@
     "effects": [
       "Wet 🜄"
     ]
+  },
+  {
+    "id": "Scroll_of_Water_Bomb",
+    "name": "Scroll of Water Bomb",
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.99
+      },
+      {
+        "attribute": "RPM",
+        "modType": 200,
+        "value": -0.5
+      },
+      {
+        "attribute": "BulletSize",
+        "modType": 200,
+        "value": 1.0
+      },
+      {
+        "attribute": "BulletDrop",
+        "modType": 100,
+        "value": 20.0
+      },
+      {
+        "attribute": "BulletSpeed",
+        "modType": 200,
+        "value": -0.25
+      }
+    ],
+    "specialEffects": {
+      "Wet": "🜄",
+      "BltSize": "+100%"
+    },
+    "effects": []
   }
 ]

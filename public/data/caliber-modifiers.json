@@ -8,34 +8,34 @@
   },
   "calibers": {
     "9mm": {
-      "Damage": 96.0,
+      "Damage": 120.0,
       "Spread": 2.0,
       "Recoil": 5.0,
       "ProjectileCount": 1
     },
     "5.56mm": {
-      "Damage": 128.0,
+      "Damage": 160.0,
       "Spread": 2.0,
       "Recoil": 10.0,
       "ProjectileCount": 1
     },
     "7.62mm": {
-      "Damage": 160.0,
+      "Damage": 200.0,
       "Spread": 2.0,
       "Recoil": 20.0,
       "ProjectileCount": 1
     },
     ".50 BMG": {
-      "Damage": 320.0,
+      "Damage": 400.0,
       "Spread": 2.0,
       "Recoil": 30.0,
       "ProjectileCount": 1
     },
     "12Ga": {
-      "Damage": 32.0,
+      "Damage": 40.0,
       "Spread": 5.0,
       "Recoil": 25.0,
-      "ProjectileCount": 1
+      "ProjectileCount": 8
     }
   }
 }

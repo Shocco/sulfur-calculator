@@ -1,5 +1,54 @@
 [
   {
+    "id": "Laser_Sight_(Bone)",
+    "name": "Laser Sight (Bone)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits bone light.",
+    "image": "/images/attachments/Laser_Sight_(Bone).png"
+  },
+  {
+    "id": "Laser_Sight_(Denim_Blue)",
+    "name": "Laser Sight (Denim Blue)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits denim blue light.",
+    "image": "/images/attachments/Laser_Sight_(Denim_Blue).png"
+  },
+  {
+    "id": "Laser_Sight_(Gold)",
+    "name": "Laser Sight (Gold)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "CritChance": {
+        "value": 0.2,
+        "type": "percent"
+      },
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits Gold light.",
+    "image": "/images/attachments/Laser_Sight_(Gold).png"
+  },
+  {
     "id": "Laser_Sight_(Green)",
     "name": "Laser Sight (Green)",
     "type": "laser",
@@ -15,6 +64,96 @@
     "image": "/images/attachments/Laser_Sight_(Green).png"
   },
   {
+    "id": "Laser_Sight_(Light_Blue)",
+    "name": "Laser Sight (Light Blue)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits light blue light.",
+    "image": "/images/attachments/Laser_Sight_(Light_Blue).png"
+  },
+  {
+    "id": "Laser_Sight_(Lime)",
+    "name": "Laser Sight (Lime)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits lime light.",
+    "image": "/images/attachments/Laser_Sight_(Lime).png"
+  },
+  {
+    "id": "Laser_Sight_(Magenta)",
+    "name": "Laser Sight (Magenta)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits magenta light.",
+    "image": "/images/attachments/Laser_Sight_(Magenta).png"
+  },
+  {
+    "id": "Laser_Sight_(Orange)",
+    "name": "Laser Sight (Orange)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits orange light.",
+    "image": "/images/attachments/Laser_Sight_(Orange).png"
+  },
+  {
+    "id": "Laser_Sight_(Poop)",
+    "name": "Laser Sight (Poop)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits poop light.",
+    "image": "/images/attachments/Laser_Sight_(Poop).png"
+  },
+  {
+    "id": "Laser_Sight_(Purple)",
+    "name": "Laser Sight (Purple)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits Purple light.",
+    "image": "/images/attachments/Laser_Sight_(Purple).png"
+  },
+  {
     "id": "Laser_Sight_(Red)",
     "name": "Laser Sight (Red)",
     "type": "laser",
@@ -26,8 +165,53 @@
       }
     },
     "specialEffects": {},
-    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits redlight.",
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits red light.",
     "image": "/images/attachments/Laser_Sight_(Red).png"
+  },
+  {
+    "id": "Laser_Sight_(Rose_Pink)",
+    "name": "Laser Sight (Rose Pink)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits rose pink light.",
+    "image": "/images/attachments/Laser_Sight_(Rose_Pink).png"
+  },
+  {
+    "id": "Laser_Sight_(Tangerine)",
+    "name": "Laser Sight (Tangerine)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits tangerine light.",
+    "image": "/images/attachments/Laser_Sight_(Tangerine).png"
+  },
+  {
+    "id": "Laser_Sight_(Teal)",
+    "name": "Laser Sight (Teal)",
+    "type": "laser",
+    "rarity": "Common",
+    "modifiers": {
+      "AccuracyWhileMoving": {
+        "value": 0.5,
+        "type": "percent"
+      }
+    },
+    "specialEffects": {},
+    "description": "A tactical device with a built in laser module allowing for more accurate hip fire. Compatible with most guns. This one emits teal light.",
+    "image": "/images/attachments/Laser_Sight_(Teal).png"
   },
   {
     "id": "Laser_Sight_(Yellow)",

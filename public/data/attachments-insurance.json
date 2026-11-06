@@ -10,15 +10,5 @@
     },
     "description": "When you lose a weapon this is attached to, it will drop out of the church collection box. One use only!",
     "image": "/images/attachments/Insurance.png"
-  },
-  {
-    "id": "Priming_Bolt",
-    "name": "Priming Bolt",
-    "type": "insurance",
-    "rarity": "Rare",
-    "modifiers": {},
-    "specialEffects": {},
-    "description": "Makes weapon non-automatic",
-    "image": "/images/attachments/Priming_Bolt.png"
   }
 ]

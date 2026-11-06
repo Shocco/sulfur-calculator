@@ -6,7 +6,7 @@
     "ammoType": "7.62mm",
     "image": ".357_Balthazar.png",
     "baseStats": {
-      "Damage": 160.0,
+      "Damage": 200.0,
       "RPM": 80.0,
       "MagazineSize": 4.0,
       "Spread": 2.0,
@@ -53,7 +53,39 @@
       "Chamber Chisel (.50 BMG)",
       "Chamber Chisel (12Ga)",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 2.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 5.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_1889_Mario",
@@ -69,7 +101,7 @@
       "Recoil": 10.0,
       "Durability": 2500.0,
       "MaxDurability": 2500.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 8.0
@@ -83,7 +115,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 4.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 8
+      },
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 1.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 1.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 1.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      }
+    }
   },
   {
     "id": "Weapon_Arbiter_2",
@@ -99,7 +163,7 @@
       "Recoil": 30.0,
       "Durability": 1800.0,
       "MaxDurability": 1800.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 8.0
@@ -113,7 +177,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 10.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 8
+      },
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 3
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 3
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 3
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 2.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 3
+      }
+    }
   },
   {
     "id": "Weapon_Augusta",
@@ -129,7 +225,7 @@
       "Recoil": 0.0,
       "Durability": 1800.0,
       "MaxDurability": 1800.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 3.0
@@ -141,7 +237,8 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {}
   },
   {
     "id": "Weapon_Beck_8",
@@ -157,7 +254,7 @@
       "Recoil": 3.0,
       "Durability": 2250.0,
       "MaxDurability": 2250.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -171,7 +268,100 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 3.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 3.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 3.0,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 3.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 6.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_Blackwater",
+    "name": "Blackwater",
+    "type": "Revolver",
+    "ammoType": ".50 BMG",
+    "image": "Blackwater.png",
+    "baseStats": {
+      "Damage": 320.0,
+      "RPM": 200.0,
+      "MagazineSize": 12.0,
+      "Spread": 2.0,
+      "Recoil": 35.0,
+      "Durability": 3000.0,
+      "MaxDurability": 3000.0,
+      "Weight": 20.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "sight",
+      "laser",
+      "chamber",
+      "insurance"
+    ],
+    "specificAttachments": [
+      "Gun Crank"
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 96.0,
+        "Spread": 2.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 128.0,
+        "Spread": 2.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 16.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 320.0,
+        "Spread": 2.0,
+        "Recoil": 35.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 32.0,
+        "Spread": 5.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Breacher_8",
@@ -230,7 +420,39 @@
       "Sniper Scope",
       "Warmage Compensator",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 10.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 8
+      },
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 2.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      }
+    }
   },
   {
     "id": "Weapon_Bronco_89",
@@ -286,7 +508,68 @@
       "Chamber Chisel (.50 BMG)",
       "Chamber Chisel (12Ga)",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 90.0,
+        "Spread": 2.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 150.0,
+        "Spread": 2.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 300.0,
+        "Spread": 2.0,
+        "Recoil": 35.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 30.0,
+        "Spread": 5.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_CYB47",
+    "name": "CYB47",
+    "type": "Assault Rifle",
+    "ammoType": "Energy Cell",
+    "image": "CYB47.png",
+    "baseStats": {
+      "Damage": 60.0,
+      "RPM": 500.0,
+      "MagazineSize": 47.0,
+      "Spread": 1.0,
+      "Recoil": 0.0,
+      "Durability": 4000.0,
+      "MaxDurability": 4000.0,
+      "Weight": 20.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "sight",
+      "laser",
+      "insurance"
+    ],
+    "specificAttachments": [
+      "Priming Bolt"
+    ],
+    "caliberModding": {}
   },
   {
     "id": "Weapon_Catacoil_Rapid_X",
@@ -302,7 +585,7 @@
       "Recoil": 0.0,
       "Durability": 3300.0,
       "MaxDurability": 3300.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -324,7 +607,8 @@
       "Reflex Sight",
       "Sniper Scope",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {}
   },
   {
     "id": "Weapon_Cavalier",
@@ -354,7 +638,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 3.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 3.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 3.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 3.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 8.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Chat-Pardeur_98",
@@ -384,7 +700,100 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 3.0,
+        "Recoil": 0.5,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 3.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 3.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 3.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 7.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_Chimera_Rapid",
+    "name": "Chimera Rapid",
+    "type": "SMG",
+    "ammoType": "5.56mm",
+    "image": "Chimera_Rapid.png",
+    "baseStats": {
+      "Damage": 88.0,
+      "RPM": 750.0,
+      "MagazineSize": 22.0,
+      "Spread": 3.0,
+      "Recoil": 2.0,
+      "Durability": 2800.0,
+      "MaxDurability": 2800.0,
+      "Weight": 12.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "sight",
+      "laser",
+      "chamber",
+      "insurance"
+    ],
+    "specificAttachments": [
+      "Gun Crank"
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 66.0,
+        "Spread": 3.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 88.0,
+        "Spread": 3.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 110.0,
+        "Spread": 3.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 220.0,
+        "Spread": 3.0,
+        "Recoil": 13.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 22.0,
+        "Spread": 7.0,
+        "Recoil": 13.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Corpsemaker",
@@ -400,7 +809,7 @@
       "Recoil": 3.0,
       "Durability": 3200.0,
       "MaxDurability": 3200.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -414,7 +823,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 2.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 2.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 2.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 2.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 6.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_D4RT",
@@ -430,7 +871,7 @@
       "Recoil": 0.0,
       "Durability": 4000.0,
       "MaxDurability": 4000.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -450,7 +891,64 @@
       "Reflex Sight",
       "Sniper Scope",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {}
+  },
+  {
+    "id": "Weapon_Death's_Toll",
+    "name": "Death's Toll",
+    "type": "Revolver",
+    "ammoType": "7.62mm",
+    "image": "Death's_Toll.png",
+    "baseStats": {
+      "Damage": 192.0,
+      "RPM": 72.0,
+      "MagazineSize": 4.0,
+      "Spread": 3.0,
+      "Recoil": 20.0,
+      "Durability": 1000.0,
+      "MaxDurability": 1000.0,
+      "Weight": 12.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "insurance"
+    ],
+    "specificAttachments": [],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 115.0,
+        "Spread": 3.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 153.0,
+        "Spread": 3.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 192.0,
+        "Spread": 3.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 384.0,
+        "Spread": 3.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 38.0,
+        "Spread": 6.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Deathstar_PG",
@@ -466,7 +964,7 @@
       "Recoil": 1.5,
       "Durability": 3600.0,
       "MaxDurability": 3600.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -480,7 +978,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.0,
+        "Recoil": 1.5,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.0,
+        "Recoil": 2.5,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 6.0,
+        "Recoil": 16.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Dolphin_99",
@@ -493,10 +1023,10 @@
       "RPM": 100.0,
       "MagazineSize": 5.0,
       "Spread": 1.5,
-      "Recoil": 0.0,
+      "Recoil": 8.0,
       "Durability": 1000.0,
       "MaxDurability": 1000.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -510,7 +1040,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 150.0,
+        "Spread": 1.5,
+        "Recoil": 0.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 200.0,
+        "Spread": 1.5,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 250.0,
+        "Spread": 1.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 500.0,
+        "Spread": 1.5,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 50.0,
+        "Spread": 6.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Drifter_9",
@@ -526,7 +1088,7 @@
       "Recoil": 2.0,
       "Durability": 3300.0,
       "MaxDurability": 3300.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -540,7 +1102,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 3.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 3.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 3.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 3.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 6.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Duhar",
@@ -556,7 +1150,7 @@
       "Recoil": 2.0,
       "Durability": 2500.0,
       "MaxDurability": 2500.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -570,7 +1164,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 4.0,
+        "Recoil": 0.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 4.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 4.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 4.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Farsight",
@@ -586,7 +1212,7 @@
       "Recoil": 2.5,
       "Durability": 2000.0,
       "MaxDurability": 2000.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -600,7 +1226,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 132.0,
+        "Spread": 2.0,
+        "Recoil": 1.5,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 176.0,
+        "Spread": 2.0,
+        "Recoil": 2.5,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 220.0,
+        "Spread": 2.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 440.0,
+        "Spread": 2.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 44.0,
+        "Spread": 6.0,
+        "Recoil": 16.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Ferryman",
@@ -616,7 +1274,7 @@
       "Recoil": 12.0,
       "Durability": 2000.0,
       "MaxDurability": 2000.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -630,7 +1288,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 90.0,
+        "Spread": 2.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 150.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 300.0,
+        "Spread": 2.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 30.0,
+        "Spread": 5.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Flicker",
@@ -686,7 +1376,39 @@
       "Chamber Chisel (.50 BMG)",
       "Chamber Chisel (12Ga)",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 3.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 3.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 3.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 3.0,
+        "Recoil": 80.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 6.0,
+        "Recoil": 60.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Flock_76",
@@ -702,7 +1424,7 @@
       "Recoil": 17.0,
       "Durability": 2100.0,
       "MaxDurability": 2100.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 8.0
@@ -716,7 +1438,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 7.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 8
+      },
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 2.5,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 2.5,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 2.5,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 2.5,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      }
+    }
   },
   {
     "id": "Weapon_Gravekeeper",
@@ -746,7 +1500,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.0,
+        "Recoil": 9.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 40.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 6.0,
+        "Recoil": 27.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Hell_'N'_Back",
@@ -776,7 +1562,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.5,
+        "Recoil": 1.2,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.5,
+        "Recoil": 40.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Impala_Gravita",
@@ -792,7 +1610,7 @@
       "Recoil": 20.0,
       "Durability": 2200.0,
       "MaxDurability": 2200.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -821,7 +1639,99 @@
       "Reflex Sight",
       "Sniper Scope",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 240.0,
+        "Spread": 1.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 320.0,
+        "Spread": 1.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 800.0,
+        "Spread": 1.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 80.0,
+        "Spread": 2.5,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_Klein_Bauer",
+    "name": "Klein Bauer",
+    "type": "Pistol",
+    "ammoType": "9mm",
+    "image": "Klein_Bauer.png",
+    "baseStats": {
+      "Damage": 60.0,
+      "RPM": 2400.0,
+      "MagazineSize": 138.0,
+      "Spread": 5.0,
+      "Recoil": 2.0,
+      "Durability": 6500.0,
+      "MaxDurability": 6500.0,
+      "Weight": 5.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chisel",
+      "insurance"
+    ],
+    "specificAttachments": [],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 5.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 6.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 7.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 12.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 12.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Knop_.22",
@@ -851,7 +1761,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 2.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 5.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Longboy",
@@ -881,7 +1823,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 1.0,
+        "Recoil": 0.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 1.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 1.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 3.0,
+        "Recoil": 8.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_M11A2_Fisk",
@@ -897,7 +1871,7 @@
       "Recoil": 2.0,
       "Durability": 3000.0,
       "MaxDurability": 3000.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -911,7 +1885,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 2.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 2.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 2.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 6.0,
+        "Recoil": 13.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_M182_Pierre-Fusil",
@@ -927,7 +1933,7 @@
       "Recoil": 5.0,
       "Durability": 2200.0,
       "MaxDurability": 2200.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -941,7 +1947,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 1.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 1.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 1.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 5.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_M3_Termite",
@@ -957,7 +1995,7 @@
       "Recoil": 1.0,
       "Durability": 3000.0,
       "MaxDurability": 3000.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -971,7 +2009,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 66.0,
+        "Spread": 2.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 88.0,
+        "Spread": 2.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 110.0,
+        "Spread": 2.5,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 220.0,
+        "Spread": 2.5,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 22.0,
+        "Spread": 7.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Majordome",
@@ -987,7 +2057,7 @@
       "Recoil": 17.0,
       "Durability": 2200.0,
       "MaxDurability": 2200.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 8.0
@@ -1001,7 +2071,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 3.5,
+        "Recoil": 17.0,
+        "ProjectileCount": 8
+      },
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 1.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 1.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 1.0,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      }
+    }
   },
   {
     "id": "Weapon_Mossman",
@@ -1017,7 +2119,7 @@
       "Recoil": 15.0,
       "Durability": 2400.0,
       "MaxDurability": 2400.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 8.0
@@ -1031,7 +2133,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 5.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 8
+      },
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 1.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 1.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 1.0,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 1
+      }
+    }
   },
   {
     "id": "Weapon_Neuraxis_F22",
@@ -1059,7 +2193,64 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {}
+  },
+  {
+    "id": "Weapon_Nightlily_318",
+    "name": "Nightlily 318",
+    "type": "Assault Rifle",
+    "ammoType": "5.56mm",
+    "image": "Nightlily_318.png",
+    "baseStats": {
+      "Damage": 105.0,
+      "RPM": 850.0,
+      "MagazineSize": 70.0,
+      "Spread": 2.5,
+      "Recoil": 3.0,
+      "Durability": 1500.0,
+      "MaxDurability": 1500.0,
+      "Weight": 20.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "insurance"
+    ],
+    "specificAttachments": [],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 79.0,
+        "Spread": 2.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 105.0,
+        "Spread": 2.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 132.0,
+        "Spread": 2.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 264.0,
+        "Spread": 2.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 26.0,
+        "Spread": 6.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_P38_Dirk",
@@ -1089,7 +2280,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.0,
+        "Recoil": 7.5,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 50.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 6.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Palehorse_Topclipper",
@@ -1119,7 +2342,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 96.0,
+        "Spread": 2.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 128.0,
+        "Spread": 2.0,
+        "Recoil": 9.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 320.0,
+        "Spread": 2.0,
+        "Recoil": 27.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 32.0,
+        "Spread": 5.0,
+        "Recoil": 27.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Ploika_Compact",
@@ -1135,7 +2390,7 @@
       "Recoil": 3.0,
       "Durability": 3900.0,
       "MaxDurability": 3900.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1149,7 +2404,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 5.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 5.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 5.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 5.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 20.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Rektor_100rd",
@@ -1179,7 +2466,95 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 4.0,
+        "Recoil": 0.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 4.0,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 4.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 4.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 7.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_Ripox_Mowlock",
+    "name": "Ripox Mowlock",
+    "type": "SMG",
+    "ammoType": "9mm",
+    "image": "Ripox_Mowlock.png",
+    "baseStats": {
+      "Damage": 66.0,
+      "RPM": 470.0,
+      "MagazineSize": 20.0,
+      "Spread": 2.5,
+      "Recoil": 1.0,
+      "Durability": 5000.0,
+      "MaxDurability": 5000.0,
+      "Weight": 12.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "insurance"
+    ],
+    "specificAttachments": [],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 66.0,
+        "Spread": 2.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 88.0,
+        "Spread": 2.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 110.0,
+        "Spread": 2.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 220.0,
+        "Spread": 2.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 22.0,
+        "Spread": 6.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Rokua_.308",
@@ -1209,7 +2584,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 1.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 1.0,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 1.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 1.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 5.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Salamander",
@@ -1265,7 +2672,39 @@
       "Chamber Chisel (.50 BMG)",
       "Chamber Chisel (12Ga)",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 1.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 1.5,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 1.5,
+        "Recoil": 15.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 1.5,
+        "Recoil": 28.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 5.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Snut_.38",
@@ -1295,7 +2734,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 96.0,
+        "Spread": 2.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 128.0,
+        "Spread": 2.5,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 160.0,
+        "Spread": 2.5,
+        "Recoil": 15.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 320.0,
+        "Spread": 2.5,
+        "Recoil": 30.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 32.0,
+        "Spread": 7.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Socom_9",
@@ -1325,7 +2796,101 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.0,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 40.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_Socom_ACR",
+    "name": "Socom ACR",
+    "type": "Assault Rifle",
+    "ammoType": "9mm",
+    "image": "Socom_ACR.png",
+    "baseStats": {
+      "Damage": 72.0,
+      "RPM": 900.0,
+      "MagazineSize": 42.0,
+      "Spread": 2.0,
+      "Recoil": 1.5,
+      "Durability": 4700.0,
+      "MaxDurability": 4700.0,
+      "Weight": 20.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chisel",
+      "insurance"
+    ],
+    "specificAttachments": [
+      "Gun Crank"
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 2.0,
+        "Recoil": 1.5,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 2.0,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 2.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 7.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Songbird",
@@ -1341,7 +2906,7 @@
       "Recoil": 2.5,
       "Durability": 4700.0,
       "MaxDurability": 4700.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1355,7 +2920,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 3.5,
+        "Recoil": 2.5,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 3.5,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 3.5,
+        "Recoil": 8.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 3.5,
+        "Recoil": 18.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 19.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Star_&_Witness",
@@ -1385,7 +2982,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.5,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.5,
+        "Recoil": 7.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.5,
+        "Recoil": 50.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Tailor_Marksman_MKII",
@@ -1401,7 +3030,7 @@
       "Recoil": 10.0,
       "Durability": 2800.0,
       "MaxDurability": 2800.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1441,7 +3070,101 @@
       "Chamber Chisel (.50 BMG)",
       "Chamber Chisel (12Ga)",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 120.0,
+        "Spread": 2.0,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 160.0,
+        "Spread": 2.0,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 200.0,
+        "Spread": 2.0,
+        "Recoil": 15.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 400.0,
+        "Spread": 2.0,
+        "Recoil": 30.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 40.0,
+        "Spread": 5.0,
+        "Recoil": 25.0,
+        "ProjectileCount": 8
+      }
+    }
+  },
+  {
+    "id": "Weapon_Terrier_URB.",
+    "name": "Terrier URB.",
+    "type": "Pistol",
+    "ammoType": "5.56mm",
+    "image": "Terrier_URB..png",
+    "baseStats": {
+      "Damage": 104.0,
+      "RPM": 800.0,
+      "MagazineSize": 14.0,
+      "Spread": 2.5,
+      "Recoil": 5.0,
+      "Durability": 3700.0,
+      "MaxDurability": 3700.0,
+      "Weight": 5.0,
+      "ProjectileSpeed": 100.0,
+      "MoveSpeed": 1.0,
+      "ProjectileCount": 1.0
+    },
+    "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chisel",
+      "insurance"
+    ],
+    "specificAttachments": [
+      "Gun Crank"
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 78.0,
+        "Spread": 2.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 104.0,
+        "Spread": 2.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 130.0,
+        "Spread": 2.5,
+        "Recoil": 10.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 260.0,
+        "Spread": 2.5,
+        "Recoil": 60.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 26.0,
+        "Spread": 6.0,
+        "Recoil": 27.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Type_80_Typhoon",
@@ -1457,7 +3180,7 @@
       "Recoil": 4.0,
       "Durability": 2700.0,
       "MaxDurability": 2700.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1471,7 +3194,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 1.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 1.5,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 1.5,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 1.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 7.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Unknown",
@@ -1509,7 +3264,8 @@
       "Reflex Sight",
       "Sniper Scope",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {}
   },
   {
     "id": "Weapon_Valet",
@@ -1525,7 +3281,7 @@
       "Recoil": 2.0,
       "Durability": 3000.0,
       "MaxDurability": 3000.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1539,7 +3295,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 2.5,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 2.5,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 2.5,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 2.5,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 7.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Vrede",
@@ -1555,7 +3343,7 @@
       "Recoil": 2.0,
       "Durability": 3900.0,
       "MaxDurability": 3900.0,
-      "Weight": 8.0,
+      "Weight": 12.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1569,7 +3357,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.5,
+        "Recoil": 2.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.5,
+        "Recoil": 4.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.5,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.5,
+        "Recoil": 17.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 7.0,
+        "Recoil": 17.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Warpig",
@@ -1585,7 +3405,7 @@
       "Recoil": 3.0,
       "Durability": 3500.0,
       "MaxDurability": 3500.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1599,7 +3419,39 @@
     ],
     "specificAttachments": [
       "Gun Crank"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 60.0,
+        "Spread": 2.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 80.0,
+        "Spread": 2.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 100.0,
+        "Spread": 2.5,
+        "Recoil": 6.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 200.0,
+        "Spread": 2.5,
+        "Recoil": 16.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 20.0,
+        "Spread": 8.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Wingman",
@@ -1615,7 +3467,7 @@
       "Recoil": 5.0,
       "Durability": 3300.0,
       "MaxDurability": 3300.0,
-      "Weight": 16.0,
+      "Weight": 20.0,
       "ProjectileSpeed": 100.0,
       "MoveSpeed": 1.0,
       "ProjectileCount": 1.0
@@ -1629,7 +3481,39 @@
     ],
     "specificAttachments": [
       "Priming Bolt"
-    ]
+    ],
+    "caliberModding": {
+      "9mm": {
+        "Damage": 72.0,
+        "Spread": 1.5,
+        "Recoil": 1.0,
+        "ProjectileCount": 1
+      },
+      "5.56mm": {
+        "Damage": 96.0,
+        "Spread": 1.5,
+        "Recoil": 3.0,
+        "ProjectileCount": 1
+      },
+      "7.62mm": {
+        "Damage": 120.0,
+        "Spread": 1.5,
+        "Recoil": 5.0,
+        "ProjectileCount": 1
+      },
+      ".50 BMG": {
+        "Damage": 240.0,
+        "Spread": 1.5,
+        "Recoil": 12.0,
+        "ProjectileCount": 1
+      },
+      "12Ga": {
+        "Damage": 24.0,
+        "Spread": 6.0,
+        "Recoil": 12.0,
+        "ProjectileCount": 8
+      }
+    }
   },
   {
     "id": "Weapon_Wyatt_PULSAR",
@@ -1667,6 +3551,7 @@
       "Reflex Sight",
       "Sniper Scope",
       "Insurance"
-    ]
+    ],
+    "caliberModding": {}
   }
 ]
