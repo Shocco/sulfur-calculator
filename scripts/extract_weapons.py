@@ -5,6 +5,7 @@ import re
 import sys
 from typing import Dict, List, Optional, Set
 
+from scripts.extract_calibers import parse_caliber_table
 from scripts.wiki_parser import (
     extract_section,
     extract_wikilink_text,
@@ -222,6 +223,14 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
     if 'insurance' not in allowed_attachments:
         allowed_attachments.append('insurance')
 
+    # --- caliberModding ---
+    caliber_modding: Dict = {}
+    caliber_section = extract_section(wikitext, "Caliber Modding")
+    if caliber_section:
+        table_match = re.search(r"\{\|.*?\|\}", caliber_section, re.DOTALL)
+        if table_match:
+            caliber_modding = parse_caliber_table(table_match.group(0))
+
     return {
         "id": weapon_id,
         "name": name,
@@ -231,6 +240,7 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
         "baseStats": base_stats,
         "allowedAttachments": allowed_attachments,
         "specificAttachments": specific_attachments,
+        "caliberModding": caliber_modding,
     }
 
 

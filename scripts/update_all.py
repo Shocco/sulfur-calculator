@@ -21,21 +21,29 @@ import json
 import os
 import shutil
 import sys
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from scripts.extract_attachments import extract_attachments
 from scripts.extract_weapons import extract_weapons
 from scripts.extract_enchantments import extract_enchantments
 from scripts.extract_scrolls import extract_scrolls
 from scripts.extract_calibers import extract_calibers
+from scripts.wiki_parser import find_redirects
 
 
 def _merge_array_data(
     new_items: List[Dict[str, Any]],
     old_items: List[Dict[str, Any]],
     key: str = "name",
+    renamed: Optional[Dict[str, str]] = None,
+    elsewhere: Optional[set] = None,
 ) -> List[Dict[str, Any]]:
     """Merge new extracted data with old data, keeping old items not in new.
+
+    Old-only items whose wiki page is now a redirect (``renamed``: old -> new
+    title) are dropped: the item was renamed, and the new name is extracted.
+    Old-only items whose name is in ``elsewhere`` (extracted into a different
+    output file, e.g. an attachment that moved slot) are dropped too.
 
     For items present in both, the new version is kept but any empty fields
     are filled from the old version.
@@ -69,9 +77,17 @@ def _merge_array_data(
             merged.append(item)
 
     # Second pass: old items not in new (wiki stubs without infoboxes)
+    renamed = renamed or {}
+    elsewhere = elsewhere or set()
     for item in old_items:
-        if item[key] not in seen:
-            merged.append(item)
+        if item[key] in seen:
+            continue
+        # Renamed on the wiki and the new name was extracted -> stale, drop it
+        if renamed.get(item[key]) in new_by_key:
+            continue
+        if item[key] in elsewhere:
+            continue
+        merged.append(item)
 
     return merged
 
@@ -127,12 +143,19 @@ def main():
     # Step 6: Merge with old data if --old-dir provided
     if old_dir and os.path.isdir(old_dir):
         print(f"\n=== Merging with old data from {old_dir} ===")
+        renamed = find_redirects(dump_path)
         merge_files = [
             'weapons.json', 'enchantments.json', 'scrolls.json',
             'attachments-muzzle.json', 'attachments-sights.json',
             'attachments-lasers.json', 'attachments-chamber.json',
             'attachments-chisels.json', 'attachments-insurance.json',
         ]
+        # Names extracted into each attachment file, to catch items that moved slot
+        att_names = {}
+        for fn in merge_files:
+            if fn.startswith('attachments-') and os.path.exists(os.path.join(output_dir, fn)):
+                with open(os.path.join(output_dir, fn), encoding='utf-8') as f:
+                    att_names[fn] = {i.get('name') for i in json.load(f)}
         for filename in merge_files:
             new_path = os.path.join(output_dir, filename)
             old_path = os.path.join(old_dir, filename)
@@ -144,7 +167,18 @@ def main():
                 old_data = json.load(f)
             if isinstance(new_data, list) and isinstance(old_data, list):
                 before = len(new_data)
-                merged = _merge_array_data(new_data, old_data)
+                new_names = {i.get('name') for i in new_data}
+                elsewhere = set().union(*(v for k, v in att_names.items() if k != filename)) \
+                    if filename in att_names else set()
+                for old in old_data:
+                    n = old.get('name')
+                    if n in new_names:
+                        continue
+                    if renamed.get(n) in new_names:
+                        print(f"  {filename}: dropped '{n}' (renamed on wiki -> '{renamed[n]}')")
+                    elif n in elsewhere:
+                        print(f"  {filename}: dropped '{n}' (now extracted into another attachment file)")
+                merged = _merge_array_data(new_data, old_data, renamed=renamed, elsewhere=elsewhere)
                 with open(new_path, 'w', encoding='utf-8') as f:
                     json.dump(merged, f, indent=2, ensure_ascii=False)
                 added = len(merged) - before

@@ -152,13 +152,13 @@ def parse_caliber_table(table_text: str) -> Dict[str, Dict]:
             except ValueError:
                 spread = 0.0
             raw_proj = cells[3].strip()
-            proj_match = re.match(r"[\u00d7x×]?(\d+)", raw_proj)
+            proj_match = re.match(r"(?:&times;|[\u00d7x×])?(\d+)", raw_proj)
             projectile_count = int(proj_match.group(1)) if proj_match else 1
             recoil = 0.0
         else:
             # Old format: [caliber, damage, projectiles, spread, recoil]
             raw_proj = cells[2].strip()
-            proj_match = re.match(r"[\u00d7x×](\d+)", raw_proj)
+            proj_match = re.match(r"(?:&times;|[\u00d7x×])(\d+)", raw_proj)
             projectile_count = int(proj_match.group(1)) if proj_match else 1
             try:
                 spread = float(cells[3].strip()) if len(cells) > 3 else 0.0

@@ -189,14 +189,14 @@
     "type": "muzzle",
     "rarity": "Common",
     "modifiers": {
-      "Spread": 0.1,
+      "Spread": 1.0,
       "MaxDurability": {
         "value": 0.15,
         "type": "percent"
       }
     },
     "specialEffects": {},
-    "description": "A makeshift muzzle device that can reduce spread and recoil somewhat. Fits most barrels.",
+    "description": "A makeshift muzzle device that gives weapons more durability in exchange for accuracy.",
     "image": "/images/attachments/Improvised_Barrel_Extension.png"
   },
   {

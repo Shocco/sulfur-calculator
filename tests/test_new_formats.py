@@ -182,7 +182,8 @@ class TestWeaponNoAttachmentSection:
 
     def test_empty_allowed_attachments(self):
         result = parse_weapon_page("Bare Pistol", self.WIKITEXT)
-        assert result["allowedAttachments"] == []
+        # Insurance is forced onto every weapon (commit 31866f0)
+        assert result["allowedAttachments"] == ["insurance"]
 
     def test_empty_specific_attachments(self):
         result = parse_weapon_page("Bare Pistol", self.WIKITEXT)
@@ -403,6 +404,27 @@ class TestMergeArrayData:
         assert len(merged) == 2
         names = {i["name"] for i in merged}
         assert names == {"A", "B"}
+
+    def test_drops_old_only_items_renamed_on_wiki(self):
+        # "Arrow Oil" page is now "#REDIRECT [[Time Arrow Oil]]"
+        new = [{"name": "Time Arrow Oil"}]
+        old = [{"name": "Arrow Oil"}, {"name": "Stub Oil"}]
+        merged = _merge_array_data(new, old, renamed={"Arrow Oil": "Time Arrow Oil"})
+        assert {i["name"] for i in merged} == {"Time Arrow Oil", "Stub Oil"}
+
+    def test_drops_old_only_items_that_moved_to_another_file(self):
+        # "Priming Bolt" was wrongly in insurance; now extracted as chamber
+        new = [{"name": "Insurance"}]
+        old = [{"name": "Insurance"}, {"name": "Priming Bolt"}]
+        merged = _merge_array_data(new, old, elsewhere={"Priming Bolt"})
+        assert [i["name"] for i in merged] == ["Insurance"]
+
+    def test_keeps_renamed_item_if_new_name_not_extracted(self):
+        # Target page is a stub the extractor skipped -> keep the old data
+        new = [{"name": "Other Oil"}]
+        old = [{"name": "Arrow Oil"}]
+        merged = _merge_array_data(new, old, renamed={"Arrow Oil": "Time Arrow Oil"})
+        assert {i["name"] for i in merged} == {"Other Oil", "Arrow Oil"}
 
     def test_fills_empty_lists_from_old(self):
         new = [{"name": "Gun", "allowedAttachments": [], "damage": 50}]

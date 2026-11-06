@@ -58,17 +58,5 @@
     },
     "description": "Converts weapon to 9mm caliber - provides reduced recoil but lower damage",
     "image": "/images/attachments/Chamber_Chisel_(9mm).png"
-  },
-  {
-    "id": "Chamber_Chisel_(12ga)",
-    "name": "Chamber Chisel (12ga)",
-    "type": "chisel",
-    "rarity": "Common",
-    "modifiers": {},
-    "specialEffects": {
-      "caliberConversion": "12ga"
-    },
-    "description": "A toolkit containing everything needed to rebore a firearm barrel, changing the weapon's caliber to 12 gauge.",
-    "image": "/images/attachments/Chamber_Chisel_(12ga).png"
   }
 ]

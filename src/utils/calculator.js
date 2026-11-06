@@ -10,29 +10,18 @@
  * modifiers applied first, then oil modifiers are calculated based on those values
  */
 
-function applyCaliberConversion(weaponStats, caliber, caliberModifiers, weapon) {
-  if (!caliber || !caliberModifiers.calibers || !caliberModifiers.calibers[caliber]) {
+function applyCaliberConversion(weaponStats, caliber, weapon) {
+  const caliberData = weapon.caliberModding?.[caliber]
+  if (!caliber || !caliberData) {
     return weaponStats
   }
 
-  const newCaliberStats = caliberModifiers.calibers[caliber]
-  const baseAmmoDamage = caliberModifiers.baseAmmoDamage
-
-  // Calculate weapon's damage multiplier from current ammo type
-  const currentAmmoType = weapon.ammoType
-  const currentBaseDamage = baseAmmoDamage[currentAmmoType] ?? caliberModifiers.calibers[currentAmmoType]?.Damage
-  const weaponMultiplier = currentBaseDamage ? weaponStats.Damage / currentBaseDamage : 1
-
-  // Apply multiplier to new ammo type's base damage
-  const newBaseDamage = baseAmmoDamage[caliber] ?? newCaliberStats.Damage
-  const newDamage = newBaseDamage * weaponMultiplier
-
   return {
     ...weaponStats,
-    Damage: newDamage,
-    ProjectileCount: newCaliberStats.ProjectileCount,
-    Spread: newCaliberStats.Spread,
-    Recoil: newCaliberStats.Recoil
+    Damage: caliberData.Damage,
+    ProjectileCount: caliberData.ProjectileCount,
+    Spread: caliberData.Spread,
+    Recoil: caliberData.Recoil,
   }
 }
 
@@ -88,7 +77,6 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     baseStats = applyCaliberConversion(
       baseStats,
       chisel.specialEffects.caliberConversion,
-      caliberModifiers,
       weapon
     )
   }

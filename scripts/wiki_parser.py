@@ -57,6 +57,8 @@ def iterate_pages(dump_path: str, namespace: str = 'http://www.mediawiki.org/xml
 
 def _parse_infobox_body(body: str) -> Dict[str, str]:
     """Parse key-value pairs from an infobox body string."""
+    # Editors comment out params with <!-- | Key = ... -->; drop them entirely
+    body = re.sub(r'<!--.*?-->', '', body, flags=re.DOTALL)
     result = {}
     # Split body into lines, then reassemble param values
     current_key = None
@@ -122,11 +124,25 @@ def parse_modifier_value(raw: str) -> Tuple[int, float]:
 
     - "+30%" or "-30%" -> (200, 0.3) or (200, -0.3)  [PercentAdd]
     - "+15" or "-15" or "0.3" or "-0.75" -> (100, value)  [Flat]
+    - "+30x", "×15", "&times;15" -> (100, N)  [Flat]
+      The wiki writes Bullet Drop as a multiplier. Weapons have no base value
+      for it, and the calculator starts such stats at 0, so a PercentMult
+      would always yield 0. Storing N as Flat shows "Bullet Drop 15", which
+      matches the pre-2026-11 data where the wiki wrote "+15".
     """
     raw = raw.strip()
+    # Multiplier sign may arrive as an entity; normalise before stripping entities
+    raw = raw.replace('&times;', '×')
     # Strip HTML entities and footnote markers (e.g. &dagger;, &ast;)
     raw = re.sub(r'&[a-zA-Z]+;', '', raw).strip()
 
+    # Drop wiki comments left inside a param (e.g. "+1\n<!-- | Drag = more -->")
+    raw = re.sub(r'<!--.*?-->', '', raw, flags=re.DOTALL).strip()
+
+    # Multiplier written as "×15" / "+30x" / "15×" -> Flat N (see docstring)
+    mult = re.fullmatch(r'[+]?\s*[×xX]\s*([0-9.]+)|[+]?\s*([0-9.]+)\s*[×xX]', raw)
+    if mult:
+        return (100, float(mult.group(1) or mult.group(2)))
     if raw.endswith('%'):
         # PercentAdd
         num_str = raw[:-1].strip()
@@ -200,3 +216,28 @@ def extract_bullet_points(text: str) -> List[str]:
             if content:
                 points.append(content)
     return points
+
+
+_REDIRECT_RE = re.compile(r'^\s*#redirect\s*\[\[([^\]|#]+)', re.IGNORECASE)
+
+
+def find_redirects(dump_path: str, namespace: str = 'http://www.mediawiki.org/xml/export-0.11/') -> Dict[str, str]:
+    """
+    Return {old_title: new_title} for every main-namespace redirect page.
+
+    Used by the merge to recognise items that were renamed on the wiki, so the
+    old name isn't kept alongside the new one.
+    """
+    ns = f'{{{namespace}}}'
+    redirects: Dict[str, str] = {}
+    for _, elem in ET.iterparse(dump_path, events=('end',)):
+        if elem.tag != f'{ns}page':
+            continue
+        title = elem.findtext(f'{ns}title') or ''
+        revisions = elem.findall(f'{ns}revision')
+        text = (revisions[-1].findtext(f'{ns}text') or '') if revisions else ''
+        m = _REDIRECT_RE.match(text)
+        if m and ':' not in title:
+            redirects[title] = m.group(1).strip()
+        elem.clear()
+    return redirects
