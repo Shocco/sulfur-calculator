@@ -16,7 +16,7 @@ npm run build        # production build to docs/ (served via GitHub Pages)
 
 # Python extraction pipeline (requires venv)
 source .venv/bin/activate
-python3 -m pytest tests/ -x -q                    # run all tests (214 tests)
+python3 -m pytest tests/ -x -q                    # run all tests (216 tests)
 python3 -m pytest tests/test_extract_weapons.py -q # run single test file
 python3 -m pytest tests/ -k "test_muzzle_slot"     # run by test name
 
@@ -25,6 +25,12 @@ python3 -m scripts.update_all <dump.xml> --output-dir public/data --old-dir docs
 
 # Compare old vs new data
 python3 -m scripts.diff_data docs/data public/data
+
+# Copy item images from a wikiteam3 image dump into public/images/
+python3 -m scripts.sync_images <dump>/images
+
+# One-command update (download dumps, extract, sync images, diff, test, build; never commits)
+scripts/update_from_wiki.sh   # see UPDATING.md for options and the manual steps
 ```
 
 Wiki dumps with unescaped `&` need pre-processing:
@@ -64,6 +70,10 @@ Python scripts that parse MediaWiki XML dumps into the JSON data files. All use 
 - `extract_calibers.py` — parses caliber conversion tables from ammo wiki pages
 - `update_all.py` — orchestrates all extractors in dependency order (attachments first), then merges with old data via `--old-dir`
 - `diff_data.py` — compares two data directories and prints human-readable changes
+- `sync_images.py` — copies missing/changed item images from a wikiteam3 image dump into `public/images/`
+- `update_from_wiki.sh` — one-command updater: wikiteam3 dumps, perl `&` fix, backup, `update_all`, `sync_images`, `diff_data`, pytest, `npm run build`. Never commits. Full guide: `UPDATING.md`
+
+For the full data-update procedure (options, manual steps, troubleshooting) see `UPDATING.md`.
 
 ### Wiki Template Formats
 

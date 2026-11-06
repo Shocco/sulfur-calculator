@@ -4,9 +4,10 @@ A web-based calculator for the game SULFUR that helps you calculate weapon stati
 
 ## Features
 
-- **Complete Weapon Database**: 46 weapons with full stats
-- **Complete Enchantment Database**: 192 oils and 35 scrolls
+- **Complete Weapon Database**: 49 weapons with full stats
+- **Complete Enchantment Database**: 219 oils and 35 scrolls
 - **Multiple Enchantment Support**: Apply up to 5 oils OR 4 oils + 1 scroll
+- **Attachment Support**: Muzzle, sights, lasers, chamber, and chisel attachments with per-weapon caliber modding
 - **Visual Display**: Weapon and enchantment images loaded from SULFUR wiki
 - **Saved Builds**: Save and load your favorite weapon configurations
 - **Total Damage Calculation**: See combined damage × projectile count
@@ -38,7 +39,17 @@ npm run dev
 npm run build
 ```
 
-The built files will be in the `dist` directory.
+The built files will be in the `docs` directory (served via GitHub Pages).
+
+## Updating game data
+
+To refresh weapons, oils, scrolls, attachments and images from the wiki, run from the repo root:
+
+```bash
+scripts/update_from_wiki.sh
+```
+
+It downloads the wiki dumps, runs the extractors, syncs images, diffs against the live data, runs tests and builds. It never commits or pushes. See [UPDATING.md](UPDATING.md) for options, the manual step-by-step equivalent, and troubleshooting.
 
 ## How to Use
 

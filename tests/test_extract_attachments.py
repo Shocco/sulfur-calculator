@@ -230,10 +230,10 @@ class TestPrimingBoltChamberAttachment:
         result = parse_attachment_page("Priming Bolt", wikitext)
 
         assert result is not None
-        dmg = result["modifiers"]["Dmg"]
+        dmg = result["modifiers"]["Damage"]
         assert isinstance(dmg, dict)
         assert dmg["type"] == "percent"
-        assert dmg["value"] == pytest.approx(25.0)
+        assert dmg["value"] == pytest.approx(0.25)  # percents stored as fractions (15dd78d)
 
     def test_dmg_flat_is_float(self):
         """Flat Dmg field (no %) becomes plain float."""
@@ -244,7 +244,7 @@ class TestPrimingBoltChamberAttachment:
         result = parse_attachment_page("Priming Bolt", wikitext)
 
         assert result is not None
-        dmg = result["modifiers"]["Dmg"]
+        dmg = result["modifiers"]["Damage"]
         assert isinstance(dmg, float)
         assert dmg == pytest.approx(10.0)
 

@@ -29,3 +29,11 @@ dist-ssr
 .env.local
 .env.*.local
 data.bak/
+
+# Wiki update tooling
+.venv-wikiteam/
+wikidumps/
+__pycache__/
+*.pyc
+.playwright-mcp/
+.venv/

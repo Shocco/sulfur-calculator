@@ -91,6 +91,22 @@ class TestParseInfobox:
 
 
 class TestParseModifierValue:
+    # Bullet Drop multipliers are stored as Flat N (no base value to multiply)
+    def test_suffix_multiplier(self):
+        # Medicine Ball Oil: "BltDrop = +30x"
+        assert parse_modifier_value('+30x') == (100, 30.0)
+
+    def test_prefix_multiplier_entity(self):
+        # Artillery Oil: "BltDrop = &times;15" (old wiki wrote "+15")
+        assert parse_modifier_value('&times;15') == (100, 15.0)
+
+    def test_prefix_multiplier_symbol(self):
+        assert parse_modifier_value('×40') == (100, 40.0)
+
+    def test_trailing_wiki_comment_ignored(self):
+        raw = '+1\n<!-- | BltBounciness = -->\n<!-- | Drag          = more -->'
+        assert parse_modifier_value(raw) == (100, 1.0)
+
     def test_percent_positive(self):
         mod_type, value = parse_modifier_value('+100%')
         assert mod_type == 200
@@ -156,3 +172,27 @@ class TestExtractWikilinkText:
 
     def test_link_with_spaces(self):
         assert extract_wikilink_text('[[Muzzle Attachments|Muzzle attachment]]') == 'Muzzle attachment'
+
+
+class TestFindRedirects:
+    def test_maps_redirect_titles_to_targets(self, tmp_path):
+        from scripts.wiki_parser import find_redirects
+        xml = tmp_path / 'dump.xml'
+        xml.write_text(
+            '<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/">'
+            '<page><title>Arrow Oil</title><revision><text>#REDIRECT [[Time Arrow Oil]]</text></revision></page>'
+            '<page><title>Whim Oil</title><revision><text>#redirect [[Fleeting Oil#Top|x]]</text></revision></page>'
+            '<page><title>Time Arrow Oil</title><revision><text>{{Item Infobox}}</text></revision></page>'
+            '</mediawiki>', encoding='utf-8')
+        assert find_redirects(str(xml)) == {'Arrow Oil': 'Time Arrow Oil', 'Whim Oil': 'Fleeting Oil'}
+
+
+class TestInfoboxComments:
+    def test_html_comments_are_removed(self):
+        from scripts.wiki_parser import parse_infobox
+        text = ("{{Item Infobox\n| kind = scroll\n| ConvertWpn = Steam Sprayer <!-- | LifeTime = more -->\n"
+                "| BltBounces = +1\n<!-- | BltBounciness = -->\n| Drag = 8\n}}")
+        box = parse_infobox(text)
+        assert box['ConvertWpn'] == 'Steam Sprayer'
+        assert box['BltBounces'] == '+1'
+        assert 'BltBounciness' not in box
