@@ -244,7 +244,7 @@ GitHub Pages runs Jekyll by default, and Jekyll skips files whose names start wi
 Re-run the same command with the same `--date`. Finished dumps (`all_dumped.mark` present) are skipped and unfinished ones are resumed with `--resume`. To reuse everything that is already downloaded and only redo processing, add `--skip-download`.
 
 **`docs/` files disappeared after the build**
-`npm run build` empties `docs/` (Vite `emptyOutDir`). Do not keep untracked files there (for example `docs/superpowers/` plans are deleted). Keep notes and plans elsewhere. Tracked files that vanish can be restored with `git checkout -- <path>`.
+`npm run build` empties `docs/` (Vite `emptyOutDir`). Do not keep untracked files there. Plans and notes live in `plans/`. Tracked files that vanish can be restored with `git checkout -- <path>`.
 
 **An item vanished or a stat became 0**
 Many wiki pages are stubs without infoboxes, which is why extraction merges with `docs/data` (`--old-dir`). Look at the `diff_data` output: the item should appear under REMOVED or CHANGED. Renamed items are handled automatically: if an old-only item's wiki page is now a `#REDIRECT` to a name that was extracted, it is dropped and logged as `dropped 'X' (renamed on wiki -> 'Y')`. An old-only attachment that is now extracted into a different slot file is dropped too (`now extracted into another attachment file`). Review those lines in the output.
