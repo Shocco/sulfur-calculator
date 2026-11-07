@@ -31,6 +31,7 @@ python3 -m scripts.sync_images <dump>/images
 
 # One-command update (download dumps, extract, sync images, diff, test, build; never commits)
 scripts/update_from_wiki.sh   # see UPDATING.md for options and the manual steps
+scripts/check_live.sh         # after pushing: live site data + images match docs/
 ```
 
 Wiki dumps with unescaped `&` need pre-processing:
@@ -71,6 +72,7 @@ Python scripts that parse MediaWiki XML dumps into the JSON data files. All use 
 - `update_all.py` — orchestrates all extractors in dependency order (attachments first), then merges with old data via `--old-dir`
 - `diff_data.py` — compares two data directories and prints human-readable changes
 - `sync_images.py` — copies missing/changed item images from a wikiteam3 image dump into `public/images/`
+- `check_live.sh` — verifies the deployed GitHub Pages site matches `docs/` (data hashes, every image returns 200)
 - `update_from_wiki.sh` — one-command updater: wikiteam3 dumps, perl `&` fix, backup, `update_all`, `sync_images`, `diff_data`, pytest, `npm run build`. Never commits. Full guide: `UPDATING.md`
 
 For the full data-update procedure (options, manual steps, troubleshooting) see `UPDATING.md`.

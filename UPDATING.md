@@ -101,6 +101,11 @@ scripts/update_from_wiki.sh --delay 5
    git push
    ```
 5. GitHub Pages redeploys from `docs/` on push. Data file URLs are cache-busted with the build timestamp, so no hard refresh is needed.
+6. A minute or two after pushing, confirm the deploy:
+   ```bash
+   scripts/check_live.sh
+   ```
+   It compares every live data file with `docs/data/` and requests every referenced image from the live site. It exits non-zero if anything differs or 404s.
 
 ## Manual equivalent (no script)
 
@@ -231,6 +236,9 @@ The wiki rate-limits fast clients. Make sure the page dumps use the API modes (`
 
 **`RuntimeError: Found cf-polished header in response`** (image dump)
 wiki.gg serves images through Cloudflare Polish, which recompresses them. wikiteam3 refuses those unless you pass `--bypass-cdn-image-compression` (the script does). Rerun to resume — the finished page dumps are skipped.
+
+**An image 404s on the live site but works locally**
+GitHub Pages runs Jekyll by default, and Jekyll skips files whose names start with `.` or `_` (e.g. `.357_Balthazar.png`). `public/.nojekyll` turns that off; the build copies it into `docs/`. Don't delete it.
 
 **A dump was interrupted**
 Re-run the same command with the same `--date`. Finished dumps (`all_dumped.mark` present) are skipped and unfinished ones are resumed with `--resume`. To reuse everything that is already downloaded and only redo processing, add `--skip-download`.
