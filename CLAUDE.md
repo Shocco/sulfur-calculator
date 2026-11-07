@@ -39,6 +39,10 @@ Wiki dumps with unescaped `&` need pre-processing:
 perl -i -pe 's/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-fA-F]+;|[a-zA-Z]\w*;)/&amp;/g' <dump.xml>
 ```
 
+## Plans and notes
+
+Write implementation plans and specs to `plans/` (repo root), **not** `docs/` — this overrides the superpowers default of `docs/superpowers/plans/`. `npm run build` empties `docs/` (it is the GitHub Pages output), so anything kept there is deleted on the next build.
+
 ## Architecture
 
 ### Frontend (React + Vite + Tailwind)
