@@ -102,6 +102,9 @@ class TestWeaponBulletDotFlatFormat:
     def test_gun_crank_specific(self):
         assert "Gun Crank" in self.result["specificAttachments"]
 
+    def test_gun_crank_adds_chamber_slot(self):
+        assert "chamber" in self.result["allowedAttachments"]
+
     def test_no_duplicate_slots(self):
         slots = self.result["allowedAttachments"]
         assert len(slots) == len(set(slots))
@@ -115,6 +118,9 @@ class TestWeaponBulletDotWithPrimingBolt:
 
     def test_priming_bolt_in_specific(self):
         assert "Priming Bolt" in self.result["specificAttachments"]
+
+    def test_priming_bolt_adds_chamber_slot(self):
+        assert "chamber" in self.result["allowedAttachments"]
 
     def test_has_muzzle_slot(self):
         assert "muzzle" in self.result["allowedAttachments"]
@@ -481,3 +487,34 @@ class TestMergeArrayData:
         merged = _merge_array_data(new, old)
         item = next(i for i in merged if i["name"] == "Gun")
         assert item["allowedAttachments"] == ["muzzle"]  # kept new, not overwritten
+
+
+class TestMergeNeverRestoresModifiers:
+    """Modifiers are game numbers: if the wiki page lists none, the old ones are
+    stale, not missing. Restoring them shows values the wiki has removed."""
+
+    def test_empty_modifier_list_is_not_filled_from_old(self):
+        new = [{"name": "Scroll of Rocket Launcher", "modifiers": [], "effects": []}]
+        old = [{"name": "Scroll of Rocket Launcher",
+                "modifiers": [{"attribute": "BulletDrop", "modType": 100, "value": 10.0}],
+                "effects": ["More bullet drop"]}]
+        merged = _merge_array_data(new, old)
+        assert merged[0]["modifiers"] == []
+
+    def test_empty_modifier_dict_is_not_filled_from_old(self):
+        new = [{"name": "Gun Crank", "modifiers": {}}]
+        old = [{"name": "Gun Crank", "modifiers": {"Spread": -0.1}}]
+        merged = _merge_array_data(new, old)
+        assert merged[0]["modifiers"] == {}
+
+    def test_descriptive_lists_are_still_filled_from_old(self):
+        new = [{"name": "Scroll of Rocket Launcher", "modifiers": [], "effects": []}]
+        old = [{"name": "Scroll of Rocket Launcher", "modifiers": [], "effects": ["More bullet drop"]}]
+        merged = _merge_array_data(new, old)
+        assert merged[0]["effects"] == ["More bullet drop"]
+
+    def test_zeroed_base_stats_are_still_filled_from_old(self):
+        new = [{"name": "Gun", "baseStats": {"Damage": 0.0, "RPM": 100.0}}]
+        old = [{"name": "Gun", "baseStats": {"Damage": 60.0, "RPM": 90.0}}]
+        merged = _merge_array_data(new, old)
+        assert merged[0]["baseStats"] == {"Damage": 60.0, "RPM": 100.0}

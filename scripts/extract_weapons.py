@@ -13,6 +13,7 @@ from scripts.wiki_parser import (
     iterate_pages,
     parse_damage_field,
     parse_infobox,
+    parse_shots_per_trigger,
     parse_weapon_infobox,
 )
 
@@ -31,7 +32,7 @@ ATTACHMENT_CATEGORY_TO_SLOT: Dict[str, str] = {
     "Insurance": "insurance",
 }
 
-# Attachment names that go into specificAttachments instead of allowedAttachments slots
+# Attachment names that go into specificAttachments as well as opening their slot
 INDIVIDUAL_ATTACHMENTS: Set[str] = {"Gun Crank", "Priming Bolt", "Insurance"}
 
 
@@ -49,7 +50,8 @@ def _extract_attachments_section(wikitext: str) -> Optional[str]:
         Section content string, or None if the heading is absent.
     """
     # Stop at a newline followed by == that is NOT === (negative lookahead for =)
-    pattern = r'==Available Attachments==\s*(.*?)(?=\n==[^=]|\Z)'
+    # The wiki writes the heading both as ==X== and == X ==
+    pattern = r'==\s*Available Attachments\s*==\s*(.*?)(?=\n==[^=]|\Z)'
     match = re.search(pattern, wikitext, re.DOTALL | re.IGNORECASE)
     if match:
         return match.group(1).strip()
@@ -90,9 +92,6 @@ def _parse_attachments_section(
         if heading_match:
             current_category = heading_match.group(1).strip()
             current_slot = ATTACHMENT_CATEGORY_TO_SLOT.get(current_category)
-
-            if current_category in INDIVIDUAL_ATTACHMENTS:
-                current_slot = None
             continue
 
         # Match bullet list items: * or • (U+2022) or · (U+00B7)
@@ -107,20 +106,20 @@ def _parse_attachments_section(
             if current_category is None and current_slot is None:
                 bullet_slot = ATTACHMENT_CATEGORY_TO_SLOT.get(name)
                 if bullet_slot is not None:
-                    if name in INDIVIDUAL_ATTACHMENTS:
-                        if name not in specific_attachments:
-                            specific_attachments.append(name)
-                    elif bullet_slot not in allowed_slots:
+                    # An individual attachment (Gun Crank, Priming Bolt) both names
+                    # the item and opens its slot: the UI only shows slots listed in
+                    # allowedAttachments, then narrows them by specificAttachments.
+                    if name in INDIVIDUAL_ATTACHMENTS and name not in specific_attachments:
+                        specific_attachments.append(name)
+                    if bullet_slot not in allowed_slots:
                         allowed_slots.append(bullet_slot)
                     continue
 
             # Old format: items under a category heading
-            if current_category in INDIVIDUAL_ATTACHMENTS:
-                if name not in specific_attachments:
-                    specific_attachments.append(name)
-            elif current_slot is not None:
-                if current_slot not in allowed_slots:
-                    allowed_slots.append(current_slot)
+            if current_category in INDIVIDUAL_ATTACHMENTS and name not in specific_attachments:
+                specific_attachments.append(name)
+            if current_slot is not None and current_slot not in allowed_slots:
+                allowed_slots.append(current_slot)
 
     return allowed_slots, specific_attachments
 
@@ -231,7 +230,7 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
         if table_match:
             caliber_modding = parse_caliber_table(table_match.group(0))
 
-    return {
+    weapon: Dict = {
         "id": weapon_id,
         "name": name,
         "type": weapon_type,
@@ -242,6 +241,13 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
         "specificAttachments": specific_attachments,
         "caliberModding": caliber_modding,
     }
+
+    # Shells or cells fired per trigger pull (Arbiter 2 "40x8x3"); absent for most weapons
+    shots_per_trigger = parse_shots_per_trigger(raw_damage)
+    if shots_per_trigger is not None:
+        weapon["shotsPerTrigger"] = shots_per_trigger
+
+    return weapon
 
 
 def extract_weapons(

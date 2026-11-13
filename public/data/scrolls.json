@@ -28,6 +28,11 @@
         "value": -0.9
       },
       {
+        "attribute": "Recoil",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
         "attribute": "Spread",
         "modType": 200,
         "value": 1.0
@@ -71,6 +76,8 @@
       "Stun": "✓",
       "Swap": "<br>✓",
       "bypassPercentages": true,
+      "DarkDmg": "+50–200",
+      "perBulletDamage": 50,
       "BltSize": "+100%"
     },
     "effects": [
@@ -193,15 +200,11 @@
   {
     "id": "Scroll_of_Explosions",
     "name": "Scroll of Explosions",
-    "modifiers": [
-      {
-        "attribute": "Damage",
-        "modType": 100,
-        "value": 25.0
-      }
-    ],
+    "modifiers": [],
     "specialEffects": {
-      "Explosion": "¤"
+      "Explosion": "¤",
+      "bypassPercentages": true,
+      "perBulletDamage": 25
     },
     "effects": [
       "Elemental enchantment",
@@ -299,6 +302,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 999.0
       }
     ],
     "specialEffects": {
@@ -349,7 +357,12 @@
       {
         "attribute": "Damage",
         "modType": 200,
-        "value": -0.9
+        "value": -0.95
+      },
+      {
+        "attribute": "Recoil",
+        "modType": 200,
+        "value": -0.7
       },
       {
         "attribute": "Spread",
@@ -418,6 +431,11 @@
         "attribute": "RPM",
         "modType": 200,
         "value": -0.25
+      },
+      {
+        "attribute": "BulletPenetrations",
+        "modType": 100,
+        "value": 999.0
       }
     ],
     "specialEffects": {
@@ -449,6 +467,16 @@
         "attribute": "Spread",
         "modType": 200,
         "value": 2.0
+      },
+      {
+        "attribute": "Recoil",
+        "modType": 200,
+        "value": -0.7
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -2.0
       }
     ],
     "specialEffects": {
@@ -670,13 +698,7 @@
   {
     "id": "Scroll_of_Rocket_Launcher",
     "name": "Scroll of Rocket Launcher",
-    "modifiers": [
-      {
-        "attribute": "BulletDrop",
-        "modType": 100,
-        "value": 10.0
-      }
-    ],
+    "modifiers": [],
     "specialEffects": {
       "RocketBlt": "<br>🠶",
       "Explosion": "¤"
@@ -691,7 +713,13 @@
   {
     "id": "Scroll_of_Sacred_Ground",
     "name": "Scroll of Sacred Ground",
-    "modifiers": [],
+    "modifiers": [
+      {
+        "attribute": "Damage",
+        "modType": 200,
+        "value": -0.5
+      }
+    ],
     "specialEffects": {
       "DrbConsume": "+1"
     },
@@ -779,6 +807,11 @@
         "attribute": "BulletBounces",
         "modType": 100,
         "value": 1.0
+      },
+      {
+        "attribute": "AmmoConsumeChance",
+        "modType": 200,
+        "value": -1.0
       }
     ],
     "specialEffects": {

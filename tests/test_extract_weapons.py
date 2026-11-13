@@ -215,11 +215,9 @@ class TestSpecificAttachments:
     def test_insurance_in_specific_attachments(self):
         assert "Insurance" in self.result["specificAttachments"]
 
-    def test_gun_crank_slot_not_in_allowed_attachments(self):
-        # Gun Crank category maps chamber slot via ATTACHMENT_CATEGORY_TO_SLOT,
-        # but since it's in INDIVIDUAL_ATTACHMENTS it should go to specificAttachments
-        # and NOT add a slot entry for that category header
-        # The sight category should still produce a slot
+    def test_sight_category_still_produces_slot(self):
+        # Individual attachments (Gun Crank, Insurance) sit alongside ordinary
+        # categories; the sight category must still produce its slot
         assert "sight" in self.result["allowedAttachments"]
 
     def test_specific_attachments_no_duplicates(self):
@@ -246,3 +244,69 @@ class TestNonWeaponReturnsNone:
         wikitext = "{{Item Infobox\n| Damage = 50\n}}"
         result = parse_weapon_page("Unknown", wikitext)
         assert result is None
+
+
+class TestIndividualChamberAttachmentAddsSlot:
+    """Gun Crank / Priming Bolt must open the chamber slot.
+
+    The UI only renders slots listed in allowedAttachments; specificAttachments
+    then narrows that slot to the named item. Without the slot the item can
+    never be equipped.
+    """
+
+    def test_old_format_gun_crank_heading_adds_chamber_slot(self):
+        result = parse_weapon_page("Custom SMG", WEAPON_WITH_GUN_CRANK_WIKITEXT)
+        assert "chamber" in result["allowedAttachments"]
+        assert "Gun Crank" in result["specificAttachments"]
+
+    def test_weapon_without_chamber_listing_has_no_chamber_slot(self):
+        result = parse_weapon_page("Revolver", REVOLVER_WIKITEXT)
+        assert "chamber" not in result["allowedAttachments"]
+
+    def test_no_duplicate_slots(self):
+        result = parse_weapon_page("Custom SMG", WEAPON_WITH_GUN_CRANK_WIKITEXT)
+        slots = result["allowedAttachments"]
+        assert len(slots) == len(set(slots))
+
+
+class TestAttachmentsHeadingWithSpaces:
+    """The wiki writes the heading both as ==X== and == X ==."""
+
+    WIKITEXT = REVOLVER_WIKITEXT.split("==Available Attachments==")[0] + """
+== Available Attachments ==
+The weapon can accept the following [[Attachments|attachment]] types:
+
+• [[Muzzle Attachments]]
+
+• [[Sight|Sights]]
+
+• [[Gun Crank]]
+
+== Trivia ==
+* [[Laser Sights]] are mentioned here but are not an attachment listing.
+"""
+
+    def setup_method(self):
+        self.result = parse_weapon_page("Spaced Heading Gun", self.WIKITEXT)
+
+    def test_slots_parsed(self):
+        assert self.result["allowedAttachments"] == ["muzzle", "sight", "chamber", "insurance"]
+
+    def test_specific_parsed(self):
+        assert self.result["specificAttachments"] == ["Gun Crank"]
+
+
+class TestShotsPerTrigger:
+    """Arbiter 2 style weapons: Damage = 40x8x3 means three shells per trigger pull."""
+
+    def test_third_damage_factor_is_recorded(self):
+        wikitext = SHOTGUN_WIKITEXT.replace("| Damage = 40×8", "| Damage = 40&times;8&times;3")
+        assert "40&times;8&times;3" in wikitext
+        result = parse_weapon_page("Triple Gun", wikitext)
+        assert result["shotsPerTrigger"] == 3
+        assert result["baseStats"]["Damage"] == 40.0
+        assert result["baseStats"]["ProjectileCount"] == 8.0
+
+    def test_ordinary_weapon_has_no_field(self):
+        result = parse_weapon_page("Revolver", REVOLVER_WIKITEXT)
+        assert "shotsPerTrigger" not in result
