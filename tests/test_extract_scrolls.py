@@ -293,3 +293,141 @@ class TestExtractScrolls:
         assert isinstance(data, list)
         assert data[0]["id"] == "Scroll_of_Power"
         assert any(m["attribute"] == "Damage" for m in data[0]["modifiers"])
+
+
+# ---------------------------------------------------------------------------
+# Modifier params that scrolls share with oils (infoboxes copied from the wiki)
+# ---------------------------------------------------------------------------
+
+BEAM_WIKITEXT = """{{Item Infobox
+| kind = scroll
+| GridSize = 1&times;2
+| ConvertWpn = Beam Gun
+| RPM = +900%
+| Dmg = -90%
+| Recoil = -70%
+| Spread = +100%
+| SellVal = 500
+}}"""
+
+LIGHT_WIKITEXT = """{{Item Infobox
+| kind = scroll
+| GridSize = 1&times;2
+| ConvertWpn = Railgun
+| RPM = -25%
+| BltPen = +999
+| PenDmgMult = <br>-50%
+| SellVal = 500
+}}"""
+
+MEGA_SOAKER_WIKITEXT = """{{Item Infobox
+| kind = scroll
+| ConvertWpn = Mega Soaker
+| Dmg = -99%
+| AmmoConsume = <br>-200%
+| Knockback = +10
+| SellVal = 500
+}}"""
+
+SACRED_GROUND_WIKITEXT = """{{Item Infobox
+| kind = scroll
+| GridSize = 1&times;2
+| Damage = -50%
+| DrbConsume = +1
+| SellVal = 500
+}}"""
+
+
+def _modifier(scroll, attribute):
+    matches = [m for m in scroll["modifiers"] if m["attribute"] == attribute]
+    assert len(matches) == 1, f"expected one {attribute} modifier, got {matches}"
+    return matches[0]
+
+
+class TestParseScrollPageSharedModifierParams:
+    """Recoil, BltPen, AmmoConsume and the long-form Damage param are modifiers."""
+
+    def test_recoil_percent(self):
+        mod = _modifier(parse_scroll_page("Scroll of Beam", BEAM_WIKITEXT), "Recoil")
+        assert (mod["modType"], mod["value"]) == (200, -0.7)
+
+    def test_bullet_penetrations_flat(self):
+        mod = _modifier(parse_scroll_page("Scroll of Light", LIGHT_WIKITEXT), "BulletPenetrations")
+        assert (mod["modType"], mod["value"]) == (100, 999.0)
+
+    def test_ammo_consume_with_leading_br(self):
+        mod = _modifier(parse_scroll_page("Scroll of Mega Soaker", MEGA_SOAKER_WIKITEXT), "AmmoConsumeChance")
+        assert (mod["modType"], mod["value"]) == (200, -2.0)
+
+    def test_long_form_damage_param(self):
+        mod = _modifier(parse_scroll_page("Scroll of Sacred Ground", SACRED_GROUND_WIKITEXT), "Damage")
+        assert (mod["modType"], mod["value"]) == (200, -0.5)
+
+    def test_existing_params_still_parsed(self):
+        scroll = parse_scroll_page("Scroll of Beam", BEAM_WIKITEXT)
+        assert _modifier(scroll, "RPM")["value"] == 9.0
+        assert _modifier(scroll, "Damage")["value"] == -0.9
+        assert scroll["specialEffects"]["ConvertWpn"] == "Beam Gun"
+
+
+class TestParseScrollPageDarkDamageRange:
+    """Current wiki format: the amount is on DarkDmg itself, as a range, with no Dmg param."""
+
+    WIKITEXT = """{{Item Infobox
+| kind = scroll
+| GridSize = 1x2
+| Stun = &check;
+| DarkDmg = +50&ndash;200
+| BltSize = +100%
+| SellVal = 1000
+}}"""
+
+    def setup_method(self):
+        self.result = parse_scroll_page("Scroll of Chaos Strike", self.WIKITEXT)
+
+    def test_bypass_percentages_set(self):
+        assert self.result["specialEffects"]["bypassPercentages"] is True
+
+    def test_per_bullet_damage_is_lower_bound_of_range(self):
+        assert self.result["specialEffects"]["perBulletDamage"] == 50
+
+    def test_range_text_kept_for_display(self):
+        assert self.result["specialEffects"]["DarkDmg"] == "+50–200"
+
+    def test_no_damage_modifier_is_invented(self):
+        assert [m for m in self.result["modifiers"] if m["attribute"] == "Damage"] == []
+
+    def test_bullet_size_still_a_modifier(self):
+        assert _modifier(self.result, "BulletSize")["value"] == 1.0
+
+
+class TestParseScrollPageExplosiveDamage:
+    """Scroll of Explosions: the flat Dmg is unlisted explosive damage per projectile,
+    independent of other enchantments (wiki: Scroll of Explosions, Damage Mechanics)."""
+
+    WIKITEXT = """{{Item Infobox
+| kind = scroll
+| GridSize = 1&times;2
+| Explosion = &#164;
+| Dmg = +25
+| SellVal = 1000
+}}"""
+
+    def setup_method(self):
+        self.result = parse_scroll_page("Scroll of Explosions", self.WIKITEXT)
+
+    def test_flat_damage_becomes_per_bullet_bonus(self):
+        assert self.result["specialEffects"]["perBulletDamage"] == 25
+        assert self.result["specialEffects"]["bypassPercentages"] is True
+
+    def test_no_listed_damage_modifier(self):
+        assert [m for m in self.result["modifiers"] if m["attribute"] == "Damage"] == []
+
+    def test_explosion_effect_kept(self):
+        assert self.result["specialEffects"]["Explosion"] == "¤"
+
+    def test_percent_damage_on_an_explosive_scroll_stays_a_modifier(self):
+        wikitext = self.WIKITEXT.replace("Dmg = +25", "Dmg = -50%")
+        result = parse_scroll_page("Scroll of Boom", wikitext)
+        assert _modifier(result, "Damage")["value"] == -0.5
+        assert "perBulletDamage" not in result["specialEffects"]

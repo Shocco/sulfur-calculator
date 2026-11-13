@@ -1,0 +1,10 @@
+{
+  "scrolls.json": {
+    "Scroll of Ice Beam": {
+      "modifiers": {
+        "Damage": { "wikiValue": -0.9, "value": -0.95 }
+      },
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Scroll of Ice Beam damage lowered to -95% (Was -90%).\""
+    }
+  }
+}

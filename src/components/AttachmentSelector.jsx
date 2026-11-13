@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { getCompatibleAttachments } from '../utils/attachments'
 
 const ATTACHMENT_TYPES = [
   { key: 'muzzle', label: 'Muzzle' },
@@ -69,19 +70,8 @@ export default function AttachmentSelector({
   const availableAttachmentTypes = ATTACHMENT_TYPES.filter(({ key }) => allowedTypes.includes(key))
 
   // Filter attachments by specific weapon compatibility
-  const getFilteredAttachments = (type) => {
-    const attachments = attachmentsByType[type] || []
-
-    if (selectedWeapon?.specificAttachments && selectedWeapon.specificAttachments.length > 0) {
-      const typeSpecific = attachments.filter(attachment =>
-        selectedWeapon.specificAttachments.includes(attachment.name)
-      )
-      // Only restrict if some specificAttachments actually belong to this slot type
-      if (typeSpecific.length > 0) return typeSpecific
-    }
-
-    return attachments
-  }
+  const getFilteredAttachments = (type) =>
+    getCompatibleAttachments(selectedWeapon, type, attachmentsByType[type] || [])
 
   // Close dropdown when clicking outside
   useEffect(() => {

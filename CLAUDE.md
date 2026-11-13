@@ -13,10 +13,11 @@ SULFUR Weapon Calculator — a React web app that calculates weapon stats with o
 npm install          # install deps
 npm run dev          # dev server at http://localhost:5173
 npm run build        # production build to docs/ (served via GitHub Pages)
+node --test "src/**/*.test.js"   # calculator/utility tests (Node's built-in runner, no deps)
 
 # Python extraction pipeline (requires venv)
 source .venv/bin/activate
-python3 -m pytest tests/ -x -q                    # run all tests (216 tests)
+python3 -m pytest tests/ -x -q                    # run all tests
 python3 -m pytest tests/test_extract_weapons.py -q # run single test file
 python3 -m pytest tests/ -k "test_muzzle_slot"     # run by test name
 
@@ -94,4 +95,4 @@ Attachment sections on weapon pages use either `*` asterisks with `===Category==
 
 ### Merge Strategy
 
-Many wiki pages are stubs without infoboxes. `update_all.py --old-dir` merges extracted data with previously curated data: new items are kept, old-only items are preserved, and zeroed-out stats on matched items are filled from old values.
+Many wiki pages are stubs without infoboxes. `update_all.py --old-dir` merges extracted data with previously curated data: new items are kept, old-only items are preserved, and zeroed-out stats on matched items are filled from old values. Modifiers are the exception: they always come from the wiki and are never restored from old data, so a removed modifier does not linger.

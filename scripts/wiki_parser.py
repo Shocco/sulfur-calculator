@@ -172,6 +172,24 @@ def parse_damage_field(raw: str) -> Tuple[float, int]:
     return (float(num_match.group()) if num_match else 0.0, 1)
 
 
+def parse_shots_per_trigger(raw: str):
+    """
+    Parse the third factor of a weapon Damage field: shells or cells fired per
+    trigger pull.
+
+    "40&times;8&times;3" -> 3            (Arbiter 2: three barrels fire at once)
+    "40&times;8(&times;1-8)" -> [1, 8]   (Breacher 8: fires however many were charged)
+    "40&times;8" or "60" -> None
+    """
+    raw = raw.replace('&times;', '\u00d7')
+    raw = re.sub(r'(?<=\d)x(?=\d)', '\u00d7', raw)
+    variable = re.search(r'\(\s*\u00d7\s*(\d+)\s*[-\u2013]\s*(\d+)\s*\)', raw)
+    if variable:
+        return [int(variable.group(1)), int(variable.group(2))]
+    fixed = re.match(r'\s*[\d.]+\s*\u00d7\s*\d+\s*\u00d7\s*(\d+)', raw)
+    return int(fixed.group(1)) if fixed else None
+
+
 def extract_wikilink_text(raw: str) -> str:
     """
     Extract display text from a wikilink.

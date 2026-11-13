@@ -196,3 +196,25 @@ class TestInfoboxComments:
         assert box['ConvertWpn'] == 'Steam Sprayer'
         assert box['BltBounces'] == '+1'
         assert 'BltBounciness' not in box
+
+
+class TestParseShotsPerTrigger:
+    """Third factor of a weapon's Damage field: shells or cells fired per trigger pull."""
+
+    def test_fixed_count(self):
+        from scripts.wiki_parser import parse_shots_per_trigger
+        assert parse_shots_per_trigger("40&times;8&times;3") == 3
+        assert parse_shots_per_trigger("50&times;3&times;3") == 3
+        assert parse_shots_per_trigger("40x8x3") == 3
+
+    def test_variable_count_is_a_range(self):
+        from scripts.wiki_parser import parse_shots_per_trigger
+        assert parse_shots_per_trigger("40&times;8(&times;1-8)") == [1, 8]
+
+    def test_ordinary_damage_has_none(self):
+        from scripts.wiki_parser import parse_shots_per_trigger
+        assert parse_shots_per_trigger("60") is None
+        assert parse_shots_per_trigger("40&times;8") is None
+        assert parse_shots_per_trigger("40x8") is None
+        assert parse_shots_per_trigger("100<sup>&dagger;</sup>") is None
+        assert parse_shots_per_trigger("") is None

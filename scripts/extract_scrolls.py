@@ -18,8 +18,12 @@ from scripts.wiki_parser import (
 # Mapping from wiki infobox param names to JSON attribute names (modifier params).
 PARAM_TO_ATTRIBUTE: Dict[str, str] = {
     "Dmg": "Damage",
+    "Damage": "Damage",  # a few pages use the long form instead of Dmg
     "Spread": "Spread",
+    "Recoil": "Recoil",
     "RPM": "RPM",
+    "BltPen": "BulletPenetrations",
+    "AmmoConsume": "AmmoConsumeChance",
     "BltSpeed": "BulletSpeed",
     "BltBounces": "BulletBounces",
     "BltBounciness": "BulletBounciness",
@@ -115,6 +119,13 @@ def parse_scroll_page(title: str, wikitext: str) -> Optional[Dict]:
         # --- DarkDmg special handling ---
         if param_key == "DarkDmg":
             special_effects["bypassPercentages"] = True
+            # Current wiki format carries the amount here as a range ("+50–200")
+            # with no Dmg param; the old format used DarkDmg as a flag next to Dmg.
+            dark = html.unescape(raw_value).strip()
+            amount = re.match(r'\+\s*(\d+)', dark)
+            if amount and "Dmg" not in params:
+                special_effects["DarkDmg"] = dark
+                special_effects["perBulletDamage"] = int(amount.group(1))
             continue
 
         # --- Dmg: behaviour changes when DarkDmg is present ---
@@ -129,12 +140,21 @@ def parse_scroll_page(title: str, wikitext: str) -> Optional[Dict]:
                 modifiers.append({"attribute": "Damage", "modType": 100, "value": 100.0})
             else:
                 mod_type, value = parse_modifier_value(raw_value)
-                modifiers.append({"attribute": "Damage", "modType": mod_type, "value": value})
+                if mod_type == 100 and "Explosion" in params:
+                    # Flat damage on an explosive scroll is unlisted explosive damage
+                    # per projectile, independent of other enchantments, not a change
+                    # to the gun's listed damage.
+                    special_effects["bypassPercentages"] = True
+                    special_effects["perBulletDamage"] = int(value)
+                else:
+                    modifiers.append({"attribute": "Damage", "modType": mod_type, "value": value})
             continue
 
         # --- Regular modifier params ---
         if param_key in PARAM_TO_ATTRIBUTE:
             attribute = PARAM_TO_ATTRIBUTE[param_key]
+            # Values are sometimes written with a leading line break ("<br>-200%")
+            raw_value = re.sub(r'^<br\s*/?>\s*', '', raw_value.strip())
             mod_type, value = parse_modifier_value(raw_value)
             modifiers.append({"attribute": attribute, "modType": mod_type, "value": value})
             continue
