@@ -19,40 +19,15 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
     "specificAttachments": [
-      "A12C Muzzle Brake",
-      "Aftermarket Haukland Silencer",
-      "Barrel Extension 2\"",
-      "Barrel Extension 4\"",
-      "Barrel Extension 6\"",
-      "Breznik BMD",
-      "Breznik BMD (Tactical)",
-      "Haukland Flash Hider",
-      "Haukland Silencer",
-      "Improvised Barrel Extension",
-      "M87 \"Albatross\" Silencer",
-      "SR-P3 Silencer",
-      "Shrouded Barrel Extension",
-      "Warmage Compensator",
-      "Assault Scope",
-      "Compact Sight",
-      "Holographic Sight",
-      "Hunting Scope",
-      "Recon Scope",
-      "Reflex Sight",
-      "Sniper Scope",
-      "Laser Sight (Red)",
-      "Laser Sight (Green)",
-      "Laser Sight (Yellow)",
-      "Gun Crank",
-      "Chamber Chisel (9mm)",
-      "Chamber Chisel (5.56mm)",
-      "Chamber Chisel (7.62mm)",
-      "Chamber Chisel (.50 BMG)",
-      "Chamber Chisel (12Ga)",
-      "Insurance"
+      "Gun Crank"
     ],
     "caliberModding": {
       "9mm": {
@@ -110,6 +85,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -172,6 +148,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -209,7 +186,8 @@
         "Recoil": 30.0,
         "ProjectileCount": 3
       }
-    }
+    },
+    "shotsPerTrigger": 3
   },
   {
     "id": "Weapon_Augusta",
@@ -233,12 +211,14 @@
     "allowedAttachments": [
       "sight",
       "laser",
+      "chamber",
       "insurance"
     ],
     "specificAttachments": [
       "Gun Crank"
     ],
-    "caliberModding": {}
+    "caliberModding": {},
+    "shotsPerTrigger": 3
   },
   {
     "id": "Weapon_Beck_8",
@@ -263,6 +243,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -452,7 +433,11 @@
         "Recoil": 20.0,
         "ProjectileCount": 1
       }
-    }
+    },
+    "shotsPerTrigger": [
+      1,
+      8
+    ]
   },
   {
     "id": "Weapon_Bronco_89",
@@ -474,40 +459,15 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
     "specificAttachments": [
-      "A12C Muzzle Brake",
-      "Aftermarket Haukland Silencer",
-      "Barrel Extension 2\"",
-      "Barrel Extension 4\"",
-      "Barrel Extension 6\"",
-      "Breznik BMD",
-      "Breznik BMD (Tactical)",
-      "Haukland Flash Hider",
-      "Haukland Silencer",
-      "Improvised Barrel Extension",
-      "M87 \"Albatross\" Silencer",
-      "SR-P3 Silencer",
-      "Shrouded Barrel Extension",
-      "Warmage Compensator",
-      "Assault Scope",
-      "Compact Sight",
-      "Holographic Sight",
-      "Hunting Scope",
-      "Recon Scope",
-      "Reflex Sight",
-      "Sniper Scope",
-      "Laser Sight (Red)",
-      "Laser Sight (Green)",
-      "Laser Sight (Yellow)",
-      "Gun Crank",
-      "Chamber Chisel (9mm)",
-      "Chamber Chisel (5.56mm)",
-      "Chamber Chisel (7.62mm)",
-      "Chamber Chisel (.50 BMG)",
-      "Chamber Chisel (12Ga)",
-      "Insurance"
+      "Gun Crank"
     ],
     "caliberModding": {
       "9mm": {
@@ -564,6 +524,7 @@
     "allowedAttachments": [
       "sight",
       "laser",
+      "chamber",
       "insurance"
     ],
     "specificAttachments": [
@@ -633,6 +594,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -695,6 +657,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -818,6 +781,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -877,6 +841,8 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "laser",
+      "sight",
       "insurance"
     ],
     "specificAttachments": [
@@ -914,9 +880,16 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
-    "specificAttachments": [],
+    "specificAttachments": [
+      "Gun Crank"
+    ],
     "caliberModding": {
       "9mm": {
         "Damage": 115.0,
@@ -973,6 +946,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1035,6 +1009,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1097,6 +1072,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1159,6 +1135,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1221,6 +1198,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1283,6 +1261,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1342,40 +1321,15 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
     "specificAttachments": [
-      "A12C Muzzle Brake",
-      "Aftermarket Haukland Silencer",
-      "Barrel Extension 2\"",
-      "Barrel Extension 4\"",
-      "Barrel Extension 6\"",
-      "Breznik BMD",
-      "Breznik BMD (Tactical)",
-      "Haukland Flash Hider",
-      "Haukland Silencer",
-      "Improvised Barrel Extension",
-      "M87 \"Albatross\" Silencer",
-      "SR-P3 Silencer",
-      "Shrouded Barrel Extension",
-      "Warmage Compensator",
-      "Assault Scope",
-      "Compact Sight",
-      "Holographic Sight",
-      "Hunting Scope",
-      "Recon Scope",
-      "Reflex Sight",
-      "Sniper Scope",
-      "Laser Sight (Red)",
-      "Laser Sight (Green)",
-      "Laser Sight (Yellow)",
-      "Gun Crank",
-      "Chamber Chisel (9mm)",
-      "Chamber Chisel (5.56mm)",
-      "Chamber Chisel (7.62mm)",
-      "Chamber Chisel (.50 BMG)",
-      "Chamber Chisel (12Ga)",
-      "Insurance"
+      "Gun Crank"
     ],
     "caliberModding": {
       "9mm": {
@@ -1433,6 +1387,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1495,6 +1450,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1557,6 +1513,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1756,6 +1713,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1818,6 +1776,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1880,6 +1839,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -1942,6 +1902,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2004,6 +1965,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2066,6 +2028,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2128,6 +2091,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2189,6 +2153,7 @@
     "allowedAttachments": [
       "sight",
       "laser",
+      "chamber",
       "insurance"
     ],
     "specificAttachments": [
@@ -2216,9 +2181,16 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
-    "specificAttachments": [],
+    "specificAttachments": [
+      "Priming Bolt"
+    ],
     "caliberModding": {
       "9mm": {
         "Damage": 79.0,
@@ -2275,6 +2247,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2337,6 +2310,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2399,6 +2373,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2461,6 +2436,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2520,9 +2496,16 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
-    "specificAttachments": [],
+    "specificAttachments": [
+      "Priming Bolt"
+    ],
     "caliberModding": {
       "9mm": {
         "Damage": 66.0,
@@ -2579,6 +2562,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2638,40 +2622,15 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
     "specificAttachments": [
-      "A12C Muzzle Brake",
-      "Aftermarket Haukland Silencer",
-      "Barrel Extension 2\"",
-      "Barrel Extension 4\"",
-      "Barrel Extension 6\"",
-      "Breznik BMD",
-      "Breznik BMD (Tactical)",
-      "Haukland Flash Hider",
-      "Haukland Silencer",
-      "Improvised Barrel Extension",
-      "M87 \"Albatross\" Silencer",
-      "SR-P3 Silencer",
-      "Shrouded Barrel Extension",
-      "Warmage Compensator",
-      "Assault Scope",
-      "Compact Sight",
-      "Holographic Sight",
-      "Hunting Scope",
-      "Recon Scope",
-      "Reflex Sight",
-      "Sniper Scope",
-      "Laser Sight (Red)",
-      "Laser Sight (Green)",
-      "Laser Sight (Yellow)",
-      "Gun Crank",
-      "Chamber Chisel (9mm)",
-      "Chamber Chisel (5.56mm)",
-      "Chamber Chisel (7.62mm)",
-      "Chamber Chisel (.50 BMG)",
-      "Chamber Chisel (12Ga)",
-      "Insurance"
+      "Gun Crank"
     ],
     "caliberModding": {
       "9mm": {
@@ -2729,6 +2688,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2791,6 +2751,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2853,6 +2814,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2915,6 +2877,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -2977,6 +2940,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -3036,40 +3000,15 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
+      "muzzle",
+      "sight",
+      "laser",
+      "chamber",
+      "chisel",
       "insurance"
     ],
     "specificAttachments": [
-      "A12C Muzzle Brake",
-      "Aftermarket Haukland Silencer",
-      "Barrel Extension 2\"",
-      "Barrel Extension 4\"",
-      "Barrel Extension 6\"",
-      "Breznik BMD",
-      "Breznik BMD (Tactical)",
-      "Haukland Flash Hider",
-      "Haukland Silencer",
-      "Improvised Barrel Extension",
-      "M87 \"Albatross\" Silencer",
-      "SR-P3 Silencer",
-      "Shrouded Barrel Extension",
-      "Warmage Compensator",
-      "Assault Scope",
-      "Compact Sight",
-      "Holographic Sight",
-      "Hunting Scope",
-      "Recon Scope",
-      "Reflex Sight",
-      "Sniper Scope",
-      "Laser Sight (Red)",
-      "Laser Sight (Green)",
-      "Laser Sight (Yellow)",
-      "Gun Crank",
-      "Chamber Chisel (9mm)",
-      "Chamber Chisel (5.56mm)",
-      "Chamber Chisel (7.62mm)",
-      "Chamber Chisel (.50 BMG)",
-      "Chamber Chisel (12Ga)",
-      "Insurance"
+      "Gun Crank"
     ],
     "caliberModding": {
       "9mm": {
@@ -3127,6 +3066,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -3189,6 +3129,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -3290,6 +3231,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -3352,6 +3294,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -3414,6 +3357,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
@@ -3476,6 +3420,7 @@
       "muzzle",
       "sight",
       "laser",
+      "chamber",
       "chisel",
       "insurance"
     ],
