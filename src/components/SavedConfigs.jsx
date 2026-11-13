@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { totalDamage, formatTotalDamage } from '../utils/damage'
 
 export default function SavedConfigs({ savedConfigs, onLoadConfig, onDeleteConfig, onSaveConfig, currentConfig }) {
   const [isNaming, setIsNaming] = useState(false)
@@ -46,7 +47,7 @@ export default function SavedConfigs({ savedConfigs, onLoadConfig, onDeleteConfi
   const calculateTotalDamage = (weapon) => {
     const damage = weapon.baseStats?.Damage || 0
     const projectiles = weapon.baseStats?.ProjectileCount || 1
-    return Math.round(damage * projectiles * 100) / 100
+    return formatTotalDamage(totalDamage({ damage, projectiles, shotsPerTrigger: weapon.shotsPerTrigger }))
   }
 
   return (

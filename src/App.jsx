@@ -6,6 +6,8 @@ import AttachmentSelector from './components/AttachmentSelector'
 import StatsDisplay from './components/StatsDisplay'
 import SavedConfigs from './components/SavedConfigs'
 import { calculateModifiedStats } from './utils/calculator'
+import { pruneIncompatibleAttachments } from './utils/attachments'
+import { refreshItem, refreshItems, refreshAttachments, refreshBuild } from './utils/builds'
 
 const STORAGE_KEY = 'sulfur_saved_configs'
 const CURRENT_BUILD_KEY = 'sulfur_current_build'
@@ -104,6 +106,27 @@ function App() {
       console.error('Error loading current build:', err)
     }
   }, [])
+
+  // Builds in localStorage hold whole item objects with the stats they had when
+  // saved. Once the data has loaded, swap them for the current items.
+  useEffect(() => {
+    setSelectedWeapon(prev => refreshItem(prev, weapons))
+    setSelectedOils(prev => refreshItems(prev, oils))
+    setSelectedScroll(prev => refreshItem(prev, scrolls))
+    setSelectedAttachments(prev => refreshAttachments(prev, attachmentsByType))
+    setSavedConfigs(prev => {
+      const refreshed = prev.map(config => refreshBuild(config, { weapons, oils, scrolls, attachmentsByType }))
+      return refreshed.every((config, index) => config === prev[index]) ? prev : refreshed
+    })
+  }, [weapons, oils, scrolls, attachmentsByType])
+
+  // Drop attachments the current weapon can't take. Covers every way a weapon
+  // arrives: the selector, a saved build, and the build restored from localStorage.
+  useEffect(() => {
+    setSelectedAttachments(prev =>
+      pruneIncompatibleAttachments(selectedWeapon, prev, attachmentsByType)
+    )
+  }, [selectedWeapon, attachmentsByType])
 
   // Calculate modified stats when weapon, attachments, or enchantments change
   useEffect(() => {

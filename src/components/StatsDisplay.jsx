@@ -1,4 +1,12 @@
 import React from 'react'
+import { formatChange } from '../utils/format'
+import { totalDamage, formatTotalDamage, formatDamage } from '../utils/damage'
+
+// What the Total Damage figure is made of, for the caption under it
+function totalDamageCaption(hasBonus, shotsPerTrigger) {
+  return `${hasBonus ? '(Damage + Bonus Damage)' : 'Damage'} × Projectile Count` +
+    (shotsPerTrigger ? ' × Shells per Trigger Pull' : '')
+}
 
 // Format stat names for display (convert camelCase to Title Case)
 function formatStatName(stat) {
@@ -21,7 +29,9 @@ function formatStatName(stat) {
     'LootChance': 'Loot Chance',
     'MoveSpeed': 'Move Speed',
     'MoveAccuracy': 'Move Accuracy',
-    'BulletBounciness': 'Bullet Bounciness'
+    'BulletBounciness': 'Bullet Bounciness',
+    'HeadshotDamage': 'Headshot Damage',
+    'BonusDamage': 'Bonus Damage (per projectile)'
   }
 
   return statNameMap[stat] || stat
@@ -161,9 +171,7 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                 let displayValue = value
                 if (stat === 'Damage') {
                   const projectiles = (weapon.baseStats || weapon.base_stats || {}).ProjectileCount || 1
-                  if (projectiles > 1) {
-                    displayValue = `${value}x${Math.round(projectiles)}`
-                  }
+                  displayValue = formatDamage(value, projectiles, weapon.shotsPerTrigger)
                 }
                 // Format ProjectileCount as integer
                 if (stat === 'ProjectileCount') {
@@ -187,12 +195,12 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                 {(() => {
                   const damage = (weapon.baseStats || weapon.base_stats || {}).Damage || 0
                   const projectiles = (weapon.baseStats || weapon.base_stats || {}).ProjectileCount || 1
-                  return Math.round(damage * projectiles * 100) / 100
+                  return formatTotalDamage(totalDamage({ damage, projectiles, shotsPerTrigger: weapon.shotsPerTrigger }))
                 })()}
               </span>
             </div>
             <div className="text-xs text-gray-500 mt-1">
-              Damage × Projectile Count
+              {totalDamageCaption(false, weapon.shotsPerTrigger)}
             </div>
           </div>
         </div>
@@ -224,6 +232,7 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                   // Define stat order: CritChance and ADSCritChance between Damage and ProjectileCount
                   const statOrder = {
                     'Damage': 1,
+                    'BonusDamage': 1.5,
                     'CritChance': 2,
                     'ADSCritChance': 3,
                     'ProjectileCount': 4,
@@ -258,7 +267,7 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                   if (orderA !== orderB) return orderA - orderB
                   return a.stat.localeCompare(b.stat)
                 })
-                .map(({ stat, baseValue, modifiedValue, change, modifier }) => {
+                .map(({ stat, baseValue, modifiedValue, change, modifier, isRelative }) => {
                   // Format Damage with projectile count
                   let displayModified = modifiedValue
                   let displayBase = baseValue
@@ -266,13 +275,9 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                   if (stat === 'Damage') {
                     const projectileStat = modifiedStats.find(s => s.stat === 'ProjectileCount')
                     const projectiles = projectileStat ? projectileStat.modifiedValue : (weapon.baseStats || weapon.base_stats || {}).ProjectileCount || 1
-                    if (projectiles > 1) {
-                      displayModified = `${modifiedValue}x${Math.round(projectiles)}`
-                      const baseProjectiles = (weapon.baseStats || weapon.base_stats || {}).ProjectileCount || 1
-                      if (baseProjectiles > 1) {
-                        displayBase = `${baseValue}x${Math.round(baseProjectiles)}`
-                      }
-                    }
+                    const baseProjectiles = (weapon.baseStats || weapon.base_stats || {}).ProjectileCount || 1
+                    displayModified = formatDamage(modifiedValue, projectiles, weapon.shotsPerTrigger)
+                    displayBase = formatDamage(baseValue, baseProjectiles, weapon.shotsPerTrigger)
                   }
                   // Format ProjectileCount as integer
                   if (stat === 'ProjectileCount') {
@@ -284,6 +289,10 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                     displayModified = `${Math.round(modifiedValue * 100)}%`
                     displayBase = `${Math.round(baseValue * 100)}%`
                   }
+                  // Stats with no weapon base value are a net relative change (0.8 = +80%)
+                  if (isRelative) {
+                    displayModified = `${modifiedValue > 0 ? '+' : ''}${Math.round(modifiedValue * 100)}%`
+                  }
 
                   return (
                     <div key={stat} className="p-2 bg-gray-700 rounded">
@@ -293,11 +302,11 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                           {displayModified}
                         </span>
                       </div>
-                      {change !== 0 && (
+                      {change !== 0 && !isRelative && (
                         <div className="text-xs text-gray-500 mt-1">
                           {displayBase} → {displayModified}
                           <span className={change > 0 ? 'text-green-400' : 'text-red-400'}>
-                            {' '}({change > 0 ? '+' : ''}{(stat === 'CritChance' || stat === 'ADSCritChance') ? `${Math.round(change * 100)}%` : Math.round(change)})
+                            {' '}({formatChange(change, stat === 'CritChance' || stat === 'ADSCritChance')})
                           </span>
                         </div>
                       )}
@@ -316,12 +325,18 @@ export default function StatsDisplay({ weapon, selectedOils, selectedScroll, sel
                     const projectileStat = modifiedStats.find(s => s.stat === 'ProjectileCount')
                     const damage = damageStat ? damageStat.modifiedValue : (weapon.baseStats || weapon.base_stats || {}).Damage || 0
                     const projectiles = projectileStat ? projectileStat.modifiedValue : (weapon.baseStats || weapon.base_stats || {}).ProjectileCount || 1
-                    return Math.round(damage * projectiles * 100) / 100
+                    const bonusStat = modifiedStats.find(s => s.stat === 'BonusDamage')
+                    return formatTotalDamage(totalDamage({
+                      damage,
+                      projectiles,
+                      bonus: bonusStat ? bonusStat.modifiedValue : 0,
+                      shotsPerTrigger: weapon.shotsPerTrigger
+                    }))
                   })()}
                 </span>
               </div>
               <div className="text-xs text-gray-500 mt-1">
-                Damage × Projectile Count
+                {totalDamageCaption(modifiedStats.some(s => s.stat === 'BonusDamage'), weapon.shotsPerTrigger)}
               </div>
             </div>
           </div>
