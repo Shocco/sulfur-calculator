@@ -146,11 +146,12 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
         // additive (same rule as applyModifier), even when the data marks them 'percent'
         const isCrit = isCritStat(stat)
         // Support both simple values (flat) and objects with {value, type}
-        if (typeof value === 'object' && value !== null && 'value' in value) {
-          attachmentMods[stat].push({ value: value.value, type: isCrit ? 'flat' : (value.type || 'flat') })
-        } else {
-          attachmentMods[stat].push({ value, type: 'flat' })
-        }
+        const mod = typeof value === 'object' && value !== null && 'value' in value
+          ? { value: value.value, type: isCrit ? 'flat' : (value.type || 'flat') }
+          : { value, type: 'flat' }
+        // The 12Ga split covers flat Damage from every source (ItemStats.GetPelletDamage)
+        if (is12Ga && stat === 'Damage' && mod.type !== 'percent') mod.value /= 8
+        attachmentMods[stat].push(mod)
       })
     }
   })
@@ -176,12 +177,12 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
   const result = []
 
   // Run every collected modifier for one stat, starting from startValue.
-  // Flat changes from every source come first, then percentages:
-  //   (base + flats) x converting scroll x (1 + sum of attachment and oil percentages)
-  // A converting scroll's percentage is its own factor (wiki: "applies separately
-  // from Oils"), and it applies to the value including flat oil bonuses.
-  // With applyLimits, the combined effect of all percentages is held between 1%
-  // and 10 times the value after flats, as the game does for weapon stats.
+  // Game 1.0.6 (CharacterStat.CalculateFinalValue) works out every stat as
+  //   (base + flats) x clamp(1 + sum of PercentAdd, 0.01, 10) x each (1 + PercentMult)
+  // Converting scrolls (Beam, Light, Flame Thrower...) are PercentMult in the game
+  // files, but the data lists them as PercentAdd, so their percentages are applied
+  // here as one separate factor with no limit. With applyLimits, only the pooled
+  // attachment and oil PercentAdd factor is held between 1% and 10x.
   const typeIs = (mod, id, name) => (mod.modType || mod.mod_type) === id || (mod.modType || mod.mod_type) === name
   const applyAllModifiers = (stat, startValue, applyLimits = false) => {
     const scrollMods = convertScrollMods[stat] || []
@@ -200,7 +201,6 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
       currentValue = applyModifier(currentValue, currentValue, mod, stat)
     })
 
-    const afterFlats = currentValue
 
     // Step 2: converting scroll percentages (PercentAdd, then PercentMult)
     let phaseBase = currentValue
@@ -213,7 +213,7 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     })
 
     // Step 3: attachment and oil percentages share one pool and add together
-    // (PercentAdd), then PercentMult
+    // (PercentAdd); with applyLimits the pooled factor stays within 1%-10x
     phaseBase = currentValue
     attachMods.filter(m => m.type === 'percent').forEach(mod => {
       currentValue += phaseBase * mod.value
@@ -221,14 +221,17 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     oilMods.filter(m => typeIs(m, 200, 'PercentAdd')).forEach(mod => {
       currentValue = applyModifier(currentValue, phaseBase, mod, stat)
     })
+    const isAdditive = isCritStat(stat) || stat === 'AmmoConsumeChance'
+    if (applyLimits && phaseBase !== 0 && !isAdditive) {
+      const factor = Math.min(Math.max(currentValue / phaseBase, 0.01), 10)
+      currentValue = phaseBase * factor
+    }
+
+    // Step 4: PercentMult, each its own factor, no limit
     phaseBase = currentValue
     oilMods.filter(m => typeIs(m, 300, 'PercentMult')).forEach(mod => {
       currentValue = applyModifier(currentValue, phaseBase, mod, stat)
     })
-
-    if (applyLimits && afterFlats > 0) {
-      currentValue = Math.min(Math.max(currentValue, afterFlats * 0.01), afterFlats * 10)
-    }
 
     return currentValue
   }
@@ -248,7 +251,7 @@ export function calculateModifiedStats(weapon, attachments = [], enchantments = 
     })
   })
 
-  // Dark and explosive damage (Chaos Strike, Explosions) is its own damage source:
+  // Dark and explosive damage (Chaos Strike, Explosions, rocket scrolls) is its own damage source:
   // a fixed amount per projectile that oils, attachments and crits don't change,
   // and that isn't part of the gun's listed damage. Divided by 8 on 12Ga.
   const bonusDamage = bypassPercentageScrolls.reduce(

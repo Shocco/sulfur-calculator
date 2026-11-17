@@ -234,10 +234,25 @@ test('stacked percentage penalties bottom out at 1% of the stat', () => {
 })
 
 test('stacked percentage bonuses top out at 10 times the stat', () => {
+  const rpmOil = (value) => ({ name: `RPM ${value}`, modifiers: [{ attribute: 'RPM', modType: 200, value }] })
+  assert.equal(stat(calculateModifiedStats(weapon, [], [rpmOil(6), rpmOil(5)]), 'RPM').modifiedValue, 15000)
+})
+
+// Game 1.0.6, CharacterStat.CalculateFinalValue: only the pooled PercentAdd total is
+// clamped to 1%-10x; each PercentMult then multiplies with no limit.
+
+test('a converting scroll multiplies on top of the limited oil percentages', () => {
   const beam = { name: 'Scroll of Beam', modifiers: [{ attribute: 'RPM', modType: 200, value: 9 }], specialEffects: { ConvertWpn: 'Beam Gun' } }
   const rpmOil = { name: 'Zero Fucks Oil', modifiers: [{ attribute: 'RPM', modType: 200, value: 0.5 }] }
   assert.equal(stat(calculateModifiedStats(weapon, [], [beam]), 'RPM').modifiedValue, 15000)
-  assert.equal(stat(calculateModifiedStats(weapon, [], [rpmOil, beam]), 'RPM').modifiedValue, 15000)
+  assert.equal(stat(calculateModifiedStats(weapon, [], [rpmOil, beam]), 'RPM').modifiedValue, 22500)
+})
+
+test('PercentMult is not limited to 1%-10x', () => {
+  const multDamageOil = (value) => ({ name: `xDamage ${value}`, modifiers: [{ attribute: 'Damage', modType: 300, value }] })
+  assert.equal(stat(calculateModifiedStats(weapon, [], [multDamageOil(-0.95), multDamageOil(-0.9)]), 'Damage').modifiedValue, 0.3)
+  // PercentAdd +1200% is held at 10x, then PercentMult +100% doubles it
+  assert.equal(stat(calculateModifiedStats(weapon, [], [percentDamageOil(12), multDamageOil(1)]), 'Damage').modifiedValue, 1200)
 })
 
 test('percentages inside the limits are not changed by them', () => {
@@ -325,8 +340,8 @@ test('flat oil damage is added before a converting scroll percentage', () => {
   assert.equal(damage.modifiedValue, 10.5)
 })
 
-test('a -100% converting scroll leaves 1% of base plus flat damage', () => {
-  assert.equal(stat(calculateModifiedStats(weapon, [], [flatDamageOil(15), steam]), 'Damage').modifiedValue, 0.75)
+test('a -100% converting scroll takes damage to zero', () => {
+  assert.equal(stat(calculateModifiedStats(weapon, [], [flatDamageOil(15), steam]), 'Damage').modifiedValue, 0)
 })
 
 test('flat, scroll percent and oil percent combine as (base + flat) x scroll x oils', () => {
@@ -362,4 +377,17 @@ test('a converting scroll stays a separate factor from pooled attachment and oil
 test('attachment flat changes still apply before percentages', () => {
   const spread = stat(calculateModifiedStats(weapon, [primingBoltAtt], [{ name: 'Spread %', modifiers: [{ attribute: 'Spread', modType: 200, value: 1 }] }]), 'Spread')
   assert.equal(spread.modifiedValue, 9.8)
+})
+
+test('flat damage from an attachment is also divided by 8 on 12Ga', () => {
+  // ItemStats.GetPelletDamage divides every flat Damage modifier, whatever its source
+  const heavyBolt = { name: 'Heavy Bolt', type: 'chamber', modifiers: { Damage: 16 } }
+  assert.equal(stat(calculateModifiedStats(shotgun12, [heavyBolt], []), 'Damage').modifiedValue, 42)
+})
+
+test('rocket explosion damage is split across 12Ga pellets like other bonus damage', () => {
+  // Game 1.0.6: ExplodingRocket does 80 per projectile, Weapon.SplitAmount divides it by the pellets
+  const rockets = { name: 'Scroll of Rocket Launcher', modifiers: [], specialEffects: { RocketBlt: '🠶', bypassPercentages: true, perBulletDamage: 80 } }
+  assert.equal(stat(calculateModifiedStats(shotgun12, [], [rockets]), 'BonusDamage').modifiedValue, 10)
+  assert.equal(stat(calculateModifiedStats(weapon, [], [rockets]), 'BonusDamage').modifiedValue, 80)
 })
