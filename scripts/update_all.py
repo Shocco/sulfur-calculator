@@ -127,6 +127,7 @@ def _apply_overrides(items: List[Dict[str, Any]], overrides: Dict[str, Any]) -> 
     - "modifiers": {attribute: {"wikiValue": x, "value": y}}
     - "caliberModding": {caliber: {stat: {"wikiValue": x, "value": y}}}
       (a weapon's per-caliber stats)
+    - "baseStats": {stat: {"wikiValue": x, "value": y}} (a weapon's own stats)
 
     A correction is applied only while the extracted value still equals
     ``wikiValue``; once the wiki changes, the override is skipped and reported
@@ -158,6 +159,8 @@ def _apply_overrides(items: List[Dict[str, Any]], overrides: Dict[str, Any]) -> 
         for attribute, change in entry.get("modifiers", {}).items():
             mod = next((m for m in item.get("modifiers", []) if m.get("attribute") == attribute), None)
             correct(name, attribute, mod, "value", change, source)
+        for stat, change in entry.get("baseStats", {}).items():
+            correct(name, stat, item.get("baseStats"), stat, change, source)
         for caliber, stats in entry.get("caliberModding", {}).items():
             row = item.get("caliberModding", {}).get(caliber)
             for stat, change in stats.items():
