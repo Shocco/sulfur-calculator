@@ -31,6 +31,12 @@ PARAM_TO_ATTRIBUTE: Dict[str, str] = {
     "HSDmg": "HeadshotDamage",
 }
 
+# Explosion damage per projectile for rocket scrolls (RocketBlt). The wiki infobox
+# lists none; from the game 1.0.6 files: ExplosionDefinition ExplodingRocket
+# (Rocket Launcher) and CryoExplodingRocket (Cryo Rockets) both do 80. Like
+# other explosions it is divided across 12Ga pellets (Weapon.SplitAmount).
+ROCKET_EXPLOSION_DAMAGE = 80
+
 # Special effect param names whose raw string values are stored directly in specialEffects.
 SPECIAL_EFFECT_PARAMS = {
     "ConvertWpn",
@@ -163,6 +169,11 @@ def parse_scroll_page(title: str, wikitext: str) -> Optional[Dict]:
         if param_key in SPECIAL_EFFECT_PARAMS:
             special_effects[param_key] = html.unescape(raw_value)
             continue
+
+    # Rocket bullets explode on hit for a fixed amount the wiki does not list
+    if "RocketBlt" in params and "perBulletDamage" not in special_effects:
+        special_effects["bypassPercentages"] = True
+        special_effects["perBulletDamage"] = ROCKET_EXPLOSION_DAMAGE
 
     # Extract effects from the Description section bullet points.
     effects: List[str] = []

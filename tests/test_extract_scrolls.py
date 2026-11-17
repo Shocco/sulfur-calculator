@@ -431,3 +431,37 @@ class TestParseScrollPageExplosiveDamage:
         result = parse_scroll_page("Scroll of Boom", wikitext)
         assert _modifier(result, "Damage")["value"] == -0.5
         assert "perBulletDamage" not in result["specialEffects"]
+
+
+class TestParseScrollPageRocketDamage:
+    """Rocket scrolls: each projectile explodes for 80 (game 1.0.6 files:
+    ExplosionDefinition ExplodingRocket and CryoExplodingRocket). The wiki
+    infobox only marks them with RocketBlt and lists no damage."""
+
+    ROCKET = """{{Item Infobox
+| kind = scroll
+| RocketBlt = <br>&#129078;
+| Explosion = &#164;
+}}"""
+    CRYO = """{{Item Infobox
+| kind = scroll
+| RocketBlt = <br>&#129078;
+| Frost = &#10054;
+}}"""
+
+    def test_rocket_launcher_gets_per_projectile_explosion(self):
+        result = parse_scroll_page("Scroll of Rocket Launcher", self.ROCKET)
+        assert result["specialEffects"]["perBulletDamage"] == 80
+        assert result["specialEffects"]["bypassPercentages"] is True
+
+    def test_cryo_rockets_get_per_projectile_explosion(self):
+        result = parse_scroll_page("Scroll of Cryo Rockets", self.CRYO)
+        assert result["specialEffects"]["perBulletDamage"] == 80
+
+    def test_damage_listed_on_the_wiki_wins(self):
+        result = parse_scroll_page("Scroll of Big Rockets", self.ROCKET.replace("}}", "| Dmg = +120\n}}"))
+        assert result["specialEffects"]["perBulletDamage"] == 120
+
+    def test_scroll_without_rockets_is_unchanged(self):
+        result = parse_scroll_page("Scroll of Boom", self.ROCKET.replace("| RocketBlt = <br>&#129078;\n", ""))
+        assert "perBulletDamage" not in result["specialEffects"]
