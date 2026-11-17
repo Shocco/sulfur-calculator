@@ -6,5 +6,75 @@
       },
       "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Scroll of Ice Beam damage lowered to -95% (Was -90%).\""
     }
+  },
+  "weapons.json": {
+    "Flock 76": {
+      "caliberModding": {
+        ".50 BMG": {
+          "Recoil": { "wikiValue": 17.0, "value": 22.0 }
+        }
+      },
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Flock kick in 50BMG is now 22 (Was 17).\""
+    },
+    "Deathstar PG": {
+      "caliberModding": {
+        "9mm": {
+          "Damage": { "wikiValue": 60.0, "value": 72.0 }
+        },
+        "5.56mm": {
+          "Damage": { "wikiValue": 80.0, "value": 96.0 }
+        },
+        "7.62mm": {
+          "Damage": { "wikiValue": 100.0, "value": 120.0 }
+        },
+        ".50 BMG": {
+          "Damage": { "wikiValue": 200.0, "value": 240.0 }
+        },
+        "12Ga": {
+          "Damage": { "wikiValue": 20.0, "value": 24.0 }
+        }
+      },
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Deathstar PG damage multiplayer is now 1.2 (changed from 1).\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier."
+    },
+    "Beck 8": {
+      "caliberModding": {
+        "9mm": {
+          "Damage": { "wikiValue": 60.0, "value": 66.0 }
+        },
+        "5.56mm": {
+          "Damage": { "wikiValue": 80.0, "value": 88.0 }
+        },
+        "7.62mm": {
+          "Damage": { "wikiValue": 100.0, "value": 110.0 }
+        },
+        ".50 BMG": {
+          "Damage": { "wikiValue": 200.0, "value": 220.0 }
+        },
+        "12Ga": {
+          "Damage": { "wikiValue": 20.0, "value": 22.0 }
+        }
+      },
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Beck 8 damage multiplier is now 1.1 (changed from 1.0)\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier."
+    },
+    "Chimera Rapid": {
+      "caliberModding": {
+        "9mm": {
+          "Damage": { "wikiValue": 66.0, "value": 60.0 }
+        },
+        "5.56mm": {
+          "Damage": { "wikiValue": 88.0, "value": 80.0 }
+        },
+        "7.62mm": {
+          "Damage": { "wikiValue": 110.0, "value": 100.0 }
+        },
+        ".50 BMG": {
+          "Damage": { "wikiValue": 220.0, "value": 200.0 }
+        },
+        "12Ga": {
+          "Damage": { "wikiValue": 22.0, "value": 20.0 }
+        }
+      },
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Chimera Rapid damage multiplier is now 1 (changed from 1.1).\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier."
+    }
   }
 }

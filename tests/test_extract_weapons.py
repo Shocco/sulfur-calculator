@@ -310,3 +310,22 @@ class TestShotsPerTrigger:
     def test_ordinary_weapon_has_no_field(self):
         result = parse_weapon_page("Revolver", REVOLVER_WIKITEXT)
         assert "shotsPerTrigger" not in result
+
+    def test_caliber_rows_do_not_count_the_shells_as_projectiles(self):
+        """Arbiter 2 in 9mm is listed as x3: three rounds, one per barrel. Counting
+        that as 3 projectiles and again as 3 shells per pull triples the total."""
+        wikitext = SHOTGUN_WIKITEXT.replace("| Damage = 40×8", "| Damage = 40&times;8&times;3")
+        wikitext += """
+== Caliber Modding ==
+{| class="wikitable"
+!Caliber!!Damage!!Projectiles!!Spread!!Recoil
+|-
+|style="text-align: left;|[[12ga]]||40||&times;8&times;3||10||30
+|-
+|style="text-align: left;|[[9mm]]||120||&times;3||2||5
+|}
+"""
+        result = parse_weapon_page("Triple Gun", wikitext)
+        assert result["shotsPerTrigger"] == 3
+        assert result["caliberModding"]["12Ga"]["ProjectileCount"] == 8
+        assert result["caliberModding"]["9mm"]["ProjectileCount"] == 1

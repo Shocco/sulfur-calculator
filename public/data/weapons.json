@@ -166,25 +166,25 @@
         "Damage": 120.0,
         "Spread": 2.0,
         "Recoil": 5.0,
-        "ProjectileCount": 3
+        "ProjectileCount": 1
       },
       "5.56mm": {
         "Damage": 160.0,
         "Spread": 2.0,
         "Recoil": 15.0,
-        "ProjectileCount": 3
+        "ProjectileCount": 1
       },
       "7.62mm": {
         "Damage": 200.0,
         "Spread": 2.0,
         "Recoil": 20.0,
-        "ProjectileCount": 3
+        "ProjectileCount": 1
       },
       ".50 BMG": {
         "Damage": 400.0,
         "Spread": 2.0,
         "Recoil": 30.0,
-        "ProjectileCount": 3
+        "ProjectileCount": 1
       }
     },
     "shotsPerTrigger": 3
@@ -199,8 +199,8 @@
       "Damage": 50.0,
       "RPM": 500.0,
       "MagazineSize": 6.0,
-      "Spread": 4.0,
-      "Recoil": 0.0,
+      "Spread": 5.0,
+      "Recoil": 0.3,
       "Durability": 1800.0,
       "MaxDurability": 1800.0,
       "Weight": 20.0,
@@ -227,10 +227,10 @@
     "ammoType": "9mm",
     "image": "Beck_8.png",
     "baseStats": {
-      "Damage": 60.0,
+      "Damage": 66.0,
       "RPM": 800.0,
       "MagazineSize": 26.0,
-      "Spread": 3.0,
+      "Spread": 2.5,
       "Recoil": 3.0,
       "Durability": 2250.0,
       "MaxDurability": 2250.0,
@@ -252,31 +252,31 @@
     ],
     "caliberModding": {
       "9mm": {
-        "Damage": 60.0,
+        "Damage": 66.0,
         "Spread": 3.0,
         "Recoil": 3.0,
         "ProjectileCount": 1
       },
       "5.56mm": {
-        "Damage": 80.0,
+        "Damage": 88.0,
         "Spread": 3.0,
         "Recoil": 5.0,
         "ProjectileCount": 1
       },
       "7.62mm": {
-        "Damage": 100.0,
+        "Damage": 110.0,
         "Spread": 3.0,
         "Recoil": 6.0,
         "ProjectileCount": 1
       },
       ".50 BMG": {
-        "Damage": 200.0,
+        "Damage": 220.0,
         "Spread": 3.0,
         "Recoil": 17.0,
         "ProjectileCount": 1
       },
       "12Ga": {
-        "Damage": 20.0,
+        "Damage": 22.0,
         "Spread": 6.0,
         "Recoil": 17.0,
         "ProjectileCount": 8
@@ -512,8 +512,8 @@
       "Damage": 60.0,
       "RPM": 500.0,
       "MagazineSize": 47.0,
-      "Spread": 1.0,
-      "Recoil": 0.0,
+      "Spread": 1.5,
+      "Recoil": 0.3,
       "Durability": 4000.0,
       "MaxDurability": 4000.0,
       "Weight": 20.0,
@@ -543,7 +543,7 @@
       "RPM": 893.0,
       "MagazineSize": 30.0,
       "Spread": 2.5,
-      "Recoil": 0.0,
+      "Recoil": 0.3,
       "Durability": 3300.0,
       "MaxDurability": 3300.0,
       "Weight": 12.0,
@@ -644,7 +644,7 @@
       "Damage": 120.0,
       "RPM": 400.0,
       "MagazineSize": 20.0,
-      "Spread": 3.0,
+      "Spread": 1.5,
       "Recoil": 3.0,
       "Durability": 3200.0,
       "MaxDurability": 3200.0,
@@ -704,10 +704,10 @@
     "ammoType": "5.56mm",
     "image": "Chimera_Rapid.png",
     "baseStats": {
-      "Damage": 88.0,
+      "Damage": 80.0,
       "RPM": 750.0,
       "MagazineSize": 22.0,
-      "Spread": 3.0,
+      "Spread": 2.5,
       "Recoil": 2.0,
       "Durability": 2800.0,
       "MaxDurability": 2800.0,
@@ -727,31 +727,31 @@
     ],
     "caliberModding": {
       "9mm": {
-        "Damage": 66.0,
+        "Damage": 60.0,
         "Spread": 3.0,
         "Recoil": 1.0,
         "ProjectileCount": 1
       },
       "5.56mm": {
-        "Damage": 88.0,
+        "Damage": 80.0,
         "Spread": 3.0,
         "Recoil": 2.0,
         "ProjectileCount": 1
       },
       "7.62mm": {
-        "Damage": 110.0,
+        "Damage": 100.0,
         "Spread": 3.0,
         "Recoil": 5.0,
         "ProjectileCount": 1
       },
       ".50 BMG": {
-        "Damage": 220.0,
+        "Damage": 200.0,
         "Spread": 3.0,
         "Recoil": 13.0,
         "ProjectileCount": 1
       },
       "12Ga": {
-        "Damage": 22.0,
+        "Damage": 20.0,
         "Spread": 7.0,
         "Recoil": 13.0,
         "ProjectileCount": 8
@@ -831,8 +831,8 @@
       "Damage": 500.0,
       "RPM": 100.0,
       "MagazineSize": 1.0,
-      "Spread": 1.5,
-      "Recoil": 0.0,
+      "Spread": 1.0,
+      "Recoil": 0.3,
       "Durability": 4000.0,
       "MaxDurability": 4000.0,
       "Weight": 20.0,
@@ -841,8 +841,8 @@
       "ProjectileCount": 1.0
     },
     "allowedAttachments": [
-      "laser",
       "sight",
+      "laser",
       "insurance"
     ],
     "specificAttachments": [
@@ -870,7 +870,7 @@
       "Damage": 192.0,
       "RPM": 72.0,
       "MagazineSize": 4.0,
-      "Spread": 3.0,
+      "Spread": 2.0,
       "Recoil": 20.0,
       "Durability": 1000.0,
       "MaxDurability": 1000.0,
@@ -930,11 +930,11 @@
     "ammoType": "5.56mm",
     "image": "Deathstar_PG.png",
     "baseStats": {
-      "Damage": 80.0,
+      "Damage": 96.0,
       "RPM": 450.0,
       "MagazineSize": 15.0,
-      "Spread": 2.0,
-      "Recoil": 1.5,
+      "Spread": 5.0,
+      "Recoil": 2.5,
       "Durability": 3600.0,
       "MaxDurability": 3600.0,
       "Weight": 12.0,
@@ -955,31 +955,31 @@
     ],
     "caliberModding": {
       "9mm": {
-        "Damage": 60.0,
+        "Damage": 72.0,
         "Spread": 2.0,
         "Recoil": 1.5,
         "ProjectileCount": 1
       },
       "5.56mm": {
-        "Damage": 80.0,
+        "Damage": 96.0,
         "Spread": 2.0,
         "Recoil": 2.5,
         "ProjectileCount": 1
       },
       "7.62mm": {
-        "Damage": 100.0,
+        "Damage": 120.0,
         "Spread": 2.0,
         "Recoil": 4.0,
         "ProjectileCount": 1
       },
       ".50 BMG": {
-        "Damage": 200.0,
+        "Damage": 240.0,
         "Spread": 2.0,
         "Recoil": 12.0,
         "ProjectileCount": 1
       },
       "12Ga": {
-        "Damage": 20.0,
+        "Damage": 24.0,
         "Spread": 6.0,
         "Recoil": 16.0,
         "ProjectileCount": 8
@@ -1122,7 +1122,7 @@
       "Damage": 100.0,
       "RPM": 1400.0,
       "MagazineSize": 40.0,
-      "Spread": 4.0,
+      "Spread": 1.5,
       "Recoil": 2.0,
       "Durability": 2500.0,
       "MaxDurability": 2500.0,
@@ -1422,7 +1422,7 @@
       ".50 BMG": {
         "Damage": 400.0,
         "Spread": 2.5,
-        "Recoil": 17.0,
+        "Recoil": 22.0,
         "ProjectileCount": 1
       }
     }
@@ -1763,7 +1763,7 @@
       "Damage": 400.0,
       "RPM": 100.0,
       "MagazineSize": 6.0,
-      "Spread": 1.0,
+      "Spread": 1.5,
       "Recoil": 8.0,
       "Durability": 1200.0,
       "MaxDurability": 1200.0,
@@ -2015,7 +2015,7 @@
       "Damage": 40.0,
       "RPM": 350.0,
       "MagazineSize": 6.0,
-      "Spread": 3.5,
+      "Spread": 4.0,
       "Recoil": 17.0,
       "Durability": 2200.0,
       "MaxDurability": 2200.0,
@@ -2142,7 +2142,7 @@
       "RPM": 400.0,
       "MagazineSize": 100.0,
       "Spread": 20.0,
-      "Recoil": 0.0,
+      "Recoil": 0.3,
       "Durability": 4200.0,
       "MaxDurability": 4200.0,
       "Weight": 25.0,
@@ -2547,7 +2547,7 @@
     "image": "Rokua_.308.png",
     "baseStats": {
       "Damage": 200.0,
-      "RPM": 480.0,
+      "RPM": 210.0,
       "MagazineSize": 5.0,
       "Spread": 1.0,
       "Recoil": 5.0,
@@ -3471,7 +3471,7 @@
       "RPM": 200.0,
       "MagazineSize": 18.0,
       "Spread": 1.5,
-      "Recoil": 0.0,
+      "Recoil": 1.5,
       "Durability": 3600.0,
       "MaxDurability": 3600.0,
       "Weight": 5.0,
