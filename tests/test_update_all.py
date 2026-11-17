@@ -131,8 +131,8 @@ class TestApplyOverrides:
             assert filename.endswith(".json")
             for name, entry in items.items():
                 assert entry["source"], name
-                assert set(entry) <= {"source", "modifiers", "caliberModding"}, name
-                changes = list(entry.get("modifiers", {}).items())
+                assert set(entry) <= {"source", "modifiers", "caliberModding", "baseStats"}, name
+                changes = list(entry.get("modifiers", {}).items()) + list(entry.get("baseStats", {}).items())
                 for caliber, stats in entry.get("caliberModding", {}).items():
                     changes += [(f"{caliber} {stat}", change) for stat, change in stats.items()]
                 assert changes, name
@@ -188,3 +188,33 @@ class TestApplyCaliberOverrides:
         })
         assert weapons == before
         assert len(notes) == 2 and all("not found" in n for n in notes)
+
+
+class TestApplyBaseStatOverrides:
+    """Corrections to a weapon's own stats (its infobox)."""
+
+    OVERRIDE = {"Duhar": {"baseStats": {"Spread": {"wikiValue": 1.5, "value": 4.0}}, "source": "game files"}}
+
+    def _weapons(self, spread):
+        return [{"name": "Duhar", "baseStats": {"Damage": 100.0, "Spread": spread}}]
+
+    def test_override_replaces_the_stale_wiki_value(self):
+        from scripts.update_all import _apply_overrides
+        weapons = self._weapons(1.5)
+        notes = _apply_overrides(weapons, self.OVERRIDE)
+        assert weapons[0]["baseStats"] == {"Damage": 100.0, "Spread": 4.0}
+        assert len(notes) == 1 and "applied" in notes[0] and "Spread" in notes[0]
+
+    def test_override_is_skipped_once_the_wiki_value_changes(self):
+        from scripts.update_all import _apply_overrides
+        weapons = self._weapons(4.0)
+        notes = _apply_overrides(weapons, self.OVERRIDE)
+        assert weapons[0]["baseStats"]["Spread"] == 4.0
+        assert len(notes) == 1 and "no longer needed" in notes[0]
+
+    def test_missing_stat_is_reported_not_invented(self):
+        from scripts.update_all import _apply_overrides
+        weapons = [{"name": "Duhar", "baseStats": {}}]
+        notes = _apply_overrides(weapons, self.OVERRIDE)
+        assert weapons == [{"name": "Duhar", "baseStats": {}}]
+        assert len(notes) == 1 and "not found" in notes[0]

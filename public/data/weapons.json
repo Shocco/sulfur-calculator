@@ -199,7 +199,7 @@
       "Damage": 50.0,
       "RPM": 500.0,
       "MagazineSize": 6.0,
-      "Spread": 5.0,
+      "Spread": 4.0,
       "Recoil": 0.3,
       "Durability": 1800.0,
       "MaxDurability": 1800.0,
@@ -230,7 +230,7 @@
       "Damage": 66.0,
       "RPM": 800.0,
       "MagazineSize": 26.0,
-      "Spread": 2.5,
+      "Spread": 3.0,
       "Recoil": 3.0,
       "Durability": 2250.0,
       "MaxDurability": 2250.0,
@@ -352,7 +352,7 @@
     "image": "Breacher_8.png",
     "baseStats": {
       "Damage": 40.0,
-      "RPM": 0.0,
+      "RPM": 60.0,
       "MagazineSize": 8.0,
       "Spread": 10.0,
       "Recoil": 20.0,
@@ -512,7 +512,7 @@
       "Damage": 60.0,
       "RPM": 500.0,
       "MagazineSize": 47.0,
-      "Spread": 1.5,
+      "Spread": 1.0,
       "Recoil": 0.3,
       "Durability": 4000.0,
       "MaxDurability": 4000.0,
@@ -644,7 +644,7 @@
       "Damage": 120.0,
       "RPM": 400.0,
       "MagazineSize": 20.0,
-      "Spread": 1.5,
+      "Spread": 3.0,
       "Recoil": 3.0,
       "Durability": 3200.0,
       "MaxDurability": 3200.0,
@@ -707,7 +707,7 @@
       "Damage": 80.0,
       "RPM": 750.0,
       "MagazineSize": 22.0,
-      "Spread": 2.5,
+      "Spread": 3.0,
       "Recoil": 2.0,
       "Durability": 2800.0,
       "MaxDurability": 2800.0,
@@ -870,7 +870,7 @@
       "Damage": 192.0,
       "RPM": 72.0,
       "MagazineSize": 4.0,
-      "Spread": 2.0,
+      "Spread": 3.0,
       "Recoil": 20.0,
       "Durability": 1000.0,
       "MaxDurability": 1000.0,
@@ -892,13 +892,13 @@
     ],
     "caliberModding": {
       "9mm": {
-        "Damage": 115.0,
+        "Damage": 115.2,
         "Spread": 3.0,
         "Recoil": 5.0,
         "ProjectileCount": 1
       },
       "5.56mm": {
-        "Damage": 153.0,
+        "Damage": 153.6,
         "Spread": 3.0,
         "Recoil": 12.0,
         "ProjectileCount": 1
@@ -916,7 +916,7 @@
         "ProjectileCount": 1
       },
       "12Ga": {
-        "Damage": 38.0,
+        "Damage": 38.4,
         "Spread": 6.0,
         "Recoil": 20.0,
         "ProjectileCount": 8
@@ -933,7 +933,7 @@
       "Damage": 96.0,
       "RPM": 450.0,
       "MagazineSize": 15.0,
-      "Spread": 5.0,
+      "Spread": 2.0,
       "Recoil": 2.5,
       "Durability": 3600.0,
       "MaxDurability": 3600.0,
@@ -1122,7 +1122,7 @@
       "Damage": 100.0,
       "RPM": 1400.0,
       "MagazineSize": 40.0,
-      "Spread": 1.5,
+      "Spread": 4.0,
       "Recoil": 2.0,
       "Durability": 2500.0,
       "MaxDurability": 2500.0,
@@ -1786,25 +1786,25 @@
     "caliberModding": {
       "9mm": {
         "Damage": 120.0,
-        "Spread": 1.0,
+        "Spread": 1.5,
         "Recoil": 0.0,
         "ProjectileCount": 1
       },
       "5.56mm": {
         "Damage": 160.0,
-        "Spread": 1.0,
+        "Spread": 1.5,
         "Recoil": 2.0,
         "ProjectileCount": 1
       },
       "7.62mm": {
         "Damage": 200.0,
-        "Spread": 1.0,
+        "Spread": 1.5,
         "Recoil": 5.0,
         "ProjectileCount": 1
       },
       ".50 BMG": {
         "Damage": 400.0,
-        "Spread": 1.0,
+        "Spread": 1.5,
         "Recoil": 8.0,
         "ProjectileCount": 1
       },
@@ -1988,7 +1988,7 @@
       "7.62mm": {
         "Damage": 110.0,
         "Spread": 2.5,
-        "Recoil": 7.0,
+        "Recoil": 5.0,
         "ProjectileCount": 1
       },
       ".50 BMG": {
@@ -2038,7 +2038,7 @@
     "caliberModding": {
       "12Ga": {
         "Damage": 40.0,
-        "Spread": 3.5,
+        "Spread": 4.0,
         "Recoil": 17.0,
         "ProjectileCount": 8
       },
@@ -2168,7 +2168,7 @@
     "ammoType": "5.56mm",
     "image": "Nightlily_318.png",
     "baseStats": {
-      "Damage": 105.0,
+      "Damage": 105.6,
       "RPM": 850.0,
       "MagazineSize": 70.0,
       "Spread": 2.5,
@@ -2193,13 +2193,13 @@
     ],
     "caliberModding": {
       "9mm": {
-        "Damage": 79.0,
+        "Damage": 79.2,
         "Spread": 2.5,
         "Recoil": 1.0,
         "ProjectileCount": 1
       },
       "5.56mm": {
-        "Damage": 105.0,
+        "Damage": 105.6,
         "Spread": 2.5,
         "Recoil": 3.0,
         "ProjectileCount": 1
@@ -2217,7 +2217,7 @@
         "ProjectileCount": 1
       },
       "12Ga": {
-        "Damage": 26.0,
+        "Damage": 26.4,
         "Spread": 6.0,
         "Recoil": 12.0,
         "ProjectileCount": 8

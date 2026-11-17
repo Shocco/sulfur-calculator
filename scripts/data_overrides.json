@@ -34,7 +34,10 @@
           "Damage": { "wikiValue": 20.0, "value": 24.0 }
         }
       },
-      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Deathstar PG damage multiplayer is now 1.2 (changed from 1).\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier."
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Deathstar PG damage multiplayer is now 1.2 (changed from 1).\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier. Also: SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault).",
+      "baseStats": {
+        "Spread": { "wikiValue": 5.0, "value": 2.0 }
+      }
     },
     "Beck 8": {
       "caliberModding": {
@@ -54,7 +57,10 @@
           "Damage": { "wikiValue": 20.0, "value": 22.0 }
         }
       },
-      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Beck 8 damage multiplier is now 1.1 (changed from 1.0)\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier."
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Beck 8 damage multiplier is now 1.1 (changed from 1.0)\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier. Also: SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault).",
+      "baseStats": {
+        "Spread": { "wikiValue": 2.5, "value": 3.0 }
+      }
     },
     "Chimera Rapid": {
       "caliberModding": {
@@ -74,7 +80,101 @@
           "Damage": { "wikiValue": 22.0, "value": 20.0 }
         }
       },
-      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Chimera Rapid damage multiplier is now 1 (changed from 1.1).\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier."
+      "source": "SULFUR 1.0 patch notes, 2026-10-28: \"Chimera Rapid damage multiplier is now 1 (changed from 1.1).\" The wiki infobox has the new damage (1.0.6 game files, 2026-11-11) but its Caliber Modding table still has the old multiplier; each row is the caliber's base damage times the weapon multiplier. Also: SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault).",
+      "baseStats": {
+        "Spread": { "wikiValue": 2.5, "value": 3.0 }
+      }
+    },
+    "Augusta": {
+      "baseStats": {
+        "Spread": { "wikiValue": 5.0, "value": 4.0 }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "CYB47": {
+      "baseStats": {
+        "Spread": { "wikiValue": 1.5, "value": 1.0 }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "Chat-Pardeur 98": {
+      "baseStats": {
+        "Spread": { "wikiValue": 1.5, "value": 3.0 }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "Death's Toll": {
+      "baseStats": {
+        "Spread": { "wikiValue": 2.0, "value": 3.0 }
+      },
+      "caliberModding": {
+        "9mm": {
+          "Damage": { "wikiValue": 115.0, "value": 115.2 }
+        },
+        "5.56mm": {
+          "Damage": { "wikiValue": 153.0, "value": 153.6 }
+        },
+        "12Ga": {
+          "Damage": { "wikiValue": 38.0, "value": 38.4 }
+        }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "Duhar": {
+      "baseStats": {
+        "Spread": { "wikiValue": 1.5, "value": 4.0 }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "Longboy": {
+      "caliberModding": {
+        "9mm": {
+          "Spread": { "wikiValue": 1.0, "value": 1.5 }
+        },
+        "5.56mm": {
+          "Spread": { "wikiValue": 1.0, "value": 1.5 }
+        },
+        "7.62mm": {
+          "Spread": { "wikiValue": 1.0, "value": 1.5 }
+        },
+        ".50 BMG": {
+          "Spread": { "wikiValue": 1.0, "value": 1.5 }
+        }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "M3 Termite": {
+      "caliberModding": {
+        "7.62mm": {
+          "Recoil": { "wikiValue": 7.0, "value": 5.0 }
+        }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "Majordome": {
+      "caliberModding": {
+        "12Ga": {
+          "Spread": { "wikiValue": 3.5, "value": 4.0 }
+        }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
+    },
+    "Nightlily 318": {
+      "baseStats": {
+        "Damage": { "wikiValue": 105.0, "value": 105.6 }
+      },
+      "caliberModding": {
+        "9mm": {
+          "Damage": { "wikiValue": 79.0, "value": 79.2 }
+        },
+        "5.56mm": {
+          "Damage": { "wikiValue": 105.0, "value": 105.6 }
+        },
+        "12Ga": {
+          "Damage": { "wikiValue": 26.0, "value": 26.4 }
+        }
+      },
+      "source": "SULFUR 1.0.6 game files (Steam build 26490055): WeaponSO spreadPerCaliber, kickPower and rpm; damage = caliber baseDamage x weapon-type multiplier x damageMultiplier. The wiki's 2026-11-11 bot edits copied the weapon's base Spread attribute, which the game does not use when a per-caliber spread is set (ItemStats.SetSpreadAmountFromDefault)."
     }
   }
 }
