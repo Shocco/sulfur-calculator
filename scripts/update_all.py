@@ -120,34 +120,48 @@ OVERRIDES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data_
 
 
 def _apply_overrides(items: List[Dict[str, Any]], overrides: Dict[str, Any]) -> List[str]:
-    """Apply hand-checked modifier corrections where the wiki lags the game.
+    """Apply hand-checked corrections where the wiki lags the game.
 
-    ``overrides`` maps item name -> {"modifiers": {attribute: {"wikiValue": x,
-    "value": y}}, "source": "..."}. A correction is applied only while the
-    extracted value still equals ``wikiValue``; once the wiki changes, the
-    override is skipped and reported so it can be deleted. Nothing is ever
-    added: a missing item or attribute is reported and left alone.
+    ``overrides`` maps item name -> an entry with a "source" and one or both of:
+
+    - "modifiers": {attribute: {"wikiValue": x, "value": y}}
+    - "caliberModding": {caliber: {stat: {"wikiValue": x, "value": y}}}
+      (a weapon's per-caliber stats)
+
+    A correction is applied only while the extracted value still equals
+    ``wikiValue``; once the wiki changes, the override is skipped and reported
+    so it can be deleted. Nothing is ever added: a missing item, attribute,
+    caliber or stat is reported and left alone.
     Modifies ``items`` in place and returns one note per correction.
     """
     notes: List[str] = []
     by_name = {item.get("name"): item for item in items}
+
+    def correct(name, label, holder, key, change, source):
+        # ``holder[key]`` is the extracted value; ``holder`` is None when it is missing
+        if holder is None or key not in holder:
+            notes.append(f"override for '{name}' {label} not found in extracted data; nothing changed")
+        elif holder[key] == change["wikiValue"]:
+            holder[key] = change["value"]
+            notes.append(f"override applied: '{name}' {label} {change['wikiValue']} -> {change['value']} "
+                         f"({source})")
+        elif holder[key] == change["value"]:
+            notes.append(f"override for '{name}' {label} no longer needed: the wiki now says "
+                         f"{holder[key]}; remove it from data_overrides.json")
+        else:
+            notes.append(f"override for '{name}' {label} not applied: the wiki now says {holder[key]}, "
+                         f"expected {change['wikiValue']}; check it and update or remove the override")
+
     for name, entry in overrides.items():
-        item = by_name.get(name)
+        item = by_name.get(name) or {}
+        source = entry.get('source', 'no source given')
         for attribute, change in entry.get("modifiers", {}).items():
-            mods = item.get("modifiers", []) if item else []
-            mod = next((m for m in mods if m.get("attribute") == attribute), None)
-            if mod is None:
-                notes.append(f"override for '{name}' {attribute} not found in extracted data; nothing changed")
-            elif mod["value"] == change["wikiValue"]:
-                mod["value"] = change["value"]
-                notes.append(f"override applied: '{name}' {attribute} {change['wikiValue']} -> {change['value']} "
-                             f"({entry.get('source', 'no source given')})")
-            elif mod["value"] == change["value"]:
-                notes.append(f"override for '{name}' {attribute} no longer needed: the wiki now says "
-                             f"{mod['value']}; remove it from data_overrides.json")
-            else:
-                notes.append(f"override for '{name}' {attribute} not applied: the wiki now says {mod['value']}, "
-                             f"expected {change['wikiValue']}; check it and update or remove the override")
+            mod = next((m for m in item.get("modifiers", []) if m.get("attribute") == attribute), None)
+            correct(name, attribute, mod, "value", change, source)
+        for caliber, stats in entry.get("caliberModding", {}).items():
+            row = item.get("caliberModding", {}).get(caliber)
+            for stat, change in stats.items():
+                correct(name, f"{caliber} {stat}", row, stat, change, source)
     return notes
 
 

@@ -131,5 +131,60 @@ class TestApplyOverrides:
             assert filename.endswith(".json")
             for name, entry in items.items():
                 assert entry["source"], name
-                for attribute, change in entry["modifiers"].items():
+                assert set(entry) <= {"source", "modifiers", "caliberModding"}, name
+                changes = list(entry.get("modifiers", {}).items())
+                for caliber, stats in entry.get("caliberModding", {}).items():
+                    changes += [(f"{caliber} {stat}", change) for stat, change in stats.items()]
+                assert changes, name
+                for attribute, change in changes:
                     assert set(change) == {"wikiValue", "value"}, (name, attribute)
+
+
+class TestApplyCaliberOverrides:
+    """Corrections to a weapon's per-caliber stats (its Caliber Modding table)."""
+
+    OVERRIDE = {
+        "Flock 76": {
+            "caliberModding": {".50 BMG": {"Recoil": {"wikiValue": 17, "value": 22}}},
+            "source": "1.0 patch notes",
+        }
+    }
+
+    def _weapons(self, recoil):
+        return [{"name": "Flock 76", "caliberModding": {
+            "12Ga": {"Damage": 40, "Spread": 7, "Recoil": 17, "ProjectileCount": 8},
+            ".50 BMG": {"Damage": 400, "Spread": 2.5, "Recoil": recoil, "ProjectileCount": 1},
+        }}]
+
+    def test_override_replaces_the_stale_wiki_value(self):
+        from scripts.update_all import _apply_overrides
+        weapons = self._weapons(17.0)
+        notes = _apply_overrides(weapons, self.OVERRIDE)
+        assert weapons[0]["caliberModding"][".50 BMG"]["Recoil"] == 22
+        assert weapons[0]["caliberModding"]["12Ga"]["Recoil"] == 17
+        assert len(notes) == 1 and "applied" in notes[0] and ".50 BMG Recoil" in notes[0]
+
+    def test_override_is_skipped_once_the_wiki_value_changes(self):
+        from scripts.update_all import _apply_overrides
+        weapons = self._weapons(22.0)
+        notes = _apply_overrides(weapons, self.OVERRIDE)
+        assert weapons[0]["caliberModding"][".50 BMG"]["Recoil"] == 22.0
+        assert len(notes) == 1 and "no longer needed" in notes[0]
+
+    def test_override_is_skipped_when_the_wiki_moves_to_a_third_value(self):
+        from scripts.update_all import _apply_overrides
+        weapons = self._weapons(20.0)
+        notes = _apply_overrides(weapons, self.OVERRIDE)
+        assert weapons[0]["caliberModding"][".50 BMG"]["Recoil"] == 20.0
+        assert len(notes) == 1 and "not applied" in notes[0]
+
+    def test_missing_weapon_caliber_or_stat_is_reported_not_invented(self):
+        from scripts.update_all import _apply_overrides
+        weapons = [{"name": "Flock 76", "caliberModding": {"12Ga": {"Damage": 40}}}]
+        before = [{"name": "Flock 76", "caliberModding": {"12Ga": {"Damage": 40}}}]
+        notes = _apply_overrides(weapons, {
+            **self.OVERRIDE,
+            "No Such Gun": {"caliberModding": {"9mm": {"Recoil": {"wikiValue": 1, "value": 2}}}},
+        })
+        assert weapons == before
+        assert len(notes) == 2 and all("not found" in n for n in notes)
