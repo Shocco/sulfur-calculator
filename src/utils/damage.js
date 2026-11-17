@@ -23,12 +23,14 @@ export function formatTotalDamage(total) {
   return Array.isArray(total) ? `${total[0]}–${total[1]}` : `${total}`
 }
 
-// "60", "40x8", "40x8x3", or "40x8 x1–8" for a variable number of shells
+// "60", "40x8", "40x8x3", or "40x8 x1–8" for a variable number of shells.
+// A single projectile per shell is left out: "120x3", "120 x1–8".
 export function formatDamage(damage, projectiles = 1, shotsPerTrigger) {
   const count = Math.round(projectiles)
+  const perShell = count > 1 ? `${damage}x${count}` : `${damage}`
   if (Array.isArray(shotsPerTrigger)) {
-    return `${damage}x${count} x${shotsPerTrigger[0]}–${shotsPerTrigger[1]}`
+    return `${perShell} x${shotsPerTrigger[0]}–${shotsPerTrigger[1]}`
   }
-  if (shotsPerTrigger && shotsPerTrigger !== 1) return `${damage}x${count}x${shotsPerTrigger}`
-  return count > 1 ? `${damage}x${count}` : `${damage}`
+  if (shotsPerTrigger && shotsPerTrigger !== 1) return `${perShell}x${shotsPerTrigger}`
+  return perShell
 }

@@ -186,3 +186,53 @@ class TestCaliberNormalization:
         result = parse_caliber_table(MULTI_ROW_TABLE)
         assert "12Ga" in result
         assert "12ga" not in result
+
+
+# ---------------------------------------------------------------------------
+# Multi-barrel weapons: the Projectiles column mixes pellets and shells
+# ---------------------------------------------------------------------------
+
+ARBITER_TABLE = """\
+{| class="wikitable"
+!Caliber!!Damage!!Projectiles!!Spread!!Recoil
+|-
+|style="text-align: left;|[[12ga]]||40||&times;8&times;3||10||30
+|-
+|style="text-align: left;|[[9mm]]||120||&times;3||2||5
+|-
+|style="text-align: left;|[[50 BMG]]||400||&times;3||2||30
+|}"""
+
+BREACHER_TABLE = """\
+{| class="wikitable"
+!Caliber!!Damage!!Projectiles!!Spread!!Recoil
+|-
+|style="text-align: left;|[[12ga]]||40||&times;8&times;(1-8)||10||20
+|-
+|style="text-align: left;|[[9mm]]||120||&times;(1-8)||2||3
+|}"""
+
+
+class TestShellsInProjectilesColumn:
+    """Arbiter 2 fires three shells per pull; its table lists them as a factor."""
+
+    def test_trailing_shell_factor_is_not_counted_as_pellets(self):
+        result = parse_caliber_table(ARBITER_TABLE, shots_per_trigger=3)
+        assert result["12Ga"]["ProjectileCount"] == 8
+        assert result["9mm"]["ProjectileCount"] == 1
+        assert result[".50 BMG"]["ProjectileCount"] == 1
+
+    def test_without_shots_per_trigger_a_lone_factor_is_pellets(self):
+        result = parse_caliber_table(ARBITER_TABLE)
+        assert result["12Ga"]["ProjectileCount"] == 8
+        assert result["9mm"]["ProjectileCount"] == 3
+
+    def test_pellet_count_equal_to_shell_count_is_kept(self):
+        table = ARBITER_TABLE.replace("&times;8&times;3", "&times;3&times;3")
+        result = parse_caliber_table(table, shots_per_trigger=3)
+        assert result["12Ga"]["ProjectileCount"] == 3
+
+    def test_variable_shell_range_is_not_counted_as_pellets(self):
+        result = parse_caliber_table(BREACHER_TABLE, shots_per_trigger=[1, 8])
+        assert result["12Ga"]["ProjectileCount"] == 8
+        assert result["9mm"]["ProjectileCount"] == 1

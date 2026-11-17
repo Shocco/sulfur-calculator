@@ -41,3 +41,11 @@ test('damage is formatted with its projectile count and shells per trigger pull'
   assert.equal(formatDamage(40, 8, [1, 8]), '40x8 x1–8')
   assert.equal(formatDamage(50, 2.6), '50x3')
 })
+
+test('a single projectile per shell is left out when several shells are fired', () => {
+  // Arbiter 2 chiselled to 9mm: one round from each of three barrels
+  assert.equal(formatDamage(120, 1, 3), '120x3')
+  assert.equal(totalDamage({ damage: 120, projectiles: 1, shotsPerTrigger: 3 }), 360)
+  // Breacher 8 chiselled to 9mm
+  assert.equal(formatDamage(120, 1, [1, 8]), '120 x1–8')
+})

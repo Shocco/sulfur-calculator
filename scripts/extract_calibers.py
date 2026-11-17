@@ -76,7 +76,29 @@ def parse_ammo_page(title: str, wikitext: str) -> Optional[Tuple[str, int]]:
 # ---------------------------------------------------------------------------
 
 
-def parse_caliber_table(table_text: str) -> Dict[str, Dict]:
+def _projectiles_per_shot(raw: str, optional_sign: bool, shots_per_trigger=None) -> int:
+    """Read the projectiles fired by one shell or round from a Projectiles cell.
+
+    "×8" -> 8, "×1" -> 1, "×8×(1-8)" -> 8, "×(1-8)" -> 1.
+
+    On a weapon that fires a fixed number of shells per trigger pull
+    (``shots_per_trigger``, e.g. 3 for Arbiter 2) the cell ends with that number:
+    "×8×3" is 8 pellets from each of 3 shells and "×3" is one round from each of
+    3 barrels. That trailing factor is the shell count, not projectiles, so it is
+    left out here; the weapon's ``shotsPerTrigger`` already accounts for it.
+    """
+    raw = raw.replace("&times;", "\u00d7")
+    sign = r"[\u00d7x]?" if optional_sign else r"[\u00d7x]"
+    first = re.match(sign + r"\s*(\d+)", raw)
+    count = int(first.group(1)) if first else 1
+    if isinstance(shots_per_trigger, int) and not isinstance(shots_per_trigger, bool):
+        factors = [int(n) for n in re.findall(r"[\u00d7x]\s*(\d+)", raw)]
+        if factors and factors[-1] == shots_per_trigger:
+            count = factors[0] if len(factors) > 1 else 1
+    return count
+
+
+def parse_caliber_table(table_text: str, shots_per_trigger=None) -> Dict[str, Dict]:
     """Parse a wiki caliber modding table into a dict of caliber stats.
 
     The expected table format is::
@@ -90,6 +112,8 @@ def parse_caliber_table(table_text: str) -> Dict[str, Dict]:
     Args:
         table_text: Raw wikitext of the wikitable (the full ``{| ... |}``
             block, or just the inner rows).
+        shots_per_trigger: The weapon's shells per trigger pull, when the
+            table is a weapon's own (see ``_projectiles_per_shot``).
 
     Returns:
         Dict mapping caliber name to a stats dict with keys
@@ -151,15 +175,11 @@ def parse_caliber_table(table_text: str) -> Dict[str, Dict]:
                 spread = float(cells[2].strip())
             except ValueError:
                 spread = 0.0
-            raw_proj = cells[3].strip()
-            proj_match = re.match(r"(?:&times;|[\u00d7x×])?(\d+)", raw_proj)
-            projectile_count = int(proj_match.group(1)) if proj_match else 1
+            projectile_count = _projectiles_per_shot(cells[3].strip(), True, shots_per_trigger)
             recoil = 0.0
         else:
             # Old format: [caliber, damage, projectiles, spread, recoil]
-            raw_proj = cells[2].strip()
-            proj_match = re.match(r"(?:&times;|[\u00d7x×])(\d+)", raw_proj)
-            projectile_count = int(proj_match.group(1)) if proj_match else 1
+            projectile_count = _projectiles_per_shot(cells[2].strip(), False, shots_per_trigger)
             try:
                 spread = float(cells[3].strip()) if len(cells) > 3 else 0.0
             except ValueError:

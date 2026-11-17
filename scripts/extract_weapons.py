@@ -222,13 +222,16 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
     if 'insurance' not in allowed_attachments:
         allowed_attachments.append('insurance')
 
+    # Shells or cells fired per trigger pull (Arbiter 2 "40x8x3"); absent for most weapons
+    shots_per_trigger = parse_shots_per_trigger(raw_damage)
+
     # --- caliberModding ---
     caliber_modding: Dict = {}
     caliber_section = extract_section(wikitext, "Caliber Modding")
     if caliber_section:
         table_match = re.search(r"\{\|.*?\|\}", caliber_section, re.DOTALL)
         if table_match:
-            caliber_modding = parse_caliber_table(table_match.group(0))
+            caliber_modding = parse_caliber_table(table_match.group(0), shots_per_trigger)
 
     weapon: Dict = {
         "id": weapon_id,
@@ -242,8 +245,6 @@ def parse_weapon_page(title: str, wikitext: str) -> Optional[Dict]:
         "caliberModding": caliber_modding,
     }
 
-    # Shells or cells fired per trigger pull (Arbiter 2 "40x8x3"); absent for most weapons
-    shots_per_trigger = parse_shots_per_trigger(raw_damage)
     if shots_per_trigger is not None:
         weapon["shotsPerTrigger"] = shots_per_trigger
 
