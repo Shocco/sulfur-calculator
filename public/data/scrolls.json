@@ -8,9 +8,7 @@
       "Proc": "10%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Adds chance to shock the area on hit,stunning nearby units."
+      "Adds chance to shock the area on hit, stunning nearby units."
     ]
   },
   {
@@ -58,8 +56,7 @@
       "Proc": "35%"
     },
     "effects": [
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Adds a chance of spawning a bolt that electrocutes and spreads to nearby enemies."
+      "Electrocution arcs between enemies."
     ]
   },
   {
@@ -97,8 +94,6 @@
       "Proc": "3%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Bullets get a chance to charm the target, making them fight for you."
     ]
   },
@@ -110,7 +105,7 @@
       "CrpsExpl": "<br>+1"
     },
     "effects": [
-      "Increase corpse explosion power per hit"
+      "Dead enemies explode with poison after a small delay. The explosion power is increased with each subsequent hit after death."
     ]
   },
   {
@@ -121,9 +116,7 @@
       "MoreDmgOnHit": "<br>+5%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Increases damage on target for evry bullet hit."
+      "Increases damage on target for every bullet hit."
     ]
   },
   {
@@ -157,9 +150,8 @@
       "Blind": "🝯"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Chance to blind targets"
+      "Damage: -80%",
+      "Chance to blind targets: 100%"
     ]
   },
   {
@@ -171,8 +163,6 @@
       "Proc": "20%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Chance to stun target"
     ]
   },
@@ -185,8 +175,6 @@
       "Proc": "20%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Chance to set target on fire"
     ]
   },
@@ -221,8 +209,6 @@
       "Proc": "20%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Adds a chance to fear target on hit."
     ]
   },
@@ -279,7 +265,10 @@
     "specialEffects": {
       "DrbConsume": "+1"
     },
-    "effects": []
+    "effects": [
+      "Dying enemies are raised to fight for you. The minion lasts longer with each extra hit before the corpse comes to a halt.",
+      "Durability Loss: +1"
+    ]
   },
   {
     "id": "Scroll_of_Frostbite",
@@ -289,8 +278,6 @@
       "Frost": "❆"
     },
     "effects": [
-      "Elemental enchantment.",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Freezes target"
     ]
   },
@@ -314,8 +301,10 @@
       "PenDmgMult": "<br>+50%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Railgun",
+      "Bullets penetrate +999",
+      "Penetration damage multiplier +50%",
+      "RPM: -25%"
     ]
   },
   {
@@ -330,10 +319,9 @@
       "WpnAreaDmg": "<br>25%"
     },
     "effects": [
-      "Weapon-based area damage: +10%",
+      "Weapon-based area damage: +25%",
       "Blinds surrounding enemies as well as yourself",
-      "Durability Loss +250%",
-      "Do self damage on each bullet -10"
+      "Self-damage: +10"
     ]
   },
   {
@@ -343,7 +331,11 @@
     "specialEffects": {
       "Wet": "🜄"
     },
-    "effects": []
+    "effects": [
+      "Bullets heal allied units.",
+      "No damage to non-ghost units",
+      "Extra damage ghost: +5120%"
+    ]
   },
   {
     "id": "Scroll_of_Ice_Beam",
@@ -397,10 +389,8 @@
       "Lava": "🝦"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Spawns lava on hit that burns targets.",
-      "Morebullet drop"
+      "Bullet weight: ×25"
     ]
   },
   {
@@ -443,10 +433,10 @@
       "PenDmgMult": "<br>-50%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Rail gun",
-      "Bullets penetrate +999"
+      "Railgun",
+      "Bullets penetrate +999",
+      "Penetration damage multiplier -50%",
+      "RPM: -25%"
     ]
   },
   {
@@ -542,7 +532,14 @@
       }
     ],
     "specialEffects": {},
-    "effects": []
+    "effects": [
+      "Bullet weight: &times;40",
+      "Muzzle Velocity: -30%",
+      "Bullet Speed: -25%",
+      "Bullet Bounce: +1",
+      "RPM: -50%",
+      "Damage: -95%"
+    ]
   },
   {
     "id": "Scroll_of_Nature",
@@ -552,7 +549,9 @@
       "Root": "🙒",
       "Proc": "40%"
     },
-    "effects": []
+    "effects": [
+      "Chance to root target"
+    ]
   },
   {
     "id": "Scroll_of_Noxiosa",
@@ -562,8 +561,6 @@
       "PsnCloud": "🝤"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Creates a cloud of deadly poison on hit."
     ]
   },
@@ -621,7 +618,9 @@
       "Petrify": "🝁",
       "Proc": "10%"
     },
-    "effects": []
+    "effects": [
+      "Adds a chance to petrify a unit, turning it into stone. Petrified units cannot take damage, and deflect incoming bullets."
+    ]
   },
   {
     "id": "Scroll_of_Petroleum",
@@ -638,8 +637,9 @@
       "OilPuddle": "🝆"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Drenches the target in oil",
+      "Applies oil to target",
+      "Bullet weight: ×25"
     ]
   },
   {
@@ -651,8 +651,6 @@
       "Proc": "25%"
     },
     "effects": [
-      "Elemental enchantment.",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Bullets apply poison"
     ]
   },
@@ -664,7 +662,7 @@
       "PsnPuddle": "🝤"
     },
     "effects": [
-      "NO DESCRIPTION??? POSSIBLE BUG? REPORTED****"
+      "Makes enemies blood poison."
     ]
   },
   {
@@ -691,8 +689,7 @@
       "Proc": "20%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Random elemental effect"
     ]
   },
   {
@@ -723,7 +720,12 @@
     "specialEffects": {
       "DrbConsume": "+1"
     },
-    "effects": []
+    "effects": [
+      "Creates zones of fear where no enemy dares enter.",
+      "Extra Damage Ghost: +300%",
+      "Damage: -50%",
+      "Durability Loss: +1"
+    ]
   },
   {
     "id": "Scroll_of_Sacrifice",
@@ -739,8 +741,8 @@
       "SelfDmg": "<br>5%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it."
+      "Damage self +5%",
+      "Damage +100%"
     ]
   },
   {
@@ -757,11 +759,9 @@
       "FrostPuddle": "❆"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Spawn frost puddles",
       "Chance to solid freeze +10%",
-      "More bullet drop"
+      "Bullet weight: ×40"
     ]
   },
   {
@@ -782,7 +782,13 @@
     "specialEffects": {
       "Frost": "❆"
     },
-    "effects": []
+    "effects": [
+      "Bullets become snowballs, with a chance to shoot snowman heads that will increase in size as it travels. Does knockback, damage and area freeze effect on hit based on it's size. Also increases the Bullet Weight.",
+      "Freezes Target",
+      "RPM: -60%",
+      "Damage: -50%",
+      "Knockback: +10"
+    ]
   },
   {
     "id": "Scroll_of_Steam",
@@ -845,9 +851,8 @@
       "ElecArea": "☈"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "'Creates a deadly discharge of electricity on hit that can damage multiple targets. More bullet drop."
+      "Creates a deadly discharge of electricity on hit that can damage multiple targets.",
+      "Bullet Weight: ×25"
     ]
   },
   {
@@ -859,8 +864,6 @@
       "Proc": "15%"
     },
     "effects": [
-      "Elemental enchantment.",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
       "Chance to electrocute target"
     ]
   },
@@ -902,7 +905,8 @@
       }
     ],
     "specialEffects": {
-      "Frost": "❆"
+      "Frost": "❆",
+      "Proc": "34%"
     },
     "effects": [
       "Bullets have a chance to summon bodies of water that allow swimming. Enemies inside will be considered underwater, become wet and cold... Brrrrr.",
@@ -957,10 +961,7 @@
       "ShareDmg": "100%"
     },
     "effects": [
-      "Elemental enchantment",
-      "Drag this onto a weapon with an empty enchantment slot to enchant it.",
-      "Bullets link targets together.",
-      "Linked targets share a percentage of their damage taken."
+      "Bullets link targets together. Linked targets share a percentage of their damage taken."
     ]
   },
   {
@@ -982,7 +983,9 @@
       "Wet": "🜄"
     },
     "effects": [
-      "Wet 🜄"
+      "Damage: -99%",
+      "Makes target wet",
+      "Bullet weight: ×5"
     ]
   },
   {
@@ -1019,6 +1022,15 @@
       "Wet": "🜄",
       "BltSize": "+100%"
     },
-    "effects": []
+    "effects": [
+      "Makes target wet",
+      "Bullet Size: +100%",
+      "Bullet Weight: &times;20",
+      "Muzzle Velocity: -30%",
+      "Knockback: +20",
+      "RPM: -50%",
+      "Bullet Speed: -25%",
+      "Damage: -99%"
+    ]
   }
 ]
