@@ -125,7 +125,9 @@
     "modifiers": [],
     "specialEffects": {
       "RocketBlt": "<br>🠶",
-      "Frost": "❆"
+      "Frost": "❆",
+      "bypassPercentages": true,
+      "perBulletDamage": 80
     },
     "effects": []
   },
@@ -698,7 +700,9 @@
     "modifiers": [],
     "specialEffects": {
       "RocketBlt": "<br>🠶",
-      "Explosion": "¤"
+      "Explosion": "¤",
+      "bypassPercentages": true,
+      "perBulletDamage": 80
     },
     "effects": [
       "Elemental enchantment",
